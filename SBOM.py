@@ -35,7 +35,7 @@ class SBOM:
         api_request="https://api.github.com/repos/" + items[3] +"/" + items[4]+ "/dependency-graph/sbom"
         print(api_request)
         response = requests.get(api_request)
-        print(response.status_code) # Print the status code
+        #print(response.status_code) # Print the status code
         self.SBOMjson=response.json() 
 
 
