@@ -70,10 +70,31 @@ class ToySBOMCompareExample:
 
     def compareSBOMs(self):
         output=""
-        difference = DeepDiff(self.SBOMjsonTruth,self.SBOMjsonNonTruth, ignore_order=True)    
+        difference = DeepDiff(self.SBOMjsonTruth,self.SBOMjsonNonTruth, ignore_order=True)   
+        removed_packages = []
+        add_packages = []
+
         if difference:
-           print("Differences found:")
-           print(difference)
+             if 'iterable_item_removed' in difference:
+                removed_packages = []
+                for key, package in difference['iterable_item_removed'].items():
+                   # Check if 'name' key exists in the package
+                    if 'name' in package:
+                      removed_packages.append(package['name'])
+                for item in removed_packages:
+                    output= output + item + " present in SBOM 1 but not SBOM 2\n"
+             if 'iterable_item_added' in difference:
+                removed_packages = []
+                for key, package in difference['iterable_item_removed'].items():
+                   # Check if 'name' key exists in the package
+                    if 'name' in package:
+                      add_packages.append(package['name'])
+                for item in add_packages:
+                    output= output + item + " not present in SBOM 1 but present in SBOM 2\n"
+
+          
+             print("Differences found:\n")
+             print(output)
         else:
            print("No differences found.")
 #COMPARE SBOMS, section by section
