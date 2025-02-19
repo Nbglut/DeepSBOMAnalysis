@@ -123,7 +123,7 @@ class ToySBOMCompareExample:
                     if 'packages' in key:                  
                       package_index = int(key.split(']')[2][1:])  # Extract index of the package
                       package_name = self.SBOMjsonTruth['sbom']['packages'][package_index ]['name']  
-                      output= output + str(differences)  +  ". The information about " + package_name + " is not equal\n"
+                      output= output + str(differences)  +  ". The information about package/dependency " + package_name + " is not equal\n"
                       differences=differences+1
                       changed_items.append(package_name)
                     else:
