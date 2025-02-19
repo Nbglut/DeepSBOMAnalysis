@@ -49,10 +49,15 @@ class ToySBOMCompareExample:
         packagename="transformers"   #placeholder 
 
 	#delete package with "name"
-        self.SBOMjsonNonTruth["sbom"]["packages"] = [pkg for pkg in self.SBOMjsonNonTruth["sbom"]["packages"] if pkg["name"] != packagename]
-		#Chance to Remove a random package ([packages])
+        #self.SBOMjsonNonTruth["sbom"]["packages"] = [pkg for pkg in self.SBOMjsonNonTruth["sbom"]["packages"] if pkg["name"] != packagename]
+	#self.SBOMjsonNonTruth["sbom"]["packages"][ = [pkg for pkg in self.SBOMjsonNonTruth["sbom"]["packages"] if pkg["name"] != packagename]
+        for package in self.SBOMjsonNonTruth['sbom']['packages']:
+            if package['name'] == 'transformers':
+                package['filesAnalyzed'] = True  
+	#Chance to Remove a random package ([packages])
 		#chance to remove the license/change the license
 		#Chance to add a package(?)
+        self.SBOMjsonNonTruth["sbom"]["dataLicense"]="ASDSA" 
                 
         
     def getTruthSBOM(self):
@@ -73,7 +78,8 @@ class ToySBOMCompareExample:
         difference = DeepDiff(self.SBOMjsonTruth,self.SBOMjsonNonTruth, ignore_order=True)   
         removed_packages = []
         add_packages = []
-
+        changed_items=[]
+        differences=1
         if difference:
              if 'iterable_item_removed' in difference:
                 removed_packages = []
@@ -84,16 +90,46 @@ class ToySBOMCompareExample:
                 for item in removed_packages:
                     output= output + item + " present in SBOM 1 but not SBOM 2\n"
              if 'iterable_item_added' in difference:
-                removed_packages = []
                 for key, package in difference['iterable_item_removed'].items():
                    # Check if 'name' key exists in the package
                     if 'name' in package:
                       add_packages.append(package['name'])
                 for item in add_packages:
-                    output= output + item + " not present in SBOM 1 but present in SBOM 2\n"
+                    output= output + str(differences) + ". " + item + " not present in SBOM 1 but present in SBOM 2\n"
+                    differences=differences +1
+
+
+
+             if 'values_changed' in difference:
+                for key, package in difference['values_changed'].items():
+                   # Check if 'package' is part of key
+                    if 'packages' in key:                  
+                      package_index = int(key.split('[')[3][:1])  # Extract index of the package
+                      package_name = self.SBOMjsonTruth['sbom']['packages'][package_index ]['name']  
+                      output= output + str(differences)  +  ". The information about " + package_name + " is not equal\n"
+                      differences=differences+1
+                      changed_items.append(package_name)
+                    else:
+                     print(key)
+                     key_parts= key.split(']')
+                     changed_type= key_parts[1][1:]
+                     changed_type=changed_type.replace("'", "")
+                     print(changed_type)
+                     output= output + str(differences)  + ". The " +changed_type + " is " + self.SBOMjsonTruth['sbom'][changed_type]
+                     output= output + " in the first SBOM and " +  self.SBOMjsonNonTruth['sbom'][changed_type] 
+                     output= output + " in the second SBOM\n"
+                     differences=differences +1
+
+                     changed_items.append(changed_type)  
+                       
+
+
+
+
 
           
-             print("Differences found:\n")
+             print( str(differences-1)  + " differences found:\n")
+             #print(difference)
              print(output)
         else:
            print("No differences found.")
