@@ -143,7 +143,7 @@ class ToySBOMCompareExample:
 
 
           
-             print( str(differences-1)  + " differences found:\n")
+             print( str(differences-1)  + " difference(s) found:\n")
              #print(difference)
              print(output)
         else:
