@@ -58,13 +58,17 @@ class ToySBOMCompareExample:
            self.SBOMjsonNonTruth["sbom"]["packages"] = [pkg for pkg in self.SBOMjsonNonTruth["sbom"]["packages"] if pkg["name"] != packagename_remove]
            print("Removed " +  str(packagename_remove) + "\n")
         
+        #update numbers just in case packages removed
         numpackages=len(self.SBOMjsonNonTruth['sbom']['packages'])-1
-
-        packagename_change=self.SBOMjsonNonTruth['sbom']['packages'][random.randint(0, numpackages)]['name']  #random package
+        #if numpackages <=0, packagename_change should be NONE
+        if numpackages <=0:
+           packagename_change="None"
+        else : #else, get random package like normal
+           packagename_change=self.SBOMjsonNonTruth['sbom']['packages'][random.randint(0, numpackages)]['name']  #random package
 
 
 #random chance to change  
-        if(random.choice([0, 1])):
+        if(random.choice([0, 1]) and packagename_change != "None"):
            for package in self.SBOMjsonNonTruth['sbom']['packages']:
                if package['name'] == packagename_change:
                    package['filesAnalyzed'] = True  
