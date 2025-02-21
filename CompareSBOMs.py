@@ -1,5 +1,5 @@
 """
-ToySBOMCompareExample.py
+CompareSBOMs.py
 
 This class simply is a Toy Example of Comparing
 
@@ -20,30 +20,39 @@ from SBOM import SBOM
 
 
 
-class ToySBOMCompareExample:
+class CompareSBOMs:
     """
-    Class to add a media-related bug into a mutated repository.
 
     """
     def __init__(self, repo):
-        self.ToySBOM= SBOM(repo)
+        self.TruthSBOM= SBOM(repo)
         self.SBOMjsonTruth={}
         self.SBOMjsonNonTruth={}
 
 
 
 
-    def findToySBOMs(self):
+    def findTruthSBOMs(self):
         """
-        Retrieves the media used for the mutation
+                Finds the Truth SBOM and puts it in the  self.SBOMjsonTruth
+        """
+        self.TruthSBOM.findJson()
+        self.SBOMjsonTruth= self.TruthSBOM.getJson()
 
-        Returns:
-            self.media: string name of the file
+
+
+    def setNonTruth(self, nontruth):
         """
-        self.ToySBOM.findJson()
-        self.SBOMjsonTruth= self.ToySBOM.getJson()
+                Sets the self.SBOMjsonNonTruth
+        """
+        self.SBOMjsonNonTruth=nontruth
+
+    def RandomizeNonTruth(self):
+        """
+                Makes random changes to  self.SBOMjsonTruth and saves it to self.SBOMjsonNonTruth
+        """
+        self.findTruthSBOMs()
         self.SBOMjsonNonTruth= copy.deepcopy(self.SBOMjsonTruth) #copy of truth
-
             
         packagename_remove="transformers"   #placeholder  for package to remove
         packagename_change="transformers"   #placeholder  for package to change
@@ -66,7 +75,6 @@ class ToySBOMCompareExample:
         else : #else, get random package like normal
            packagename_change=self.SBOMjsonNonTruth['sbom']['packages'][random.randint(0, numpackages)]['name']  #random package
 
-
 #random chance to change  
         if(random.choice([0, 1]) and packagename_change != "None"):
            for package in self.SBOMjsonNonTruth['sbom']['packages']:
@@ -79,10 +87,13 @@ class ToySBOMCompareExample:
            self.SBOMjsonNonTruth["sbom"]["dataLicense"]="MIT" 
            print("Changed License\n\n\n\n")
      
+
+
+
         
     def getTruthSBOM(self):
         """
-        Retrieves the media used for the mutation
+        Retrieves the truth SBOM
 
         Returns:
             self.media: string name of the file
@@ -90,10 +101,11 @@ class ToySBOMCompareExample:
         return self.SBOMjsonTruth
 
 
-#COMPARE METHOD HERE
-#Maybe do Compare FIRST, then add more robust Toy example
-
+   
     def compareSBOMs(self):
+        """
+           Uses the nonTruthSBOmjson and the TruthSBOMjson and compares the two 
+        """
         output=""
         difference = DeepDiff(self.SBOMjsonTruth,self.SBOMjsonNonTruth, ignore_order=True)   
         removed_packages = []
@@ -134,8 +146,10 @@ class ToySBOMCompareExample:
                      key_parts= key.split(']')
                      changed_type= key_parts[1][1:]
                      changed_type=changed_type.replace("'", "")
-                     output= output + str(differences)  + ". The " +changed_type + " is " + self.SBOMjsonTruth['sbom'][changed_type]
-                     output= output + " in the first SBOM and " +  self.SBOMjsonNonTruth['sbom'][changed_type] 
+                     if changed_type=="creationInfo" or changed_type=="documentNamespace":
+                        continue
+                     output= output + str(differences)  + ". The " +changed_type + " is " + str(self.SBOMjsonTruth['sbom'][changed_type])
+                     output= output + " in the first SBOM and " +  str(self.SBOMjsonNonTruth['sbom'][changed_type]) 
                      output= output + " in the second SBOM\n"
                      differences=differences +1
 
@@ -152,10 +166,6 @@ class ToySBOMCompareExample:
              print(output)
         else:
            print("No differences found.")
-#COMPARE SBOMS, section by section
-#COMPARE Licenses (dataLicense)
-#Compare packages (missing packages, wrong info in packages, etc)
-#Add comparsions (like missing packages, wrong licenses, etc) to output
 
 
 
@@ -165,9 +175,10 @@ class ToySBOMCompareExample:
 if __name__ == "__main__":
     if len(sys.argv) <= 1:
          print("No repo given")
-#https://github.com/microsoft/OmniParser
-    test_SBOM = ToySBOMCompareExample(sys.argv[1])
-    test_SBOM.findToySBOMs()
+    test_SBOM = CompareSBOMs(sys.argv[1])
+    test_SBOM.findTruthSBOMs()
+    test_SBOM.RandomizeNonTruth()
+
     test_SBOM.compareSBOMs()
 
     #print(test_SBOM.getTruthSBOM())
