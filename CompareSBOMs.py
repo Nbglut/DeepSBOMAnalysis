@@ -176,13 +176,13 @@ class CompareSBOMs:
 
 
 
-          
-             print( str(differences-1)  + " difference(s) found:\n")
-             #print(difference)
              if printDiffs:
+                print( str(differences-1)  + " difference(s) found:\n")
+             #print(difference)
                 print(output)
         else:
-           print("No differences found.")
+           if printDiffs:
+              print("No differences found.")
 
       
 
