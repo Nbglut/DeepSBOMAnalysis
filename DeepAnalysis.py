@@ -15,6 +15,7 @@ File Created On 2-25-2025
 import os
 import requests
 import json
+import argparse
 import sys
 from deepdiff import DeepDiff
 import copy
@@ -62,6 +63,7 @@ class DeepAnalysis:
                #if [message] exists in json, the json does not exist and we continue 
                if "message"  not in pkg_json and  pkg_json['info']['requires_dist'] !=None:
                #req_pack=data['info']['requires_dist'] has all required packages 
+                   print("Checking Transient Dependencies from  " + pac + "\n")
                    req_packetsunformated=pkg_json['info']['requires_dist']
                    for item in req_packetsunformated:
                     #Format items in req_pack such that it only takes first part of string before the first >, <, or =
@@ -71,14 +73,16 @@ class DeepAnalysis:
                       if nextpac in checked_packages:
                           continue 
                       if nextpac in present_packs:
+                         checked_packages.append(pac)        
                          self.analyzeTransient(nextpac, present_packs, checked_packages, missing_packs)
+
                          continue
                       if nextpac not in missing_packs:
                          missing_packs.append(nextpac)
                else:
                  #else if git is in package name, the package is a git package and we can find sbom directly
-                  print(pac)
-                  if "git" in pac and pac!= self.SBOMContents['sbom']['name']:
+                  if "git" in pac and pac!= self.SBOMContents['sbom']['name'] and (pac not in checked_packages and pac.lower() not in checked_packages) :
+                      print("Checking Transient Dependencies from " + pac + "\n")
                       pkg_json=getJsonFromLink("https://api.github.com/repos/" + pac.split(".")[2] +"/dependency-graph/sbom")
                       #if the sbom exists, simply compare the SBOM of the new package and the origoinal SBOM we are deeply analyzing
                       if "message"  not in pkg_json:
@@ -93,11 +97,12 @@ class DeepAnalysis:
                               #for all packages in the SBOM, analyze the packages dependencies
                          for packs in pkg_json['sbom']['packages']:
                              nextpac= packs['name']
+                             checked_packages.append(pac)        
                              self.analyzeTransient(nextpac, present_packs, checked_packages, missing_packs)
                              
 
-                                                 
-               checked_packages.append(pac)        
+               if pac not in checked_packages:                                  
+                  checked_packages.append(pac)        
     
     
     
@@ -150,12 +155,22 @@ class DeepAnalysis:
    
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Deep Analysis')
+
+    parser.add_argument('--file', default='True', type=str, help='file (True) or remote (False)')
+    parser.add_argument('filename')  
+    args = parser.parse_args()
+         
     if len(sys.argv) <= 1:
-         print("No file given")
-    file= sys.argv[1]
+         print("No file or remote given")
+    fileOrRemote= args.filename
     fileContents=""
-    with open(file, 'r') as file:
+    if args.file=="True":
+      with open(fileOrRemote, 'r') as file:
                 fileContents = json.load(file)
+    else:
+       SBOM1=SBOM(fileOrRemote)
+       fileContents=SBOM1.getJson()
     SBOMAnalysis=DeepAnalysis(fileContents)
     SBOMAnalysis.Analyze()
     missing_packs=SBOMAnalysis.getMissingPacks()

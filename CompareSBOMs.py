@@ -139,11 +139,11 @@ class CompareSBOMs:
                     output= output + str(differences) +". "+ item + " present in SBOM 1 but not SBOM 2\n"
                     differences=differences+1
              if 'iterable_item_added' in difference:
-                for key, package in difference['iterable_item_removed'].items():
+                for key, package in difference['iterable_item_added'].items():
                    # Check if 'name' key exists in the package
                     if 'name' in package:
                       self.add_packages.append(package['name'])
-                for item in add_packages:
+                for item in self.add_packages:
                     output= output + str(differences) + ". " + item + " not present in SBOM 1 but present in SBOM 2\n"
                     differences=differences +1
 

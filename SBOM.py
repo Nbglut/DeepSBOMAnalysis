@@ -32,6 +32,9 @@ class SBOM:
             self.media: string name of the file
         """
         items= self.repo.split("/")
+        if len(items) <5:
+           print("Ill-formed repo")
+           exit()
         api_request="https://api.github.com/repos/" + items[3] +"/" + items[4]+ "/dependency-graph/sbom"
         print(api_request)
         response = requests.get(api_request)
@@ -44,6 +47,8 @@ class SBOM:
         """
            Returns the SBOM json
         """
+        if self.SBOMjson =={}:
+           self.findJson()
         return self.SBOMjson
 
 
