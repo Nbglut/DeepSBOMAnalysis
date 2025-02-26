@@ -79,28 +79,29 @@ class DeepAnalysis:
                          continue
                       if nextpac not in missing_packs:
                          missing_packs.append(nextpac)
+                         self.analyzeTransient(nextpac, present_packs, checked_packages, missing_packs)
+
                else:
                  #else if git is in package name, the package is a git package and we can find sbom directly
                   checked_packages_lower = [item.lower() for item in checked_packages] #To overcome any case problems
-                  if "git" in pac and pac!= self.SBOMContents['sbom']['name'] and (pac not in checked_packages and pac.lower() not in checked_packages_lower) :
+                  if "com.git" in pac and pac!= self.SBOMContents['sbom']['name'] and (pac not in checked_packages and pac.lower() not in checked_packages_lower) :
                       print("Checking Transient Dependencies from " + pac + "\n")
                       pkg_json=getJsonFromLink("https://api.github.com/repos/" + pac.split(".")[2] +"/dependency-graph/sbom")
                       #if the sbom exists, simply compare the SBOM of the new package and the origoinal SBOM we are deeply analyzing
                       if "message"  not in pkg_json:
-                         comp=CompareSBOMs("https://github.com/" + pac.split(".")[2])
-                         comp.findTruthSBOMs()
-                         comp.setNonTruth(self.SBOMContents)
-                         comp.compareSBOMs(onlypack=True, printDiffs=False) 
-                         temp_missing_packs=comp.returnRemovedItems()
-                         for item in temp_missing_packs:
-                              if item not in missing_packs:
-                                 missing_packs.append(item)
-                              #for all packages in the SBOM, analyze the packages dependencies
+                     #for all packages in the SBOM, analyze the packages dependencies
                          for packs in pkg_json['sbom']['packages']:
+                         
                              nextpac= packs['name']
-                             checked_packages.append(pac)        
-                             self.analyzeTransient(nextpac, present_packs, checked_packages, missing_packs)
-                             
+                             if nextpac in checked_packages:
+                                 continue 
+                             if nextpac in present_packs:
+                                 checked_packages.append(pac)        
+                                 self.analyzeTransient(nextpac, present_packs, checked_packages, missing_packs)
+                                 continue
+                             if nextpac not in missing_packs:
+                                missing_packs.append(nextpac)                             
+                                self.analyzeTransient(nextpac, present_packs, checked_packages, missing_packs)
 
                if pac not in checked_packages:                                  
                   checked_packages.append(pac)        
@@ -176,5 +177,6 @@ if __name__ == "__main__":
     SBOMAnalysis.Analyze()
     missing_packs=SBOMAnalysis.getMissingPacks()
     print(str(len(missing_packs)) + " MISSING TRANSIENT PACKAGES\n")
+    missing_packs.sort()
     print(missing_packs)        
     
