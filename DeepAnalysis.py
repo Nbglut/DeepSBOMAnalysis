@@ -57,7 +57,7 @@ class DeepAnalysis:
                    by checking pacakges against present_packs and avoids checking the same package twice by using checked_packages 
                   
                """
-               if pac in checked_packages:
+               if pac in checked_packages or pac.lower() in checked_packages:
                   return
                pkg_json= getJsonFromLink("https://pypi.org/pypi/" + pac + "/json")
                #if [message] exists in json, the json does not exist and we continue 
@@ -67,17 +67,18 @@ class DeepAnalysis:
                    req_packetsunformated=pkg_json['info']['requires_dist']
                    for item in req_packetsunformated:
                     #Format items in req_pack such that it only takes first part of string before the first >, <, or =
-                      nextpac=re.split(r"([=<>;])", item)[0]
+                      nextpac=re.split(r"([=<>; ~)(?!])", item)[0]
                     #See if dependencies of the package are in the SBOM
                     #Check if all items in req_packs are in SBOM, if not, put in  missing_pack
-                      if nextpac in checked_packages:
+                      if nextpac in checked_packages or nextpac.lower() in checked_packages:
                           continue 
-                      if nextpac in present_packs:
+                      if nextpac in present_packs or nextpac.lower() in present_packs:
                          checked_packages.append(pac)        
                          self.analyzeTransient(nextpac, present_packs, checked_packages, missing_packs)
 
                          continue
-                      if nextpac not in missing_packs:
+                      if nextpac not in missing_packs and nextpac.lower() not in missing_packs:
+                         print("\nMissing package "+ nextpac )
                          missing_packs.append(nextpac)
                          self.analyzeTransient(nextpac, present_packs, checked_packages, missing_packs)
 
@@ -93,13 +94,14 @@ class DeepAnalysis:
                          for packs in pkg_json['sbom']['packages']:
                          
                              nextpac= packs['name']
-                             if nextpac in checked_packages:
+                             if nextpac in checked_packages or nextpac.lower() in checked_packages:
                                  continue 
-                             if nextpac in present_packs:
+                             if nextpac in present_packs or nextpac.lower() in present_packs:
                                  checked_packages.append(pac)        
                                  self.analyzeTransient(nextpac, present_packs, checked_packages, missing_packs)
                                  continue
-                             if nextpac not in missing_packs:
+                             if nextpac not in missing_packs and nextpac.lower() not in missing_packs:
+                                print("\nMissing package "+ nextpac )
                                 missing_packs.append(nextpac)                             
                                 self.analyzeTransient(nextpac, present_packs, checked_packages, missing_packs)
 
