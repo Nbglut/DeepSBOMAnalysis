@@ -54,7 +54,7 @@ if __name__ == "__main__":
     if len(sys.argv) <= 1:
          print("No repo given")
     test_SBOM = SBOM(sys.argv[1])
-    test_SBOM .findJson()
+    test_SBOM.findJson()
 
     print(test_SBOM.getJson())
 

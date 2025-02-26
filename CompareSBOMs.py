@@ -28,7 +28,8 @@ class CompareSBOMs:
         self.TruthSBOM= SBOM(repo)
         self.SBOMjsonTruth={}
         self.SBOMjsonNonTruth={}
-
+        self.added_pack={}
+        self.removed_pack={}
 
 
 
@@ -96,44 +97,59 @@ class CompareSBOMs:
         Retrieves the truth SBOM
 
         Returns:
-            self.media: string name of the file
+            self.SBOMjsonTruth: string name of the file
         """
         return self.SBOMjsonTruth
 
+    def returnAddedItems(self):
+        """
+        Retrieves the added packages between SBOMs
 
+        Returns:
+            self.add_packages: string name of the file
+        """
+        return self.add_packages
+        
+    def returnRemovedItems(self):
+        """
+        Retrieves the removed packages between SBOMs
+
+        Returns:
+            self.removed_packages: string name of the file
+        """
+        return self.removed_packages
    
-    def compareSBOMs(self):
+    def compareSBOMs(self, onlypack=False, printDiffs=True):
         """
            Uses the nonTruthSBOmjson and the TruthSBOMjson and compares the two 
         """
         output=""
         difference = DeepDiff(self.SBOMjsonTruth,self.SBOMjsonNonTruth, ignore_order=True)   
-        removed_packages = []
-        add_packages = []
+        self.removed_packages = []
+        self.add_packages = []
         changed_items=[]
         differences=1
         if difference:
              if 'iterable_item_removed' in difference:
-                removed_packages = []
                 for key, package in difference['iterable_item_removed'].items():
                    # Check if 'name' key exists in the package
                     if 'name' in package:
-                      removed_packages.append(package['name'])
-                for item in removed_packages:
+                      self.removed_packages.append(package['name'])
+                for item in self.removed_packages:
                     output= output + str(differences) +". "+ item + " present in SBOM 1 but not SBOM 2\n"
                     differences=differences+1
              if 'iterable_item_added' in difference:
                 for key, package in difference['iterable_item_removed'].items():
                    # Check if 'name' key exists in the package
                     if 'name' in package:
-                      add_packages.append(package['name'])
+                      self.add_packages.append(package['name'])
                 for item in add_packages:
                     output= output + str(differences) + ". " + item + " not present in SBOM 1 but present in SBOM 2\n"
                     differences=differences +1
 
 
 
-             if 'values_changed' in difference:
+             if 'values_changed' in difference and not onlypack:
                 for key, package in difference['values_changed'].items():
                    # Check if 'package' is part of key
                     if 'packages' in key:                  
@@ -163,11 +179,12 @@ class CompareSBOMs:
           
              print( str(differences-1)  + " difference(s) found:\n")
              #print(difference)
-             print(output)
+             if printDiffs:
+                print(output)
         else:
            print("No differences found.")
 
-
+      
 
       
 
