@@ -81,7 +81,8 @@ class DeepAnalysis:
                          missing_packs.append(nextpac)
                else:
                  #else if git is in package name, the package is a git package and we can find sbom directly
-                  if "git" in pac and pac!= self.SBOMContents['sbom']['name'] and (pac not in checked_packages and pac.lower() not in checked_packages) :
+                  checked_packages_lower = [item.lower() for item in checked_packages] #To overcome any case problems
+                  if "git" in pac and pac!= self.SBOMContents['sbom']['name'] and (pac not in checked_packages and pac.lower() not in checked_packages_lower) :
                       print("Checking Transient Dependencies from " + pac + "\n")
                       pkg_json=getJsonFromLink("https://api.github.com/repos/" + pac.split(".")[2] +"/dependency-graph/sbom")
                       #if the sbom exists, simply compare the SBOM of the new package and the origoinal SBOM we are deeply analyzing
