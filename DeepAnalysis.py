@@ -77,7 +77,8 @@ class DeepAnalysis:
                          missing_packs.append(nextpac)
                else:
                  #else if git is in package name, the package is a git package and we can find sbom directly
-                  if "git" in pac:
+                  print(pac)
+                  if "git" in pac and pac!= self.SBOMContents['sbom']['name']:
                       pkg_json=getJsonFromLink("https://api.github.com/repos/" + pac.split(".")[2] +"/dependency-graph/sbom")
                       #if the sbom exists, simply compare the SBOM of the new package and the origoinal SBOM we are deeply analyzing
                       if "message"  not in pkg_json:
