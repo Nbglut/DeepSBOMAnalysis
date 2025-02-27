@@ -14,10 +14,6 @@ import json
 import sys
 
 class SBOM:
-    """
-    Class to add a media-related bug into a mutated repository.
-
-    """
     def __init__(self, repo):
         self.repo=repo
         self.SBOMjson={}
@@ -26,10 +22,8 @@ class SBOM:
 
     def findJson(self):
         """
-        Retrieves the media used for the mutation
+        Retrieves the Json of the SBOM based on repo
 
-        Returns:
-            self.media: string name of the file
         """
         items= self.repo.split("/")
         if len(items) <5:
@@ -47,6 +41,7 @@ class SBOM:
         """
            Returns the SBOM json
         """
+        #if there is no SBOMjson yet, retrieve it
         if self.SBOMjson =={}:
            self.findJson()
         return self.SBOMjson
