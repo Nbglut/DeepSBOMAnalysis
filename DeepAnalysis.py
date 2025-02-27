@@ -23,15 +23,21 @@ import random
 import re
 from SBOM import SBOM
 from CompareSBOMs import CompareSBOMs
+import asyncio
+import aiohttp
 
 
-def getJsonFromLink(link):
+async def get_json_from_link(link):
         """
                Gets the Json of a given link
         """
-        response = requests.get(link)
+        
+        async with aiohttp.ClientSession() as session:
+            async with session.get(link) as response:  # Non-blocking
+               return await response.json()  
+       # response = requests.get(link)
         #print(response.status_code) # Print the status code
-        return response.json() 
+        #return response.json() 
 
 class DeepAnalysis:
     """
@@ -49,80 +55,91 @@ class DeepAnalysis:
         """
         return self.missing_packs 
 
+lock = asyncio.Lock()
+
+    async def add_to_missing_packs(pac):
+      async with lock:  # Ensures that only one task can modify the list at a time
+        if pac not in missing_packs:
+            missing_packs.append(pac)
+
+    async def add_to_checked_packs(pac):
+      async with lock:  # Ensures that only one task can modify the list at a time
+        if pac not in checked_pacs:
+            checked_packages.append(pac)
 
 
-    def analyzeTransient(self, pac, present_packs, checked_packages, missing_packs):
+
+    async def analyzeTransient(self, present_packs, checked_packages, missing_packs):
                """
                    Recursive function that goes up the chain of a package pac and finds all of the missing packages (recorded in missing_pack) 
                    by checking pacakges against present_packs and avoids checking the same package twice by using checked_packages 
                   
                """
-               if pac in checked_packages or pac.lower() in checked_packages:
-                  return
-               pkg_json= getJsonFromLink("https://pypi.org/pypi/" + pac + "/json")
+               tasks=[]
+               
+               need_to_check= list(present_packs.copy())
+               checked_packages_lower = [item.lower() for item in checked_packages] #To overcome any case problems
+               for pac in need_to_check:
+                  if pac not in missing_packs and pac.lower() not in missing_packs and pac not in present_packs and pac.lower() not in present_packs:
+                         #print("\nMissing package "+ pac )
+                         add_to_missing_packs(pac)
+                  if pac not in checked_packages:
+                      if "com.git" in pac and pac!= self.SBOMContents['sbom']['name'] and pac.lower() not in checked_packages_lower:
+                               tasks.append(get_json_from_link(f"https://api.github.com/repos/" + pac.split(".")[2] +"/dependency-graph/sbom"))
+                      
+                      else:
+                        tasks.append(get_json_from_link(f"https://pypi.org/pypi/{pac}/json"))
+
+                  await add_to_checked_packs(pac)  
+                  need_to_check.remove(pac)      
+               results = await asyncio.gather(*tasks)
+              # print(checked_packages)
+               #print(tasks)
+               checked_packages_lower = [item.lower() for item in checked_packages] #To overcome any case problems
+               missing_packs_lower=[item.lower() for item in missing_packs]
+               for pkg_json in results:
                #if [message] exists in json, the json does not exist and we continue 
-               if "message"  not in pkg_json and  pkg_json['info']['requires_dist'] !=None:
+                  if "message"  not in pkg_json and  "sbom" not in pkg_json and pkg_json['info']['requires_dist'] !=None:
                #req_pack=data['info']['requires_dist'] has all required packages 
-                   print("Checking Transient Dependencies from  " + pac + "\n")
-                   req_packetsunformated=pkg_json['info']['requires_dist']
-                   for item in req_packetsunformated:
-                    #Format items in req_pack such that it only takes first part of string before the first >, <, or =
-                      nextpac=re.split(r"([=<>; ~)(?!])", item)[0]
-                    #See if dependencies of the package are in the SBOM
-                    #Check if all items in req_packs are in SBOM, if not, put in  missing_pack
-                      if nextpac in checked_packages or nextpac.lower() in checked_packages:
-                          continue 
-                      if nextpac in present_packs or nextpac.lower() in present_packs:
-                         checked_packages.append(pac)        
-                         self.analyzeTransient(nextpac, present_packs, checked_packages, missing_packs)
-
-                         continue
-                      if nextpac not in missing_packs and nextpac.lower() not in missing_packs:
-                         print("\nMissing package "+ nextpac )
-                         missing_packs.append(nextpac)
-                         self.analyzeTransient(nextpac, present_packs, checked_packages, missing_packs)
-
-               else:
+                      req_packetsunformated=pkg_json['info']['requires_dist']
+                      for item in req_packetsunformated: 
+                         nextpac=re.split(r"([=<>; ~)(?!])", item)[0]
+                         if (nextpac not in checked_packages and  nextpac.lower() not in checked_packages  ) and nextpac not in need_to_check:
+                              need_to_check.append(nextpac)
+                         if nextpac not in missing_packs and nextpac.lower() not in missing_packs_lower:
+                               if (nextpac not in checked_packages and  nextpac.lower() not in checked_packages  ):
+                                   #print("\nMissing package "+ nextpac  )
+                                  # print(missing_packs)
+                                   await add_to_missing_packs(nextpac)
+                              #TO ADD-RELATIONSHIP ADDDITION for restoring
+                              #pkg_json['info']['name']=pac depends on nextpac
+                              
+                    
+                  else:
                  #else if git is in package name, the package is a git package and we can find sbom directly
-                  checked_packages_lower = [item.lower() for item in checked_packages] #To overcome any case problems
-                  if "com.git" in pac and pac!= self.SBOMContents['sbom']['name'] and (pac not in checked_packages and pac.lower() not in checked_packages_lower) :
-                      print("Checking Transient Dependencies from " + pac + "\n")
-                      pkg_json=getJsonFromLink("https://api.github.com/repos/" + pac.split(".")[2] +"/dependency-graph/sbom")
-                      #if the sbom exists, simply compare the SBOM of the new package and the origoinal SBOM we are deeply analyzing
-                      if "message"  not in pkg_json:
-                     #for all packages in the SBOM, analyze the packages dependencies
-                         for packs in pkg_json['sbom']['packages']:
-                         
+                     #for all packages in the SBOM, analyze the packages dependencies\
+                        if "sbom" in pkg_json:
+                           for packs in pkg_json['sbom']['packages']:
+                            # print("GITHUB FOUND")
                              nextpac= packs['name']
-                             if nextpac in checked_packages or nextpac.lower() in checked_packages:
-                                 continue 
-                             if nextpac in present_packs or nextpac.lower() in present_packs:
-                                 checked_packages.append(pac)        
-                                 self.analyzeTransient(nextpac, present_packs, checked_packages, missing_packs)
-                                 continue
-                             if nextpac not in missing_packs and nextpac.lower() not in missing_packs:
-                                print("\nMissing package "+ nextpac )
-                                missing_packs.append(nextpac)                             
-                                self.analyzeTransient(nextpac, present_packs, checked_packages, missing_packs)
+                             missing_packs_lower = [item.lower() for item in checked_packages] #To overcome any case problems
 
-               if pac not in checked_packages:                                  
-                  checked_packages.append(pac)        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    def Analyze(self):
+                             if (nextpac not in checked_packages and  nextpac.lower() not in checked_packages_lower  ) and nextpac not in need_to_check:
+                                  need_to_check.append(nextpac)
+                             if nextpac not in missing_packs and nextpac.lower() not in missing_packs_lower:
+                                if (nextpac not in checked_packages and  nextpac.lower() not in checked_packages_lower  ):
+                                  #  print("\nMissing package "+ nextpac  )
+                                    await add_to_missing_packs(nextpac)
+        
+                  if len(need_to_check) >0:
+                     
+                     await self.analyzeTransient(need_to_check, checked_packages, missing_packs)
+               
+               return missing_packs
+
+               
+                  
+    async def Analyze(self):
        """
           Function which calls analyzeTransient 
        """
@@ -136,8 +153,8 @@ class DeepAnalysis:
        #print(present_packs)
        print("This may take a minute...")
 
-       for package in pks:
-          self.analyzeTransient(package['name'], present_packs, checked_pks, missing_packs)
+       await self.analyzeTransient( set(present_packs), checked_pks, missing_packs)
+       
        self.missing_packs=missing_packs
                
                    
@@ -155,16 +172,7 @@ class DeepAnalysis:
 #Add to [relationships] 
 
    
-   
-   
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Deep Analysis')
-
-    parser.add_argument('--file', default='True', type=str, help='file (True) or remote (False)')
-    parser.add_argument('filename')  
-    args = parser.parse_args()
-         
+async def main():
     if len(sys.argv) <= 1:
          print("No file or remote given")
     fileOrRemote= args.filename
@@ -176,9 +184,21 @@ if __name__ == "__main__":
        SBOM1=SBOM(fileOrRemote)
        fileContents=SBOM1.getJson()
     SBOMAnalysis=DeepAnalysis(fileContents)
-    SBOMAnalysis.Analyze()
+    await SBOMAnalysis.Analyze()
     missing_packs=SBOMAnalysis.getMissingPacks()
     print(str(len(missing_packs)) + " MISSING TRANSIENT PACKAGES\n")
     missing_packs.sort()
     print(missing_packs)        
     
+
+   
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Deep Analysis')
+
+    parser.add_argument('--file', default='True', type=str, help='file (True) or remote (False)')
+    parser.add_argument('filename')  
+    args = parser.parse_args()
+    asyncio.run(main())
+     
+   
