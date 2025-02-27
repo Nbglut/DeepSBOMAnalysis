@@ -1,6 +1,6 @@
 # Deep SBOM Analysis
 
-##Introduction
+## Introduction
 
 Software Bills of Materials (SBOMs) are machine-readable documents which are designed to
 serve as an inventory of components used within a piece of software, such as
@@ -11,14 +11,14 @@ This project seeks to investigate the ways in which practitioners can validate a
 data directly from open-source software repositories, or, notably, GitHub’s own recent SBOM
 generation tool. 
 
-##Goal of This Repository
+## Goal of This Repository
 
 The Deep SBOM Analysis Project's goal is to create a repository with the tools needed to analyze Software Bill of Materials. 
 
 
 
 
-##Specifications
+## Specifications
 These tools include:
 
 SBOM.py:  This class simply uses the GitHub API to get the SBOM of a given project and stores the json.  This class is used to store the json of an SBOM based on a GitHub repo.
