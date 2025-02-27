@@ -27,6 +27,9 @@ import asyncio
 import aiohttp
 
 
+lock = asyncio.Lock()
+
+
 async def get_json_from_link(link):
         """
                Gets the Json of a given link
@@ -47,6 +50,7 @@ class DeepAnalysis:
     def __init__(self, SBOM1):
         self.SBOMContents= SBOM1
         self.missing_packs={}
+        self.checked_packs={}
     
    
     def getMissingPacks(self):
@@ -55,17 +59,16 @@ class DeepAnalysis:
         """
         return self.missing_packs 
 
-lock = asyncio.Lock()
 
-    async def add_to_missing_packs(pac):
+    async def add_to_missing_packs(self,pac,missing_packs):
       async with lock:  # Ensures that only one task can modify the list at a time
-        if pac not in missing_packs:
-            missing_packs.append(pac)
-
-    async def add_to_checked_packs(pac):
+            missing_packs.add(pac)
+            
+            
+    async def add_to_checked_packs(self,pac,checked_packs):
       async with lock:  # Ensures that only one task can modify the list at a time
-        if pac not in checked_pacs:
-            checked_packages.append(pac)
+            checked_packs.add(pac)
+            
 
 
 
@@ -77,25 +80,25 @@ lock = asyncio.Lock()
                """
                tasks=[]
                
-               need_to_check= list(present_packs.copy())
-               checked_packages_lower = [item.lower() for item in checked_packages] #To overcome any case problems
-               for pac in need_to_check:
-                  if pac not in missing_packs and pac.lower() not in missing_packs and pac not in present_packs and pac.lower() not in present_packs:
+               need_to_check= set(present_packs)
+
+               while need_to_check:
+                  pac=need_to_check.pop()
+                  paclower=pac.lower()
+                  if pac not in missing_packs and pac not in present_packs and pac.lower() not in present_packs:
                          #print("\nMissing package "+ pac )
-                         add_to_missing_packs(pac)
-                  if pac not in checked_packages:
-                      if "com.git" in pac and pac!= self.SBOMContents['sbom']['name'] and pac.lower() not in checked_packages_lower:
+                         await self.add_to_missing_packs(pac)
+                  if paclower not in checked_packages:
+                      if "com.git" in paclower and pac!= self.SBOMContents['sbom']['name'] and paclower not in checked_packages:
                                tasks.append(get_json_from_link(f"https://api.github.com/repos/" + pac.split(".")[2] +"/dependency-graph/sbom"))
                       
                       else:
                         tasks.append(get_json_from_link(f"https://pypi.org/pypi/{pac}/json"))
 
-                  await add_to_checked_packs(pac)  
-                  need_to_check.remove(pac)      
+                  await self.add_to_checked_packs(paclower,checked_packages)  
                results = await asyncio.gather(*tasks)
               # print(checked_packages)
                #print(tasks)
-               checked_packages_lower = [item.lower() for item in checked_packages] #To overcome any case problems
                missing_packs_lower=[item.lower() for item in missing_packs]
                for pkg_json in results:
                #if [message] exists in json, the json does not exist and we continue 
@@ -104,13 +107,12 @@ lock = asyncio.Lock()
                       req_packetsunformated=pkg_json['info']['requires_dist']
                       for item in req_packetsunformated: 
                          nextpac=re.split(r"([=<>; ~)(?!])", item)[0]
-                         if (nextpac not in checked_packages and  nextpac.lower() not in checked_packages  ) and nextpac not in need_to_check:
-                              need_to_check.append(nextpac)
-                         if nextpac not in missing_packs and nextpac.lower() not in missing_packs_lower:
-                               if (nextpac not in checked_packages and  nextpac.lower() not in checked_packages  ):
+                         nextpaclower=nextpac.lower()
+                         if nextpaclower not in checked_packages  and nextpac not in need_to_check:
+                                  need_to_check.add(nextpac)
+                         if (nextpac not in present_packs and nextpaclower not in present_packs ):
                                    #print("\nMissing package "+ nextpac  )
-                                  # print(missing_packs)
-                                   await add_to_missing_packs(nextpac)
+                                   await self.add_to_missing_packs(nextpaclower, missing_packs)
                               #TO ADD-RELATIONSHIP ADDDITION for restoring
                               #pkg_json['info']['name']=pac depends on nextpac
                               
@@ -122,19 +124,17 @@ lock = asyncio.Lock()
                            for packs in pkg_json['sbom']['packages']:
                             # print("GITHUB FOUND")
                              nextpac= packs['name']
-                             missing_packs_lower = [item.lower() for item in checked_packages] #To overcome any case problems
-
-                             if (nextpac not in checked_packages and  nextpac.lower() not in checked_packages_lower  ) and nextpac not in need_to_check:
-                                  need_to_check.append(nextpac)
-                             if nextpac not in missing_packs and nextpac.lower() not in missing_packs_lower:
-                                if (nextpac not in checked_packages and  nextpac.lower() not in checked_packages_lower  ):
-                                  #  print("\nMissing package "+ nextpac  )
-                                    await add_to_missing_packs(nextpac)
+                             nextpaclower=nextpac.lower()
+                             if nextpaclower not in checked_packages and nextpac not in need_to_check:
+                                  need_to_check.add(nextpac)
+                             if nextpac not in missing_packs and nextpaclower not in missing_packs:
+                                    #print("\nMissing package "+ nextpac  )
+                                    await self.add_to_missing_packs(nextpac, missing_packs)
         
                   if len(need_to_check) >0:
                      
                      await self.analyzeTransient(need_to_check, checked_packages, missing_packs)
-               
+               #print("\nWe checked " + str(len(checked_packages)))
                return missing_packs
 
                
@@ -143,10 +143,10 @@ lock = asyncio.Lock()
        """
           Function which calls analyzeTransient 
        """
-       checked_pks=[]
+       checked_pks=set()
        req_packs=[]
        present_packs=[]
-       missing_packs=[]
+       missing_packs=set()
        pks=self.SBOMContents["sbom"]["packages"]
        for package in pks:
           present_packs.append(package['name'])
@@ -186,9 +186,11 @@ async def main():
     SBOMAnalysis=DeepAnalysis(fileContents)
     await SBOMAnalysis.Analyze()
     missing_packs=SBOMAnalysis.getMissingPacks()
+    missing_pack_list=list(missing_packs)
+    missing_pack_list.sort()
+    print(missing_pack_list)     
     print(str(len(missing_packs)) + " MISSING TRANSIENT PACKAGES\n")
-    missing_packs.sort()
-    print(missing_packs)        
+   
     
 
    
