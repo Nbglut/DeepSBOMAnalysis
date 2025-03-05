@@ -89,9 +89,11 @@ class DeepAnalysis:
                          #print("\nMissing package "+ pac )
                          await self.add_to_missing_packs(pac)
                   if paclower not in checked_packages:
-                      if "com.git" in paclower and pac!= self.SBOMContents['sbom']['name'] and paclower not in checked_packages:
+                  #ALSO Check if sbom[package][homepage] exists and is a github link 
+                      if "com.git" in paclower and pac!= self.SBOMContents['name'] and paclower not in checked_packages:
                                tasks.append(get_json_from_link(f"https://api.github.com/repos/" + pac.split(".")[2] +"/dependency-graph/sbom"))
-                      
+                      elif "github.com" in paclower:
+                              tasks.append(get_json_from_link("https://api.github.com/repos/" + pac.split("/")[3] + "/" + pac.split("/")[4] +"/dependency-graph/sbom" ))
                       else:
                         tasks.append(get_json_from_link(f"https://pypi.org/pypi/{pac}/json"))
 
@@ -102,7 +104,7 @@ class DeepAnalysis:
                missing_packs_lower=[item.lower() for item in missing_packs]
                for pkg_json in results:
                #if [message] exists in json, the json does not exist and we continue 
-                  if "message"  not in pkg_json and  "sbom" not in pkg_json and pkg_json['info']['requires_dist'] !=None:
+                  if "message"  not in pkg_json and  "info" in pkg_json and 'requires_dist' in  pkg_json['info'] and  pkg_json['info']['requires_dist']!=None:
                #req_pack=data['info']['requires_dist'] has all required packages 
                       req_packetsunformated=pkg_json['info']['requires_dist']
                       for item in req_packetsunformated: 
@@ -118,15 +120,20 @@ class DeepAnalysis:
                               
                     
                   else:
-                 #else if git is in package name, the package is a git package and we can find sbom directly
-                     #for all packages in the SBOM, analyze the packages dependencies\
-                        if "sbom" in pkg_json:
-                           for packs in pkg_json['sbom']['packages']:
+                 #else if not in pypi form we can find sbom directly
+                     #for all packages in the SBOM, analyze the packages dependencies
+                     
+                     #Eventually, remove if sbom
+                        if 'packages' in pkg_json:
+                           for packs in pkg_json['packages']:
                             # print("GITHUB FOUND")
                              nextpac= packs['name']
                              nextpaclower=nextpac.lower()
                              if nextpaclower not in checked_packages and nextpac not in need_to_check:
-                                  need_to_check.add(nextpac)
+                                  if 'homepage' in packs and "github" in packs['homepage']:
+                                      need_to_check.add(packs['homepage'])
+                                  else:
+                                      need_to_check.add(nextpaclower)
                              if nextpac not in missing_packs and nextpaclower not in missing_packs:
                                     #print("\nMissing package "+ nextpac  )
                                     await self.add_to_missing_packs(nextpac, missing_packs)
@@ -147,7 +154,8 @@ class DeepAnalysis:
        req_packs=[]
        present_packs=[]
        missing_packs=set()
-       pks=self.SBOMContents["sbom"]["packages"]
+       #print(self.SBOMContents)
+       pks=self.SBOMContents["packages"]
        for package in pks:
           present_packs.append(package['name'])
        #print(present_packs)
@@ -180,6 +188,8 @@ async def main():
     if args.file=="True":
       with open(fileOrRemote, 'r') as file:
                 fileContents = json.load(file)
+                if 'sbom' in fileContents:
+                    fileContents= fileContents['sbom']
     else:
        SBOM1=SBOM(fileOrRemote)
        fileContents=SBOM1.getJson()

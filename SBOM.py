@@ -33,7 +33,9 @@ class SBOM:
         print(api_request)
         response = requests.get(api_request)
         #print(response.status_code) # Print the status code
-        self.SBOMjson=response.json() 
+        self.SBOMjson=response.json()         
+        if 'sbom' in self.SBOMjson: 
+            self.SBOMjson=self.SBOMjson['sbom']
 
 
 
