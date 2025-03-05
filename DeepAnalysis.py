@@ -94,15 +94,16 @@ class DeepAnalysis:
                                tasks.append(get_json_from_link(f"https://api.github.com/repos/" + pac.split(".")[2] +"/dependency-graph/sbom"))
                       elif "github.com" in paclower:
                               tasks.append(get_json_from_link("https://api.github.com/repos/" + pac.split("/")[3] + "/" + pac.split("/")[4] +"/dependency-graph/sbom" ))
-                      else:
+                      elif "https://" not in paclower and "/" not in paclower:
                         tasks.append(get_json_from_link(f"https://pypi.org/pypi/{pac}/json"))
 
                   await self.add_to_checked_packs(paclower,checked_packages)  
                results = await asyncio.gather(*tasks)
-              # print(checked_packages)
                #print(tasks)
                missing_packs_lower=[item.lower() for item in missing_packs]
                for pkg_json in results:
+                  if 'sbom' in pkg_json:
+                     pkg_json=pkg_json['sbom']
                #if [message] exists in json, the json does not exist and we continue 
                   if "message"  not in pkg_json and  "info" in pkg_json and 'requires_dist' in  pkg_json['info'] and  pkg_json['info']['requires_dist']!=None:
                #req_pack=data['info']['requires_dist'] has all required packages 
@@ -135,7 +136,7 @@ class DeepAnalysis:
                                   else:
                                       need_to_check.add(nextpaclower)
                              if nextpac not in missing_packs and nextpaclower not in missing_packs:
-                                    #print("\nMissing package "+ nextpac  )
+                                   # print("\nMissing package "+ nextpac  )
                                     await self.add_to_missing_packs(nextpac, missing_packs)
         
                   if len(need_to_check) >0:
@@ -157,7 +158,11 @@ class DeepAnalysis:
        #print(self.SBOMContents)
        pks=self.SBOMContents["packages"]
        for package in pks:
-          present_packs.append(package['name'])
+          if package['name'] != self.SBOMContents['name']:
+              present_packs.append(package['name'])
+          if 'homepage' in package and "github" in package['homepage']:
+                                      present_packs.append(package['homepage'])
+
        #print(present_packs)
        print("This may take a minute...")
 
@@ -193,6 +198,7 @@ async def main():
     else:
        SBOM1=SBOM(fileOrRemote)
        fileContents=SBOM1.getJson()
+    #print(fileContents)
     SBOMAnalysis=DeepAnalysis(fileContents)
     await SBOMAnalysis.Analyze()
     missing_packs=SBOMAnalysis.getMissingPacks()
