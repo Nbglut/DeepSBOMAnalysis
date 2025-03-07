@@ -6,6 +6,11 @@ import shutil
 
 
 class SBOM_generate:
+
+  def __init__(self):
+        self.files=[]
+
+
 # Function to get GitHub sbom, returns in SPDX format
   def get_github_sbom(self, owner, repo, token):
     url = f"https://api.github.com/repos/{owner}/{repo}/dependency-graph/sbom"
@@ -91,9 +96,16 @@ class SBOM_generate:
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4)
         print(f"Saved: {filename}")
+        self.files.append(filename)
     except Exception as e:
         print(f"Error saving JSON to {filename}: {e}")
-
+        
+        
+ #function to get SBOMS generated        
+  def get_SBOMs(self):
+    return self.files
+      
+# Function to generate SBOM based on selection
   def generate_sbom(self):
     GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
     if not GITHUB_TOKEN:
@@ -129,7 +141,7 @@ class SBOM_generate:
             if not owner or not repo:
                 owner = input("Enter GitHub repo owner: ")
                 repo = input("Enter GitHub repo name: ")
-            target = clone_repo(owner, repo)
+            target = self.clone_repo(owner, repo)
         
         if target:
             output_file = f"{repo}_sbom_spdx.json" if not is_image else f"{target.replace(':', '_').replace('/', '_')}_sbom_spdx.json"
@@ -145,7 +157,7 @@ class SBOM_generate:
         if not owner or not repo:
             owner = input("Enter GitHub repo owner: ")
             repo = input("Enter GitHub repo name: ")
-        self.generate_microsoft_sbom(owner, repo)
+        #self.generate_microsoft_sbom(owner, repo)
         
         
         
