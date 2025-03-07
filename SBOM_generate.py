@@ -4,8 +4,10 @@ import os
 import subprocess
 import shutil
 
+
+class SBOM_generate:
 # Function to get GitHub sbom, returns in SPDX format
-def get_github_sbom(owner, repo, token):
+  def get_github_sbom(self, owner, repo, token):
     url = f"https://api.github.com/repos/{owner}/{repo}/dependency-graph/sbom"
     headers = {
         "Accept": "application/vnd.github+json",
@@ -22,7 +24,7 @@ def get_github_sbom(owner, repo, token):
         return None
 
 # Function to clone repo to local directory if it doesn't exist there already
-def clone_repo(owner, repo):
+  def clone_repo(self, owner, repo):
     repo_url = f"https://github.com/{owner}/{repo}.git"
     local_path = f"./{repo}"
     
@@ -39,7 +41,7 @@ def clone_repo(owner, repo):
         return None
 
 # Function to generate Syft sbom, largely useless unless run on images
-def generate_syft_sbom(target, output_file, is_image):
+  def generate_syft_sbom(self,target, output_file, is_image):
     if is_image:
         command = ["syft", "scan", target, "-o", "spdx-json"]
     else:
@@ -55,7 +57,7 @@ def generate_syft_sbom(target, output_file, is_image):
         print(f"Error running Syft: {e}")
 
 # Function to generate Trivy sbom, mainly a security scanning tool but also only really useful on an image
-def generate_trivy_sbom(target, output_file, is_image):
+  def generate_trivy_sbom(self,target, output_file, is_image):
     command = ["trivy", "sbom", "-f", "spdx-json", "-o", output_file, target] if is_image else ["trivy", "fs", "--format", "spdx-json", "--output", output_file, "--scanners", "vuln", target]
     try:
         subprocess.run(command, check=True)
@@ -66,7 +68,7 @@ def generate_trivy_sbom(target, output_file, is_image):
         print(f"Error running Trivy: {e}")
 
 # Function to generate Microsoft SBOM
-def generate_microsoft_sbom(owner, repo):
+  def generate_microsoft_sbom(self,owner, repo):
     repo_url = f"https://github.com/{owner}/{repo}.git"
     repo_name = repo
     
@@ -84,7 +86,7 @@ def generate_microsoft_sbom(owner, repo):
         print(f"Error generating Microsoft SBOM: {e}")
 
 # Function to save the JSON to a local file
-def save_json(data, filename):
+  def save_json(self,data, filename):
     try:
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4)
@@ -92,7 +94,7 @@ def save_json(data, filename):
     except Exception as e:
         print(f"Error saving JSON to {filename}: {e}")
 
-if __name__ == "__main__":
+  def generate_sbom(self):
     GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
     if not GITHUB_TOKEN:
         print("Error: GitHub token not found. Please set the GITHUB_TOKEN environment variable.")
@@ -113,9 +115,9 @@ if __name__ == "__main__":
     if "github" in selected_generators:
         owner = input("Enter GitHub repo owner: ")
         repo = input("Enter GitHub repo name: ")
-        sbom_data = get_github_sbom(owner, repo, GITHUB_TOKEN)
+        sbom_data = self.get_github_sbom(owner, repo, GITHUB_TOKEN)
         if sbom_data:
-            save_json(sbom_data, f"{repo}_sbom_spdx_github.json")
+            self.save_json(sbom_data, f"{repo}_sbom_spdx_github.json")
 
     if "syft" in selected_generators or "trivy" in selected_generators:
         scan_type = input("Scan a container image or a GitHub repo? (image/repo): ").strip().lower()
@@ -134,13 +136,19 @@ if __name__ == "__main__":
             
             if "syft" in selected_generators:
                 syft_output_file = output_file.replace(".json", "_syft.json")
-                generate_syft_sbom(target, syft_output_file, is_image)
+                self.generate_syft_sbom(target, syft_output_file, is_image)
             if "trivy" in selected_generators:
                 trivy_output_file = output_file.replace(".json", "_trivy.json")
-                generate_trivy_sbom(target, trivy_output_file, is_image)
+                self.generate_trivy_sbom(target, trivy_output_file, is_image)
 
     if "microsoft" in selected_generators:
         if not owner or not repo:
             owner = input("Enter GitHub repo owner: ")
             repo = input("Enter GitHub repo name: ")
-        generate_microsoft_sbom(owner, repo)
+        self.generate_microsoft_sbom(owner, repo)
+        
+        
+        
+if __name__ == "__main__":
+     gen=SBOM_generate()
+     gen.generate_sbom()
