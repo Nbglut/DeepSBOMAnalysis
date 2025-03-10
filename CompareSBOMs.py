@@ -39,6 +39,19 @@ class CompareSBOMs:
         """
         self.TruthSBOM.findJson()
         self.SBOMjsonTruth= self.TruthSBOM.getJson()
+        if 'sbom' in  self.SBOMjsonTruth:
+          self.SBOMjsonTruth=self.SBOMjsonTruth['sbom']
+
+
+
+    def setTruth(self, truth):
+        """
+                Sets the self.SBOMjsonTruth
+        """
+        self.SBOMjsonTruth=truth
+        if 'sbom' in  self.SBOMjsonTruth:
+          self.SBOMjsonTruth=self.SBOMjsonTruth['sbom']
+
 
 
 
@@ -47,6 +60,8 @@ class CompareSBOMs:
                 Sets the self.SBOMjsonNonTruth
         """
         self.SBOMjsonNonTruth=nontruth
+        if 'sbom' in  self.SBOMjsonNonTruth:
+          self.SBOMjsonNonTruth=self.SBOMjsonNonTruth['sbom']
 
     def RandomizeNonTruth(self):
         """
@@ -57,8 +72,8 @@ class CompareSBOMs:
             
         packagename_remove="transformers"   #placeholder  for package to remove
         packagename_change="transformers"   #placeholder  for package to change
-        numpackages=len(self.SBOMjsonNonTruth['sbom']['packages'])-1
-        packagename_remove=self.SBOMjsonNonTruth['sbom']['packages'][random.randint(0, numpackages)]['name']  #random package
+        numpackages=len(self.SBOMjsonNonTruth['packages'])-1
+        packagename_remove=self.SBOMjsonNonTruth['packages'][random.randint(0, numpackages)]['name']  #random package
 
 
         print("\nChanges between Truth and Non Truth:\n")
@@ -69,16 +84,16 @@ class CompareSBOMs:
            print("Removed " +  str(packagename_remove) + "\n")
         
         #update numbers just in case packages removed
-        numpackages=len(self.SBOMjsonNonTruth['sbom']['packages'])-1
+        numpackages=len(self.SBOMjsonNonTruth['packages'])-1
         #if numpackages <=0, packagename_change should be NONE
         if numpackages <=0:
            packagename_change="None"
         else : #else, get random package like normal
-           packagename_change=self.SBOMjsonNonTruth['sbom']['packages'][random.randint(0, numpackages)]['name']  #random package
+           packagename_change=self.SBOMjsonNonTruth['packages'][random.randint(0, numpackages)]['name']  #random package
 
 #random chance to change  
         if(random.choice([0, 1]) and packagename_change != "None"):
-           for package in self.SBOMjsonNonTruth['sbom']['packages']:
+           for package in self.SBOMjsonNonTruth['packages']:
                if package['name'] == packagename_change:
                    package['filesAnalyzed'] = True  
            print("Changed " +  str(packagename_change) + "\n")
@@ -144,7 +159,7 @@ class CompareSBOMs:
                     if 'name' in package:
                       self.add_packages.append(package['name'])
                 for item in self.add_packages:
-                    output= output + str(differences) + ". " + item + " not present in SBOM 1 but present in SBOM 2\n"
+                    output= output + str(differences) + ". " + item + " not present in truth but present in nonTruth\n"
                     differences=differences +1
 
 
@@ -154,19 +169,22 @@ class CompareSBOMs:
                    # Check if 'package' is part of key
                     if 'packages' in key:                  
                       package_index = int(key.split(']')[2][1:])  # Extract index of the package
-                      package_name = self.SBOMjsonTruth['sbom']['packages'][package_index ]['name']  
+                      package_name = self.SBOMjsonTruth['packages'][package_index ]['name']  
                       output= output + str(differences)  +  ". The information about package/dependency " + package_name + " is not equal\n"
                       differences=differences+1
                       changed_items.append(package_name)
-                    else:
+                    elif 'root'  not in key:
                      key_parts= key.split(']')
-                     changed_type= key_parts[1][1:]
-                     changed_type=changed_type.replace("'", "")
+                     changed_type=key
+                     if len(key_parts) >2:
+                        changed_type= key_parts[1][1:]
+                        changed_type=changed_type.replace("'", "")
+             
                      if changed_type=="creationInfo" or changed_type=="documentNamespace":
                         continue
-                     output= output + str(differences)  + ". The " +changed_type + " is " + str(self.SBOMjsonTruth['sbom'][changed_type])
-                     output= output + " in the first SBOM and " +  str(self.SBOMjsonNonTruth['sbom'][changed_type]) 
-                     output= output + " in the second SBOM\n"
+                     output= output + str(differences)  + ". The " +changed_type + " is " + str(self.SBOMjsonTruth[changed_type])
+                     output= output + " in the truth SBOM and " +  str(self.SBOMjsonNonTruth[changed_type]) 
+                     output= output + " in the nontruth SBOM\n"
                      differences=differences +1
 
                      changed_items.append(changed_type)  
