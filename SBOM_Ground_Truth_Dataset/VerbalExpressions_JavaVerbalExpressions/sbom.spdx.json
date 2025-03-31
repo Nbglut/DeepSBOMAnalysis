@@ -117,7 +117,7 @@
       "spdxElementId": "SPDXRef-Package-9C704D3D40B427BFB9072318ECEB54326E0530F7BB342308C719BB17A0664CC9",
       "relatedSpdxElement": "SPDXRef-Package-C4B71B84E040240C8D909A275C612D9062279F55E209EA3E2D9F1750D268DF0F",
       "relationshipType": "DEPENDS_ON"
-    },
+    }
   ],
   "documentDescribes": ["SPDXRef-RootPackage"]
 }
