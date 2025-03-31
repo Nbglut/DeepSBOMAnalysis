@@ -25,6 +25,7 @@ from SBOM import SBOM
 from CompareSBOMs import CompareSBOMs
 import asyncio
 import aiohttp
+import xml.etree.ElementTree as ET
 
 
 lock = asyncio.Lock()
@@ -41,6 +42,24 @@ async def get_json_from_link(link):
        # response = requests.get(link)
         #print(response.status_code) # Print the status code
         #return response.json() 
+        
+        
+async def get_XML_from_link(link):
+        """
+               Gets the XML of a given link
+        """
+        
+        async with aiohttp.ClientSession() as session:
+            async with session.get(link) as response:  # Non-blocking
+               content= await response.text()
+               try:
+                  return ET.fromstring(content)
+               except ET.ParseError as e:
+                raise ValueError(f"Failed to parse XML: {e}") 
+       # response = requests.get(link)
+        #print(response.status_code) # Print the status code
+        #return response.json() 
+
 
 class DeepAnalysis:
     """
@@ -71,8 +90,86 @@ class DeepAnalysis:
             
 
 
+    async def MavenAnalyzeTransient(self, present_packs, checked_packages, missing_packs):
+               """
+                   Recursive function that goes up the chain of a package pac and finds all of the missing packages (recorded in missing_pack) 
+                   by checking pacakges against present_packs and avoids checking the same package twice by using checked_packages  for Java Maven Projects
+                  
+               """
+               tasks=[]
+               
+               need_to_check= set(present_packs)
 
-    async def analyzeTransient(self, present_packs, checked_packages, missing_packs):
+               while need_to_check:
+                  pac=need_to_check.pop()
+                 #Split by "/" and [0] is group [1] is artificat
+                  pacsplit=pac.split("/")
+                  pacGroup=pacsplit[0]
+                  pacArtificat=pacsplit[1]
+                  pacVersion=""
+                  if len(pacArtificat.split("@")) >1:
+                     pacsplit2=pacArtificat.split("@")
+                     pacArtificat=pacsplit2[0]
+                     pacVersion=pacsplit2[1]
+                  if "-SNAPSHOT" in pacVersion:
+                      pacVersion=pacVersion.replace("-SNAPSHOT","")
+                  #print("Group: " + pacGroup)
+                 #print("Artificat: " + pacArtificat)
+                  #print("Version: " + pacVersion)
+                  
+                  #Use https://repo1.maven.org/maven2/[group_path]/[artifact]/[version]/[artifact]-[version].pom
+                  #Save all dependencies as [groupid]/[artificat]@[verison] if version exists
+                  #Else just [groupid]/[artificat]
+                  linkPart1=f"https://repo1.maven.org/maven2"
+                  pacGroupSplit= pacGroup.split(".")
+                  for item in pacGroupSplit:
+                       linkPart1 += "/" + item
+                  if pacVersion != "":
+                   tasks.append(get_XML_from_link(linkPart1 + "/" +pacArtificat + "/" +pacVersion + "/" + pacArtificat + "-" +pacVersion + ".pom"))
+                  else: 
+                   tasks.append(get_XML_from_link(linkPart1 + "/" +pacArtificat +  ".pom"))
+
+                  if pac not in missing_packs and pac not in present_packs:
+                         #print("\nMissing package "+ pac )
+                         print(pac)
+                         await self.add_to_missing_packs(pac)
+                  #if pac not in checked_packages:
+                       # tasks.append(getPOM(pac))
+
+                  await self.add_to_checked_packs(pac,checked_packages)  
+               results = await asyncio.gather(*tasks)
+               for pkg_json in results:
+                 #Get all dependencies using XML
+                   print("NEED TO ADD IMPLEMENTATION")
+                  #dependencies are found in <dependency> and 
+                  #dependency name found in <groupID> and then <artificatID> groupID/artificatID@<version>
+                   #newpac=   groupID/artificatID@<version>
+                  # If newpac not in checked
+                  #     add_to_check(newpac)                        
+               if len(need_to_check) >0:
+                     await self.MavenAnalyzeTransient(need_to_check, checked_packages, missing_packs)
+               #print("\nWe checked " + str(len(checked_packages)))
+               return missing_packs
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    async def PythonAnalyzeTransient(self, present_packs, checked_packages, missing_packs):
                """
                    Recursive function that goes up the chain of a package pac and finds all of the missing packages (recorded in missing_pack) 
                    by checking pacakges against present_packs and avoids checking the same package twice by using checked_packages 
@@ -141,7 +238,7 @@ class DeepAnalysis:
         
                   if len(need_to_check) >0:
                      
-                     await self.analyzeTransient(need_to_check, checked_packages, missing_packs)
+                     await self.PythonAnalyzeTransient(need_to_check, checked_packages, missing_packs)
                #print("\nWe checked " + str(len(checked_packages)))
                return missing_packs
 
@@ -157,17 +254,55 @@ class DeepAnalysis:
        missing_packs=set()
        #print(self.SBOMContents)
        pks=self.SBOMContents["packages"]
-       for package in pks:
-          if package['name'] != self.SBOMContents['name']:
-              present_packs.append(package['name'])
-          if 'homepage' in package and "github" in package['homepage']:
-                                      present_packs.append(package['homepage'])
+       python = input("Is this a Python Project? True or False")
+       if python=="True":
+          for package in pks:
+             if package['name'] != self.SBOMContents['name']:
+                present_packs.append(package['name'])
+       else:
+          for package in pks:
+             if package['name'] != self.SBOMContents['name']:
+                pac=package['externalRefs']
+                pac=pac[0]['referenceLocator']
+                pacsplit=pac.split("/")
+                pacGroup=pacsplit[1]
+                pacArtificat=pacsplit[2]
+                if "swid" in pacsplit[0]:
+                    pacArtificat=pacsplit[3]
+                    pacGroup= "org." +pacGroup
+                    continue
+                pac=pacGroup+ "/" +pacArtificat
+                #print(pac)
+                present_packs.append(pac)
+                
+                
+                  #Split by "/" and [0] is group [1] is artificat
+                  #Use https://repo1.maven.org/maven2/[group_path]/[artifact]/[version]/[artifact]-[version].pom
+                  #Save all dependencies as [groupid]/[artificat]@[verison] if version exists
+                  #Else just [groupid]/[artificat]
 
+                
+                #pkg:swid/mybatis/spdx.org/mybatis-3@14cdc78c81b7bdfcc54dff02bba780f61479aef5?tag_id=0a256872-0085-4997-84ed-ad6ed071d363
+                #parts=split["/"]
+                # pacGroup=parts[1] +.org
+                #pacartificat=   parts[3].split("@")[0] 
+
+
+                #if "pkg:maven" in pac:
+                    #Splut up into pacGroup and pacartificat and if version exists, version
+                    #newversionofPac=pacGroup + "/" + pacartificat
+                    #if version not = ""
+                    #       newversionofPac=+"@" + version
+                    #present_packs.append(newversionofPac)
+                
+          
        #print(present_packs)
        print("This may take a minute...")
-
-       await self.analyzeTransient( set(present_packs), checked_pks, missing_packs)
-       
+       if python=="True":
+          await self.PythonAnalyzeTransient( set(present_packs), checked_pks, missing_packs)
+       else:
+          await self.MavenAnalyzeTransient( set(present_packs), checked_pks, missing_packs)
+        
        self.missing_packs=missing_packs
                
                    
