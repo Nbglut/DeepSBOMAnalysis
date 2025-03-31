@@ -1,0 +1,125 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.2",
+  "name": "JavaVerbalExpressions a38c3c42412c174a18e5c16058a4ea1efc26f044",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://spdx.org/spdxdocs/sbom-tool-2.2.9-228dd552-3992-462f-92f4-2263c6a09cf7/JavaVerbalExpressions/a38c3c42412c174a18e5c16058a4ea1efc26f044/BMwUx82HvkiYXnhB88nWCQ",
+  "creationInfo": {
+    "creators": ["Tool: Microsoft.SBOMTool-2.2.9", "Tool: SbomDatasetGnerator"],
+    "created": "2024-12-04T23:31:38Z"
+  },
+  "files": [],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-C4B71B84E040240C8D909A275C612D9062279F55E209EA3E2D9F1750D268DF0F",
+      "name": "org.hamcrest.hamcrest-core",
+      "versionInfo": "1.3",
+      "packageFileName": "hamcrest-core-1.3.jar",
+      "supplier": "Organization: Hamcrest",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/hamcrest/JavaHamcrest",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "Copyright (c) 2000-2006, www.hamcrest.org\r\nAll rights reserved.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.hamcrest/hamcrest-core@1.3"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-9C704D3D40B427BFB9072318ECEB54326E0530F7BB342308C719BB17A0664CC9",
+      "name": "junit.junit",
+      "versionInfo": "4.13.2",
+      "packageFileName": "junit-4.13.2.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://junit.org",
+      "licenseConcluded": "EPL-1.0",
+      "licenseDeclared": "EPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/junit/junit@4.13.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-5FEBD62338A8789EEB6BF173DD300686E33257C6E148081682425C75C7D002D7",
+      "name": "ru.lanwen.verbalregex.java-verbal-expressions",
+      "versionInfo": "1.5-SNAPSHOT",
+      "packageFileName": "java-verbal-expressions-1.5-SNAPSHOT.jar",
+      "supplier": "Person: Kirill Merkushev (lanwen\u002Bgithub@yandex.ru)",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/VerbalExpressions/JavaVerbalExpressions",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright (c) 2013 VerbalExpressions",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/ru.lanwen.verbalregex/java-verbal-expressions@1.5-SNAPSHOT"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-RootPackage",
+      "name": "JavaVerbalExpressions",
+      "versionInfo": "a38c3c42412c174a18e5c16058a4ea1efc26f044",
+      "packageFileName": "./",
+      "supplier": "Organization: VerbalExpressions",
+      "downloadLocation": "git\u002Bhttps://github.com/VerbalExpressions/JavaVerbalExpressions.git",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/VerbalExpressions/JavaVerbalExpressions",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright (c) 2013 VerbalExpressions",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/VerbalExpressions/spdx.org/JavaVerbalExpressions@a38c3c42412c174a18e5c16058a4ea1efc26f044?tag_id=2c179cb7-babf-428c-b227-1bbd9bf06902"
+        }
+      ]
+    }
+  ],
+  "snippets": [],
+relationships": [
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-9C704D3D40B427BFB9072318ECEB54326E0530F7BB342308C719BB17A0664CC9",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "relationshipType": "DESCRIBES"
+    },
+
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-5FEBD62338A8789EEB6BF173DD300686E33257C6E148081682425C75C7D002D7",
+      "relationshipType": "DEPENDS_ON"
+    }
+    {
+      "spdxElementId": "SPDXRef-Package-9C704D3D40B427BFB9072318ECEB54326E0530F7BB342308C719BB17A0664CC9",
+      "relatedSpdxElement": "SPDXRef-Package-C4B71B84E040240C8D909A275C612D9062279F55E209EA3E2D9F1750D268DF0F",
+      "relationshipType": "DEPENDS_ON"
+    },
+  ],
+  "documentDescribes": ["SPDXRef-RootPackage"]
+}
+
+
