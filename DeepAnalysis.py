@@ -29,7 +29,7 @@ import xml.etree.ElementTree as ET
 
 
 lock = asyncio.Lock()
-
+missed_items=0
 
 async def get_json_from_link(link):
         """
@@ -48,14 +48,16 @@ async def get_XML_from_link(link):
         """
                Gets the XML of a given link
         """
-        
+        global missed_items
         async with aiohttp.ClientSession() as session:
             async with session.get(link) as response:  # Non-blocking
                content= await response.text()
                try:
                   return ET.fromstring(content)
                except ET.ParseError as e:
-                raise ValueError(f"Failed to parse XML: {e}") 
+                print(link)
+                missed_items+=1
+                print("UNABLE TO GET .POM OF DEPENDENCY") 
        # response = requests.get(link)
         #print(response.status_code) # Print the status code
         #return response.json() 
@@ -138,17 +140,76 @@ class DeepAnalysis:
 
                   await self.add_to_checked_packs(pac,checked_packages)  
                results = await asyncio.gather(*tasks)
-               for pkg_json in results:
+               for pkg_xml in results:
+                if pkg_xml is not None:
                  #Get all dependencies using XML
-                   print("NEED TO ADD IMPLEMENTATION")
+                 #print(pkg_xml)
                   #dependencies are found in <dependency> and 
+                  namespace = {'': 'http://maven.apache.org/POM/4.0.0'}
+                  dependencies= pkg_xml.find('dependencies',namespace)
+                  properties= pkg_xml.find('properties',namespace)
+                  version=''
+                  if dependencies is not None:
+                   for dependency in dependencies.findall('dependency',namespace):
+                    if dependency is not None:              
                   #dependency name found in <groupID> and then <artificatID> groupID/artificatID@<version>
-                   #newpac=   groupID/artificatID@<version>
+                     groupID=dependency.find('groupId',namespace).text
+                     if "{" in groupID:
+                         groupID=groupID.replace("$","")
+                         groupID=groupID.replace("{","")
+                         groupID=groupID.replace("}","")
+                         
+                         if properties is not None:
+                           if properties.find(groupID,namespace) is not None:                     
+                            groupID=properties.find(groupID,namespace).text    
+                     artificatID=dependency.find('artifactId',namespace).text
+                     if "{" in artificatID:
+                         artificatID=artificatID.replace("$","")
+                         artificatID=artificatID.replace("{","")
+                         artificatID=artificatID.replace("}","")
+                         artificatID=properties.find(artificatID,namespace).text                     
+                     if dependency.find('version',namespace) is not None:
+                        version=dependency.find('version',namespace).text
+                        
+                        if "{" in version:
+                          
+                          version=version.replace("$","")
+                          version=version.replace("{","")
+                          version=version.replace("}","")
+                          if properties is not None:
+                            if properties.find(version,namespace) is not None:                     
+                               version=properties.find(version,namespace).text                     
+
+                          else:
+                          
+                             version=""
+                          #version=properties.find(''+version,namespace).text
+                          
+                #newpac=   groupID/artificatID@<version>
+                     newpac= groupID + "/" +artificatID
+                     newpacNoVersion=newpac
+                     if version != "":
+                         newpac+="@" + version
                   # If newpac not in checked
-                  #     add_to_check(newpac)                        
-               if len(need_to_check) >0:
+                     if newpac not in checked_packages and newpac not in need_to_check:
+                         need_to_check.add(newpac)
+                  #if newpac not in present_packs 
+                     if newpac not in missing_packs and newpac not in present_packs :
+                         add=True
+                         for item in present_packs:
+                           if newpac in item:
+                             add=False      
+                           elif newpacNoVersion in item:
+                               add= False
+                               print("\nTwo different sources have two different versions for " + newpacNoVersion)
+                         if add:
+                            print("Adding to missing packs " + newpac)   
+                            await self.add_to_missing_packs(newpac, missing_packs)
+        
+                  if len(need_to_check) >0:
+                     
                      await self.MavenAnalyzeTransient(need_to_check, checked_packages, missing_packs)
-               #print("\nWe checked " + str(len(checked_packages)))
+      
                return missing_packs
 
                
@@ -235,7 +296,7 @@ class DeepAnalysis:
                              if nextpac not in missing_packs and nextpaclower not in missing_packs:
                                    # print("\nMissing package "+ nextpac  )
                                     await self.add_to_missing_packs(nextpac, missing_packs)
-        
+                
                   if len(need_to_check) >0:
                      
                      await self.PythonAnalyzeTransient(need_to_check, checked_packages, missing_packs)
@@ -272,7 +333,7 @@ class DeepAnalysis:
                     pacGroup= "org." +pacGroup
                     continue
                 pac=pacGroup+ "/" +pacArtificat
-                #print(pac)
+                pacArtificatSplit=pacArtificat.split("@")
                 present_packs.append(pac)
                 
                 
@@ -295,14 +356,16 @@ class DeepAnalysis:
                     #       newversionofPac=+"@" + version
                     #present_packs.append(newversionofPac)
                 
-          
+       global missed_items   
        #print(present_packs)
        print("This may take a minute...")
        if python=="True":
           await self.PythonAnalyzeTransient( set(present_packs), checked_pks, missing_packs)
        else:
           await self.MavenAnalyzeTransient( set(present_packs), checked_pks, missing_packs)
-        
+       percent= len(checked_pks)/(len(checked_pks) +missed_items) 
+       print(missed_items)
+       print("There have been " + str(len(checked_pks)) + " checked dependencies/transitive dependencies. Missing packages created with a " + str(percent*100) + "% confidence rate." )
        self.missing_packs=missing_packs
                
                    
@@ -341,7 +404,6 @@ async def main():
     missing_pack_list.sort()
     print(missing_pack_list)     
     print(str(len(missing_packs)) + " MISSING TRANSIENT PACKAGES\n")
-   
     
 
    
