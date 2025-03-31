@@ -157,7 +157,7 @@ class SBOM_generate:
         if not owner or not repo:
             owner = input("Enter GitHub repo owner: ")
             repo = input("Enter GitHub repo name: ")
-        #self.generate_microsoft_sbom(owner, repo)
+        self.generate_microsoft_sbom(owner, repo)
         
         
         
