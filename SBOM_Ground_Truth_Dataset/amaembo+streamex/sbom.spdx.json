@@ -1,0 +1,70 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.2",
+  "name": "streamex ce4bb3f288d78c8e7e10d38ed08d56c0885b8479",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://spdx.org/spdxdocs/sbom-tool-2.2.9-db3d6b63-59a6-4df2-b932-d7d91099be25/streamex/ce4bb3f288d78c8e7e10d38ed08d56c0885b8479/z1eumpuqCE2-glJLsFnIdw",
+  "creationInfo": {
+    "creators": ["Tool: Microsoft.SBOMTool-2.2.9", "Tool: SbomDatasetGnerator"],
+    "created": "2024-12-04T23:31:38Z"
+  },
+  "files": [],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-453EEEADCF77D0421B8240F818B7BE65071C12426E984C1314C2F9CE68498E0C",
+      "name": "one.util.streamex",
+      "versionInfo": "0.8.3",
+      "packageFileName": "streamex-0.8.3.jar",
+      "supplier": "Person: Tagir Valeev (amaembo@gmail.com)",
+      "downloadLocation": "https://repo1.maven.org/maven2/one/util/streamex/0.8.3/streamex-0.8.3.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/amaembo/streamex",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "Copyright 2015, 2023 StreamEx contributors",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/one.util/streamex@0.8.3"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-RootPackage",
+      "name": "streamex",
+      "versionInfo": "ce4bb3f288d78c8e7e10d38ed08d56c0885b8479",
+      "packageFileName": "./",
+      "supplier": "Organization: amaembo",
+      "downloadLocation": "git\u002Bhttps://github.com/amaembo/streamex.git",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/amaembo/streamex",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/amaembo/spdx.org/streamex@ce4bb3f288d78c8e7e10d38ed08d56c0885b8479?tag_id=a24a3e1e-ee74-44a2-a52e-a7ac5db23d91"
+        }
+      ]
+    }
+  ],
+  "snippets": [],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-C4B71B84E040240C8D909A275C612D9062279F55E209EA3E2D9F1750D268DF0F",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-453EEEADCF77D0421B8240F818B7BE65071C12426E984C1314C2F9CE68498E0C",
+      "relationshipType": "DEPENDS_ON"
+    }
+  ],
+  "documentDescribes": ["SPDXRef-RootPackage"]
+}

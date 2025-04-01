@@ -1,0 +1,70 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.2",
+  "name": "thumbnailator 951d04f352d90f34420a82909c15453fee1b75ff",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://spdx.org/spdxdocs/sbom-tool-2.2.9-cb737aae-40ff-4320-9a8b-87c88ebb1c6d/thumbnailator/951d04f352d90f34420a82909c15453fee1b75ff/g9PJhRm8PEyuiXPRuHZVOQ",
+  "creationInfo": {
+    "creators": ["Tool: Microsoft.SBOMTool-2.2.9", "Tool: SbomDatasetGnerator"],
+    "created": "2024-12-04T23:31:38Z"
+  },
+  "files": [],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-BC40C94EAD7EE98E261E0C48BA02DD1017CBBD5D6A7D6ED3A6280AF661454D0F",
+      "name": "net.coobird.thumbnailator",
+      "versionInfo": "0.4.20",
+      "packageFileName": "thumbnailator-0.4.20.jar",
+      "supplier": "Person: Chris Kroells (coobirdnet@gmail.com)",
+      "downloadLocation": "https://repo1.maven.org/maven2/net/coobird/thumbnailator/0.4.20/thumbnailator-0.4.20.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/coobird/thumbnailator",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright (c) 2008-2023 Chris Kroells",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/net.coobird/thumbnailator@0.4.20"
+        }
+      ]
+    },
+       {
+      "SPDXID": "SPDXRef-RootPackage",
+      "name": "thumbnailator",
+      "versionInfo": "951d04f352d90f34420a82909c15453fee1b75ff",
+      "packageFileName": "./",
+      "supplier": "Organization: coobird",
+      "downloadLocation": "git\u002Bhttps://github.com/coobird/thumbnailator.git",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/coobird/thumbnailator",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright (c) 2008-2023 Chris Kroells",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/coobird/spdx.org/thumbnailator@951d04f352d90f34420a82909c15453fee1b75ff?tag_id=01a95708-ddcd-4bea-ab4a-db363ab1ebd7"
+        }
+      ]
+    }
+  ],
+  "snippets": [],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "relationshipType": "DESCRIBES"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-BC40C94EAD7EE98E261E0C48BA02DD1017CBBD5D6A7D6ED3A6280AF661454D0F",
+      "relationshipType": "DEPENDS_ON"
+    }
+  ],
+  "documentDescribes": ["SPDXRef-RootPackage"]
+}
