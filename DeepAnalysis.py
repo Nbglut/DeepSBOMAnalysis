@@ -202,10 +202,9 @@ class DeepAnalysis:
                      newpacNoVersion=newpac
                      if version != "":
                          newpac+="@" + version
-                  # If newpac not in checked
-                     if newpac not in checked_packages and newpac not in need_to_check:
-                         need_to_check.add(newpac)
+                 
                   #if newpac not in present_packs 
+                     add=True
                      if newpac not in missing_packs and newpac not in present_packs :
                          add=True
                          for item in present_packs:
@@ -213,17 +212,21 @@ class DeepAnalysis:
                              add=False      
                            elif newpacNoVersion in item:
                                add= False
-                               print("\nA different version already added to  " + newpacNoVersion)
+                               print("\nA different version of " +  newpacNoVersion +" already present in SBOM" )
+
                          for item in missing_packs:
                            if newpac in item:
-                             add=False      
+                             add=False
+    
                            elif newpacNoVersion in item:
                                add= False
                                print("\nA different version of " + newpacNoVersion + " already in missing packages")
                          if add:
                            # print("Adding to missing packs " + newpac)   
                             await self.add_to_missing_packs(newpac, missing_packs)
-        
+                   # If newpac not in checked
+                     if newpac not in checked_packages and newpac not in need_to_check:
+                         need_to_check.add(newpac)
                   if len(need_to_check) >0:
                      
                      await self.MavenAnalyzeTransient(need_to_check, checked_packages, missing_packs)
@@ -364,9 +367,9 @@ class DeepAnalysis:
           await self.PythonAnalyzeTransient( set(present_packs), checked_pks, missing_packs)
        else:
           await self.MavenAnalyzeTransient( set(present_packs), checked_pks, missing_packs)
-       percent= len(checked_pks)/(len(checked_pks) +missed_items) 
-       print("There have been " + missed_items + " packages whose pom cannot be found")
-       print("There have been " + str(len(checked_pks)) + " checked dependencies/transitive dependencies. Missing packages created with a " + str(percent*100) + "% confidence rate." )
+       percent= missed_items/(len(checked_pks) +missed_items) 
+       print("There have been " + str(missed_items) + " packages whose pom cannot be found\n")
+       print("There have been " + str(len(checked_pks)) + " checked dependencies/transitive dependencies.\nMissing packages found with " + str(percent*100) + "% of packages being unable to resolve a .pom." )
        self.missing_packs=missing_packs
                
                    
