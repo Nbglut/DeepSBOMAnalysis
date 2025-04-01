@@ -151,7 +151,7 @@ class DeepAnalysis:
                   version=''
                   if dependencies is not None:
                    for dependency in dependencies.findall('dependency',namespace):
-                    if dependency is not None:              
+                    if dependency is not None and dependency.find('scope', namespace) is None:              
                   #dependency name found in <groupID> and then <artificatID> groupID/artificatID@<version>
                      groupID=dependency.find('groupId',namespace).text
                      if "{" in groupID:
