@@ -31,6 +31,22 @@ import xml.etree.ElementTree as ET
 lock = asyncio.Lock()
 missed_items=0
 
+
+def getProperties(xml,space):
+  properties_dict={}
+  properties=xml.find('properties', space)
+  if properties is not None:
+    for prop in properties:
+       properties_dict[prop.tag.split('}')[1]] = prop.text  
+       
+#find project version, project.groupId, 
+       
+       
+  return properties_dict
+
+
+
+
 async def get_json_from_link(link):
         """
                Gets the Json of a given link
@@ -53,11 +69,15 @@ async def get_XML_from_link(link):
             async with session.get(link) as response:  # Non-blocking
                content= await response.text()
                try:
-                  return ET.fromstring(content)
+                  pkg_xml= ET.fromstring(content)
+                  namespace = {'': 'http://maven.apache.org/POM/4.0.0'}
+                  properties= pkg_xml.find('properties',namespace)
+                  prop_list=getProperties(pkg_xml,namespace)
+                  return pkg_xml, prop_list
                except ET.ParseError as e:
-                print(link)
+                #print(link)
                 missed_items+=1
-                print("UNABLE TO GET .POM OF DEPENDENCY") 
+               # print("UNABLE TO GET .POM OF DEPENDENCY") 
        # response = requests.get(link)
         #print(response.status_code) # Print the status code
         #return response.json() 
@@ -115,10 +135,7 @@ class DeepAnalysis:
                      pacVersion=pacsplit2[1]
                   if "-SNAPSHOT" in pacVersion:
                       pacVersion=pacVersion.replace("-SNAPSHOT","")
-                  #print("Group: " + pacGroup)
-                 #print("Artificat: " + pacArtificat)
-                  #print("Version: " + pacVersion)
-                  
+                                 
                   #Use https://repo1.maven.org/maven2/[group_path]/[artifact]/[version]/[artifact]-[version].pom
                   #Save all dependencies as [groupid]/[artificat]@[verison] if version exists
                   #Else just [groupid]/[artificat]
@@ -132,58 +149,53 @@ class DeepAnalysis:
                    tasks.append(get_XML_from_link(linkPart1 + "/" +pacArtificat +  ".pom"))
 
                   if pac not in missing_packs and pac not in present_packs:
-                         #print("\nMissing package "+ pac )
-                         print(pac)
                          await self.add_to_missing_packs(pac)
-                  #if pac not in checked_packages:
-                       # tasks.append(getPOM(pac))
-
+                 #add to checked_pacs
                   await self.add_to_checked_packs(pac,checked_packages)  
+                  
+               #asynch get all xmls
                results = await asyncio.gather(*tasks)
-               for pkg_xml in results:
+               #for all packages' xml
+               for tup in results:
+                if isinstance(tup, tuple) and len(tup) == 2:
+                        pkg_xml, properties_dict = tup
+                else:
+                        pkg_xml, properties_dict = tup, None  # Default to None if missing
                 if pkg_xml is not None:
+                #get properties in case there are variables in xml
+                  #properties_dict = {}
+                  #properties_dict= getProperties(pkg_xml,'http://maven.apache.org/POM/4.0.0')
                  #Get all dependencies using XML
-                 #print(pkg_xml)
                   #dependencies are found in <dependency> and 
                   namespace = {'': 'http://maven.apache.org/POM/4.0.0'}
                   dependencies= pkg_xml.find('dependencies',namespace)
                   properties= pkg_xml.find('properties',namespace)
                   version=''
+                  #if dependecies exist, get dependencies
                   if dependencies is not None:
                    for dependency in dependencies.findall('dependency',namespace):
+                   #if there is a "scope" it should not be  considered, only compiler dependencies are considered
                     if dependency is not None and dependency.find('scope', namespace) is None:              
                   #dependency name found in <groupID> and then <artificatID> groupID/artificatID@<version>
                      groupID=dependency.find('groupId',namespace).text
-                     if "{" in groupID:
-                         groupID=groupID.replace("$","")
-                         groupID=groupID.replace("{","")
-                         groupID=groupID.replace("}","")
-                         
-                         if properties is not None:
-                           if properties.find(groupID,namespace) is not None:                     
-                            groupID=properties.find(groupID,namespace).text    
                      artificatID=dependency.find('artifactId',namespace).text
-                     if "{" in artificatID:
-                         artificatID=artificatID.replace("$","")
-                         artificatID=artificatID.replace("{","")
-                         artificatID=artificatID.replace("}","")
-                         artificatID=properties.find(artificatID,namespace).text                     
+                     version=""
                      if dependency.find('version',namespace) is not None:
                         version=dependency.find('version',namespace).text
-                        
-                        if "{" in version:
-                          
-                          version=version.replace("$","")
-                          version=version.replace("{","")
-                          version=version.replace("}","")
-                          if properties is not None:
-                            if properties.find(version,namespace) is not None:                     
-                               version=properties.find(version,namespace).text                     
 
-                          else:
-                          
-                             version=""
-                          #version=properties.find(''+version,namespace).text
+                     #if any part of the dependecy has a variable, replace it
+                                         
+                     if properties_dict is not None:
+                       #print(version)
+                       for key, value in properties_dict.items():
+                            # print("Key: " + key)
+                             if value is None:
+                                value = version
+
+                             version = version.replace(f"${{{key}}}", value)
+                             artificatID = artificatID.replace(f"${{{key}}}", value)
+                             groupID = groupID.replace(f"${{{key}}}", value)
+                   
                           
                 #newpac=   groupID/artificatID@<version>
                      newpac= groupID + "/" +artificatID
@@ -201,9 +213,15 @@ class DeepAnalysis:
                              add=False      
                            elif newpacNoVersion in item:
                                add= False
-                               print("\nTwo different sources have two different versions for " + newpacNoVersion)
+                               print("\nA different version already added to  " + newpacNoVersion)
+                         for item in missing_packs:
+                           if newpac in item:
+                             add=False      
+                           elif newpacNoVersion in item:
+                               add= False
+                               print("\nA different version of " + newpacNoVersion + " already in missing packages")
                          if add:
-                            print("Adding to missing packs " + newpac)   
+                           # print("Adding to missing packs " + newpac)   
                             await self.add_to_missing_packs(newpac, missing_packs)
         
                   if len(need_to_check) >0:
@@ -319,7 +337,9 @@ class DeepAnalysis:
        if python=="True":
           for package in pks:
              if package['name'] != self.SBOMContents['name']:
+            
                 present_packs.append(package['name'])
+       #Assume maven
        else:
           for package in pks:
              if package['name'] != self.SBOMContents['name']:
@@ -336,35 +356,16 @@ class DeepAnalysis:
                 pacArtificatSplit=pacArtificat.split("@")
                 present_packs.append(pac)
                 
-                
-                  #Split by "/" and [0] is group [1] is artificat
-                  #Use https://repo1.maven.org/maven2/[group_path]/[artifact]/[version]/[artifact]-[version].pom
-                  #Save all dependencies as [groupid]/[artificat]@[verison] if version exists
-                  #Else just [groupid]/[artificat]
-
-                
-                #pkg:swid/mybatis/spdx.org/mybatis-3@14cdc78c81b7bdfcc54dff02bba780f61479aef5?tag_id=0a256872-0085-4997-84ed-ad6ed071d363
-                #parts=split["/"]
-                # pacGroup=parts[1] +.org
-                #pacartificat=   parts[3].split("@")[0] 
-
-
-                #if "pkg:maven" in pac:
-                    #Splut up into pacGroup and pacartificat and if version exists, version
-                    #newversionofPac=pacGroup + "/" + pacartificat
-                    #if version not = ""
-                    #       newversionofPac=+"@" + version
-                    #present_packs.append(newversionofPac)
+              
                 
        global missed_items   
-       #print(present_packs)
        print("This may take a minute...")
        if python=="True":
           await self.PythonAnalyzeTransient( set(present_packs), checked_pks, missing_packs)
        else:
           await self.MavenAnalyzeTransient( set(present_packs), checked_pks, missing_packs)
        percent= len(checked_pks)/(len(checked_pks) +missed_items) 
-       print(missed_items)
+       print("There have been " + missed_items + " packages whose pom cannot be found")
        print("There have been " + str(len(checked_pks)) + " checked dependencies/transitive dependencies. Missing packages created with a " + str(percent*100) + "% confidence rate." )
        self.missing_packs=missing_packs
                
