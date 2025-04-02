@@ -37,7 +37,17 @@ def getProperties(xml,space):
   properties=xml.find('properties', space)
   if properties is not None:
     for prop in properties:
-       properties_dict[prop.tag.split('}')[1]] = prop.text  
+       properties_dict[prop.tag.split('}')[-1]] = prop.text  
+  parent=xml
+  if xml.find('parent', space) is not None:
+      parent=xml.find('parent', space)
+  if parent.find('groupId',space) is not None:
+      properties_dict['project.groupId']=parent.find('groupId',space).text
+  if parent.find('artifactId',space) is not None:
+     properties_dict['project.artifactId']= parent.find('artifactId',space).text
+  if parent.find('version',space) is not None:
+     properties_dict['project.version']=parent.find('version',space).text
+
        
 #find project version, project.groupId, 
        
@@ -207,7 +217,7 @@ class DeepAnalysis:
                  
                   #if newpac not in present_packs 
                      add=True
-                     if newpac not in missing_packs and newpac not in present_packs :
+                     if newpacNoVersion not in missing_packs and newpacNoVersion not in present_packs and newpac not in present_packs :
                          add=True
                          for item in present_packs:
                            if newpac in item:
@@ -224,19 +234,20 @@ class DeepAnalysis:
                                add= False
                                print("\nA different version of " + newpacNoVersion + " already in missing packages")
                          for item in checked_packages:
+                           #print(item)
                            if newpac in item:
                              add=False
     
-                           elif newpacNoVersion in item:
+                           elif newpacNoVersion in item :
                                add= False
                                print("\nA different version of " + newpacNoVersion + " already checked")
 
                          if add:
-                           # print("Adding to missing packs " + newpac)   
+                            print("Adding to missing packs " + newpac)   
                             await self.add_to_missing_packs(newpac, missing_packs)
                    # If newpac not in checked
                      if newpac not in checked_packages and newpac not in need_to_check:
-                         print(newpac)
+                         #print(newpac)
                          need_to_check.add(newpac)
                       
                   if len(need_to_check) >0:
