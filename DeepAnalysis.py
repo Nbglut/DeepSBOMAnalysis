@@ -184,8 +184,7 @@ class DeepAnalysis:
                   #if dependecies exist, get dependencies
                   if dependencies is not None:
                    for dependency in dependencies.findall('dependency',namespace):
-                   #if there is a "scope" it should not be  considered, only compiler dependencies are considered
-                    if dependency is not None and dependency.find('scope', namespace) is None:              
+                    if dependency is not None:              
                   #dependency name found in <groupID> and then <artificatID> groupID/artificatID@<version>
                      groupID=dependency.find('groupId',namespace).text
                      artificatID=dependency.find('artifactId',namespace).text
