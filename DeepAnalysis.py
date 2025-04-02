@@ -208,6 +208,7 @@ class DeepAnalysis:
                      if newpac not in missing_packs and newpac not in present_packs :
                          add=True
                          for item in present_packs:
+                           print(item)
                            if newpac in item:
                              add=False      
                            elif newpacNoVersion in item:
@@ -227,6 +228,7 @@ class DeepAnalysis:
                    # If newpac not in checked
                      if newpac not in checked_packages and newpac not in need_to_check:
                          need_to_check.add(newpac)
+                      
                   if len(need_to_check) >0:
                      
                      await self.MavenAnalyzeTransient(need_to_check, checked_packages, missing_packs)
