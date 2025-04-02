@@ -182,7 +182,8 @@ class DeepAnalysis:
                      version=""
                      if dependency.find('version',namespace) is not None:
                         version=dependency.find('version',namespace).text
-
+                     if version=="": #likely a managed dependency
+                          continue
                      #if any part of the dependecy has a variable, replace it
                                          
                      if properties_dict is not None:
@@ -202,13 +203,13 @@ class DeepAnalysis:
                      newpacNoVersion=newpac
                      if version != "":
                          newpac+="@" + version
+                         
                  
                   #if newpac not in present_packs 
                      add=True
                      if newpac not in missing_packs and newpac not in present_packs :
                          add=True
                          for item in present_packs:
-                           print(item)
                            if newpac in item:
                              add=False      
                            elif newpacNoVersion in item:
@@ -222,11 +223,20 @@ class DeepAnalysis:
                            elif newpacNoVersion in item:
                                add= False
                                print("\nA different version of " + newpacNoVersion + " already in missing packages")
+                         for item in checked_packages:
+                           if newpac in item:
+                             add=False
+    
+                           elif newpacNoVersion in item:
+                               add= False
+                               print("\nA different version of " + newpacNoVersion + " already checked")
+
                          if add:
                            # print("Adding to missing packs " + newpac)   
                             await self.add_to_missing_packs(newpac, missing_packs)
                    # If newpac not in checked
                      if newpac not in checked_packages and newpac not in need_to_check:
+                         print(newpac)
                          need_to_check.add(newpac)
                       
                   if len(need_to_check) >0:
@@ -320,9 +330,9 @@ class DeepAnalysis:
                                    # print("\nMissing package "+ nextpac  )
                                     await self.add_to_missing_packs(nextpac, missing_packs)
                 
-                  if len(need_to_check) >0:
+                 # if len(need_to_check) >0:
                      
-                     await self.PythonAnalyzeTransient(need_to_check, checked_packages, missing_packs)
+                   #  await self.PythonAnalyzeTransient(need_to_check, checked_packages, missing_packs)
                #print("\nWe checked " + str(len(checked_packages)))
                return missing_packs
 
