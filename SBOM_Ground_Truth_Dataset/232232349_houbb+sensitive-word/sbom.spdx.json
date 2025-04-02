@@ -1,0 +1,242 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.2",
+  "name": "sensitive-word 394f6312bdb407aba9ec5169ef443549d7827503",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://spdx.org/spdxdocs/sbom-tool-2.2.9-9f2b63ca-7961-4c93-b586-6065bf940fcf/sensitive-word/394f6312bdb407aba9ec5169ef443549d7827503/QH1LRqBYfEWgkdSA99-S8Q",
+  "creationInfo": {
+    "creators": ["Tool: Microsoft.SBOMTool-2.2.9", "Tool: SbomDatasetGnerator"],
+    "created": "2024-12-04T23:31:38Z"
+  },
+  "files": [],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-opencc4j",
+      "name": "com.github.houbb.opencc4j",
+      "versionInfo": "1.8.1",
+      "packageFileName": "opencc4j-1.8.1.jar",
+      "supplier": "Person: houbb (houbinbin.echo@gmail.com)",
+      "downloadLocation": "https://repo1.maven.org/maven2/com/github/houbb/opencc4j/1.8.1/opencc4j-1.8.1.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://nexus.sonatype.org/oss-repository-hosting.html",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.github.houbb/opencc4j@1.8.1"
+        }
+      ]
+    },
+      
+    {
+      "SPDXID": "SPDXRef-Package-apiguardian",
+      "name": "org.apiguardian.apiguardian-api",
+      "versionInfo": "1.0.0",
+      "packageFileName": "apiguardian-api-1.0.0.jar",
+      "supplier": "Person: @API Guardian Team (team@apiguardian.org)",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/apiguardian-team/apiguardian",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.apiguardian/apiguardian-api@1.0.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-houbbNLP",
+      "name": "com.github.houbb.nlp-common",
+      "versionInfo": "0.0.5",
+      "packageFileName": "nlp-common-0.0.5.jar",
+      "supplier": "Person: houbb (houbinbin.echo@gmail.com)",
+      "downloadLocation": "https://repo1.maven.org/maven2/com/github/houbb/nlp-common/0.0.5/nlp-common-0.0.5.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://nexus.sonatype.org/oss-repository-hosting.html",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.github.houbb/nlp-common@0.0.5"
+        }
+      ]
+    },
+    {
+     "SPDXID": "SPDXRef-Package-jieba",
+      "name": "com.huaban.jieba-analysis",
+      "versionInfo": "1.0.2",
+      "packageFileName": "jieba-analysis-1.0.2.jar",
+      "supplier": "Person: libin (piaolingxue305@gmail.com)",
+      "downloadLocation": "https://repo1.maven.org/maven2/com/huaban/jieba-analysis/1.0.2/jieba-analysis-1.0.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://maven.apache.org",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.huaban/jieba-analysis@1.0.2"
+        }
+      ]
+    },
+   {
+      "SPDXID": "SPDXRef-Package-commonslang3",
+      "name": "org.apache.commons.commons-lang3",
+      "versionInfo": "3.3.1",
+      "packageFileName": "commons-lang3-3.3.1.jar",
+      "supplier": "Organization: Apache Software Foundation",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/apache/commons/commons-lang3/3.3.1/commons-lang3-3.3.1.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://commons.apache.org/proper/commons-lang/",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.apache.commons/commons-lang3@3.3.1"
+        }
+      ]
+    },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        {
+      "SPDXID": "SPDXRef-Package-houbbHeaven2",
+      "name": "com.github.houbb.heaven",
+      "versionInfo": "0.11.0",
+      "packageFileName": "heaven-0.11.0.jar",
+      "supplier": "Person: houbb (houbinbin.echo@gmail.com)",
+      "downloadLocation": "https://repo1.maven.org/maven2/com/github/houbb/heaven/0.11.0/heaven-0.11.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://nexus.sonatype.org/oss-repository-hosting.html",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "Copyright 2016 ShenHuaJie iBase4J@163.com",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.github.houbb/heaven@0.11.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-houbb",
+      "name": "com.github.houbb.sensitive-word",
+      "versionInfo": "0.21.0",
+      "packageFileName": "sensitive-word-0.21.0.jar",
+      "supplier": "Person: houbb (houbinbin.echo@gmail.com)",
+      "downloadLocation": "https://repo1.maven.org/maven2/com/github/houbb/sensitive-word/0.21.0/sensitive-word-0.21.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://nexus.sonatype.org/oss-repository-hosting.html",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "Copyright 2016 ShenHuaJie iBase4J@163.com",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.github.houbb/sensitive-word@0.21.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-RootPackage",
+      "name": "sensitive-word",
+      "versionInfo": "394f6312bdb407aba9ec5169ef443549d7827503",
+      "packageFileName": "./",
+      "supplier": "Organization: houbb",
+      "downloadLocation": "git\u002Bhttps://github.com/houbb/sensitive-word.git",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/houbb/sensitive-word",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "Copyright 2016 ShenHuaJie iBase4J@163.com",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/houbb/spdx.org/sensitive-word@394f6312bdb407aba9ec5169ef443549d7827503?tag_id=33d57b10-d261-4bb4-9dd8-4d627be5477b"
+        }
+      ]
+    }
+  ],
+  "snippets": [],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-houbb",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-houbb",
+      "relatedSpdxElement": "SPDXRef-Package-houbbHeaven2",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-houbb",
+      "relatedSpdxElement": "SPDXRef-Package-opencc4j",
+      "relationshipType": "DEPENDS_ON"
+    },
+      {
+      "spdxElementId": "SPDXRef-Package-houbbHeaven2",
+      "relatedSpdxElement": "SPDXRef-Package-apiguardian",
+      "relationshipType": "DEPENDS_ON"
+    },
+     {
+      "spdxElementId": "SPDXRef-Package-opencc4j",
+      "relatedSpdxElement": "SPDXRef-Package-houbbHeaven2",
+      "relationshipType": "DEPENDS_ON"
+    },
+     {
+      "spdxElementId": "SPDXRef-Package-opencc4j",
+      "relatedSpdxElement": "SPDXRef-Package-houbbNLP",
+      "relationshipType": "DEPENDS_ON"
+      
+    },
+     {
+      "spdxElementId": "SPDXRef-Package-opencc4j",
+      "relatedSpdxElement": "SPDXRef-Package-jieba",
+      "relationshipType": "DEPENDS_ON"
+    },
+     {
+      "spdxElementId": "SPDXRef-Package-houbbNLP",
+      "relatedSpdxElement": "SPDXRef-Package-houbbHeaven2",
+      "relationshipType": "DEPENDS_ON"
+    },
+    
+     {
+      "spdxElementId": "SPDXRef-Package-jieba",
+      "relatedSpdxElement": "SPDXRef-Package-commonslang3",
+      "relationshipType": "DEPENDS_ON"
+    },
+
+    
+  ],
+  "documentDescribes": ["SPDXRef-RootPackage"]
+}

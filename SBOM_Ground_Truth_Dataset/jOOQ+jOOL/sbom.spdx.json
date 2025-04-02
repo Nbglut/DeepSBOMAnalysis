@@ -1,0 +1,98 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.2",
+  "name": "jOOL 31ed3a398fd099206f62438b80a2a93dd7e2105d",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://spdx.org/spdxdocs/sbom-tool-2.2.9-620e6388-4fde-4e5b-bbe1-61edfad87d3c/jOOL/31ed3a398fd099206f62438b80a2a93dd7e2105d/pQcPXJbK_U2OSVqpsQVY3w",
+  "creationInfo": {
+    "creators": ["Tool: Microsoft.SBOMTool-2.2.9", "Tool: SbomDatasetGnerator"],
+    "created": "2024-12-04T23:31:38Z"
+  },
+  "files": [],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-42E96A76070CA80725206AD3F8AE6461C3439D469D47A1CF002B23A53313128E",
+      "name": "org.jooq.jool",
+      "versionInfo": "0.9.15",
+      "packageFileName": "jool-0.9.15.jar",
+      "supplier": "Person: Lukas Eder (lukas.eder@gmail.com)",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/jooq/jool/0.9.15/jool-0.9.15.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://nexus.sonatype.org/oss-repository-hosting.html",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.jooq/jool@0.9.15"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-24C2C80D900570E70B5378542A2B537148567929B6E5C432C1E627C244A29F05",
+      "name": "org.jooq.jool-java-8",
+      "versionInfo": "0.9.15",
+      "packageFileName": "jool-java-8-0.9.15.jar",
+      "supplier": "Person: Lukas Eder (lukas.eder@gmail.com)",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/jooq/jool-java-8/0.9.15/jool-java-8-0.9.15.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://nexus.sonatype.org/oss-repository-hosting.html",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.jooq/jool-java-8@0.9.15"
+        }
+      ]
+    },
+        {
+      "SPDXID": "SPDXRef-RootPackage",
+      "name": "jOOL",
+      "versionInfo": "31ed3a398fd099206f62438b80a2a93dd7e2105d",
+      "packageFileName": "./",
+      "supplier": "Organization: jOOQ",
+      "downloadLocation": "git\u002Bhttps://github.com/jOOQ/jOOL.git",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/jOOQ/jOOL",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/jOOQ/spdx.org/jOOL@31ed3a398fd099206f62438b80a2a93dd7e2105d?tag_id=f7f53cea-af5e-4585-9f21-d74618bdeca9"
+        }
+      ]
+    }
+  ],
+  "snippets": [],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "relationshipType": "DESCRIBES"
+    },
+
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-24C2C80D900570E70B5378542A2B537148567929B6E5C432C1E627C244A29F05",
+      "relationshipType": "DEPENDS_ON"
+    },
+
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-42E96A76070CA80725206AD3F8AE6461C3439D469D47A1CF002B23A53313128E",
+      "relationshipType": "DEPENDS_ON"
+    }
+  ],
+  "documentDescribes": ["SPDXRef-RootPackage"]
+}
