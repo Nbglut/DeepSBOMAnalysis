@@ -122,7 +122,7 @@ class DeepAnalysis:
             
 
 
-    async def MavenAnalyzeTransient(self, present_packs, checked_packages, missing_packs):
+    async def MavenAnalyzeTransient(self, need_to_check, checked_packages, missing_packs, present_packs):
                """
                    Recursive function that goes up the chain of a package pac and finds all of the missing packages (recorded in missing_pack) 
                    by checking pacakges against present_packs and avoids checking the same package twice by using checked_packages  for Java Maven Projects
@@ -130,7 +130,6 @@ class DeepAnalysis:
                """
                tasks=[]
                
-               need_to_check= set(present_packs)
 
                while need_to_check:
                   pac=need_to_check.pop()
@@ -154,12 +153,18 @@ class DeepAnalysis:
                   for item in pacGroupSplit:
                        linkPart1 += "/" + item
                   if pacVersion != "":
-                   tasks.append(get_XML_from_link(linkPart1 + "/" +pacArtificat + "/" +pacVersion + "/" + pacArtificat + "-" +pacVersion + ".pom"))
+                   tasks.append( get_XML_from_link(linkPart1 + "/" +pacArtificat + "/" +pacVersion + "/" + pacArtificat + "-" +pacVersion + ".pom"))
                   else: 
-                   tasks.append(get_XML_from_link(linkPart1 + "/" +pacArtificat +  ".pom"))
+                   tasks.append( get_XML_from_link(linkPart1 + "/" +pacArtificat +  ".pom"))
 
-                  if pac not in missing_packs and pac not in present_packs:
-                         await self.add_to_missing_packs(pac)
+                  pacNoVersion=pac.split("@")[-1]
+                  add=True
+                  for item in present_packs:
+                    if pacNoVersion in item:
+                        add=False
+                  if pac not in missing_packs and pac not in present_packs and add:
+                         print("Adding " + pac + " to missing packs")
+                         await self.add_to_missing_packs(pac, missing_packs)
                  #add to checked_pacs
                   await self.add_to_checked_packs(pac,checked_packages)  
                   
@@ -215,10 +220,10 @@ class DeepAnalysis:
                          
                  
                   #if newpac not in present_packs 
-                     add=True
                      if newpacNoVersion not in missing_packs and newpacNoVersion not in present_packs and newpac not in present_packs :
                          add=True
                          for item in present_packs:
+                           print(item)
                            if newpac in item:
                              add=False      
                            elif newpacNoVersion in item:
@@ -251,7 +256,7 @@ class DeepAnalysis:
                       
                   if len(need_to_check) >0:
                      
-                     await self.MavenAnalyzeTransient(need_to_check, checked_packages, missing_packs)
+                     await self.MavenAnalyzeTransient(need_to_check, checked_packages, missing_packs, present_packs)
       
                return missing_packs
 
@@ -373,6 +378,7 @@ class DeepAnalysis:
                 pacsplit=pac.split("/")
                 pacGroup=pacsplit[1]
                 pacArtificat=pacsplit[2]
+                
                 if "swid" in pacsplit[0]:
                     pacArtificat=pacsplit[3]
                     pacGroup= "org." +pacGroup
@@ -388,7 +394,7 @@ class DeepAnalysis:
        if python=="True":
           await self.PythonAnalyzeTransient( set(present_packs), checked_pks, missing_packs)
        else:
-          await self.MavenAnalyzeTransient( set(present_packs), checked_pks, missing_packs)
+          await self.MavenAnalyzeTransient( set(present_packs), checked_pks, missing_packs,set(present_packs))
        percent= missed_items/(len(checked_pks) +missed_items) 
        print("There have been " + str(missed_items) + " packages whose pom cannot be found\n")
        print("There have been " + str(len(checked_pks)) + " checked dependencies/transitive dependencies.\nMissing packages found with " + str(percent*100) + "% of packages being unable to resolve a .pom." )
