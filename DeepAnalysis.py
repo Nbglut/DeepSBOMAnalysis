@@ -222,29 +222,22 @@ class DeepAnalysis:
                   #if newpac not in present_packs 
                      if newpacNoVersion not in missing_packs and newpacNoVersion not in present_packs and newpac not in present_packs :
                          add=True
-                         for item in present_packs:
-                           print(item)
-                           if newpac in item:
-                             add=False      
-                           elif newpacNoVersion in item:
-                               add= False
-                               print("\nA different version of " +  newpacNoVersion +" already present in SBOM" )
-
+                        
                          for item in missing_packs:
                            if newpac in item:
                              add=False
     
-                           elif newpacNoVersion in item:
+                           elif newpacNoVersion in item and add:
                                add= False
                                print("\nA different version of " + newpacNoVersion + " already in missing packages")
                          for item in checked_packages:
                            #print(item)
-                           if newpac in item:
+                           if newpac in item and add:
                              add=False
     
-                           elif newpacNoVersion in item :
+                           elif newpacNoVersion in item and add :
                                add= False
-                               print("\nA different version of " + newpacNoVersion + " already checked")
+                               print("\nA different version of " + newpacNoVersion + " already checked or present in SBOM")
 
                          if add:
                             print("Adding to missing packs " + newpac)   
