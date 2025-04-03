@@ -35,19 +35,23 @@ missed_items=0
 def getProperties(xml,space):
   properties_dict={}
   properties=xml.find('properties', space)
+  if properties is None:
+       properties=xml.find('properties')
+
   if properties is not None:
     for prop in properties:
        properties_dict[prop.tag.split('}')[-1]] = prop.text  
   parent=xml
   if xml.find('parent', space) is not None:
       parent=xml.find('parent', space)
+    
   if parent.find('groupId',space) is not None:
       properties_dict['project.groupId']=parent.find('groupId',space).text
   if parent.find('artifactId',space) is not None:
      properties_dict['project.artifactId']= parent.find('artifactId',space).text
   if parent.find('version',space) is not None:
      properties_dict['project.version']=parent.find('version',space).text
-
+  
        
 #find project version, project.groupId, 
        
@@ -75,13 +79,13 @@ async def get_XML_from_link(link):
                Gets the XML of a given link
         """
         global missed_items
+
         async with aiohttp.ClientSession() as session:
             async with session.get(link) as response:  # Non-blocking
                content= await response.text()
                try:
                   pkg_xml= ET.fromstring(content)
                   namespace = {'': 'http://maven.apache.org/POM/4.0.0'}
-                  properties= pkg_xml.find('properties',namespace)
                   prop_list=getProperties(pkg_xml,namespace)
                   return pkg_xml, prop_list
                except ET.ParseError as e:
@@ -186,10 +190,17 @@ class DeepAnalysis:
                   dependencies= pkg_xml.find('dependencies',namespace)
                   properties= pkg_xml.find('properties',namespace)
                   version=''
+                  if dependencies is None:
+                    dependencies=pkg_xml.find('dependencies')
+                    if dependencies is not None:
+                       namespace={'':''}
                   #if dependecies exist, get dependencies
                   if dependencies is not None:
+
                    for dependency in dependencies.findall('dependency',namespace):
-                    if dependency is not None:              
+                   # print(ET.tostring(dependencies,encoding="unicode"))          
+
+                    if dependency is not None:   
                   #dependency name found in <groupID> and then <artificatID> groupID/artificatID@<version>
                      groupID=dependency.find('groupId',namespace).text
                      artificatID=dependency.find('artifactId',namespace).text
@@ -220,32 +231,13 @@ class DeepAnalysis:
                          
                  
                   #if newpac not in present_packs 
-                     if newpacNoVersion not in missing_packs and newpacNoVersion not in present_packs and newpac not in present_packs :
-                         add=True
-                        
-                         for item in missing_packs:
-                           if newpac in item:
-                             add=False
-    
-                           elif newpacNoVersion in item and add:
-                               add= False
-                               print("\nA different version of " + newpacNoVersion + " already in missing packages")
-                         for item in checked_packages:
-                           #print(item)
-                           if newpac in item and add:
-                             add=False
-    
-                           elif newpacNoVersion in item and add :
-                               add= False
-                               print("\nA different version of " + newpacNoVersion + " already checked or present in SBOM")
-
-                         if add:
+                     if newpac not in missing_packs and newpac not in present_packs:
                             print("Adding to missing packs " + newpac)   
                             await self.add_to_missing_packs(newpac, missing_packs)
                    # If newpac not in checked
                      if newpac not in checked_packages and newpac not in need_to_check:
                          #print(newpac)
-                         need_to_check.add(newpac)
+                         await self.add_to_checked_packs(newpac,need_to_check)
                       
                   if len(need_to_check) >0:
                      
