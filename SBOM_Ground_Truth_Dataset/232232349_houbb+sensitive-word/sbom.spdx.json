@@ -234,7 +234,7 @@
       "spdxElementId": "SPDXRef-Package-jieba",
       "relatedSpdxElement": "SPDXRef-Package-commonslang3",
       "relationshipType": "DEPENDS_ON"
-    },
+    }
 
     
   ],

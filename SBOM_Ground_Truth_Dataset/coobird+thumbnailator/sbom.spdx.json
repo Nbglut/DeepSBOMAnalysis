@@ -196,17 +196,17 @@
       "relationshipType": "DEPENDS_ON"
     },
         {
-      "spdxElementId": "SPDXRef-Package-thumbnailtorjar",
+      "spdxElementId": "SPDXRef-RootPackage",
       "relatedSpdxElement": "SPDXRef-Package-junit1234",
       "relationshipType": "DEPENDS_ON"
     },
       {
-      "spdxElementId": "SPDXRef-Package-thumbnailtorjar",
+      "spdxElementId": "SPDXRef-RootPackage",
       "relatedSpdxElement": "SPDXRef-Package-hamcrestc0re",
       "relationshipType": "DEPENDS_ON"
     },
        {
-      "spdxElementId": "SPDXRef-Package-thumbnailtorjar",
+      "spdxElementId": "SPDXRef-RootPackage",
       "relatedSpdxElement": "SPDXRef-Package-mockitoc0re",
       "relationshipType": "DEPENDS_ON"
     },

@@ -111,7 +111,7 @@
       "relationshipType": "DEPENDS_ON"
     },
     {
-      "spdxElementId": "SPDXRef-Package-verbaljar",
+      "spdxElementId": "SPDXRef-RootPackage",
       "relatedSpdxElement": "SPDXRef-Package-junit",
       "relationshipType": "DEPENDS_ON"
     },

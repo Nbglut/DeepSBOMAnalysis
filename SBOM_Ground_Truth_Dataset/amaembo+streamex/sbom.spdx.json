@@ -128,7 +128,7 @@
       "relationshipType": "DEPENDS_ON"
     },
      {
-      "spdxElementId": "SPDXRef-Package-453EEEADCF77D0421B8240F818B7BE65071C12426E984C1314C2F9CE68498E0C",
+      "spdxElementId": "SPDXRef-RootPackage",
       "relatedSpdxElement": "SPDXRef-Package-junit1234",
       "relationshipType": "DEPENDS_ON"
     },
