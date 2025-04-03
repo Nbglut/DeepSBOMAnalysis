@@ -31,6 +31,73 @@
         }
       ]
     },
+    
+       {
+      "SPDXID": "SPDXRef-Package-junit1234",
+      "name": "junit.junit",
+      "versionInfo": "4.13.2",
+      "packageFileName": "junit-4.13.2.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://junit.org",
+      "licenseConcluded": "EPL-1.0",
+      "licenseDeclared": "EPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/junit/junit@4.13.2"
+        }
+      ]
+    },
+
+      {
+      "SPDXID": "SPDXRef-Package-hamcrestc0re",
+      "name": "org.hamcrest.hamcrest-core",
+      "versionInfo": "1.3",
+      "packageFileName": "hamcrest-core-1.3.jar",
+      "supplier": "Organization: Hamcrest",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://hamcrest.org/JavaHamcrest/",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.hamcrest/hamcrest-core@1.3"
+        }
+      ]
+    },
+      {
+      "SPDXID": "SPDXRef-Package-hamcrestlib",
+      "name": "org.hamcrest.hamcrest-library",
+      "versionInfo": "1.3",
+      "packageFileName": "hamcrest-library-1.3.jar",
+      "supplier": "Organization: Hamcrest",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://hamcrest.org/JavaHamcrest/",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.hamcrest/hamcrest-library@1.3"
+        }
+      ]
+    },
+
+
     {
       "SPDXID": "SPDXRef-RootPackage",
       "name": "streamex",
@@ -57,14 +124,30 @@
   "relationships": [
     {
       "spdxElementId": "SPDXRef-RootPackage",
-      "relatedSpdxElement": "SPDXRef-Package-C4B71B84E040240C8D909A275C612D9062279F55E209EA3E2D9F1750D268DF0F",
-      "relationshipType": "DEPENDS_ON"
-    },
-    {
-      "spdxElementId": "SPDXRef-RootPackage",
       "relatedSpdxElement": "SPDXRef-Package-453EEEADCF77D0421B8240F818B7BE65071C12426E984C1314C2F9CE68498E0C",
       "relationshipType": "DEPENDS_ON"
+    },
+     {
+      "spdxElementId": "SPDXRef-Package-453EEEADCF77D0421B8240F818B7BE65071C12426E984C1314C2F9CE68498E0C",
+      "relatedSpdxElement": "SPDXRef-Package-junit1234",
+      "relationshipType": "DEPENDS_ON"
+    },
+     {
+      "spdxElementId": "SPDXRef-Package-junit1234",
+      "relatedSpdxElement": "SPDXRef-Package-hamcrestc0re",
+      "relationshipType": "DEPENDS_ON"
+    },
+ {
+      "spdxElementId": "SPDXRef-Package-junit1234",
+      "relatedSpdxElement": "SPDXRef-Package-hamcrestlib",
+      "relationshipType": "DEPENDS_ON"
+    },
+     {
+      "spdxElementId": "SPDXRef-Package-hamcrestlib",
+      "relatedSpdxElement": "SPDXRef-Package-hamcrestc0re",
+      "relationshipType": "DEPENDS_ON"
     }
+  
   ],
   "documentDescribes": ["SPDXRef-RootPackage"]
 }
