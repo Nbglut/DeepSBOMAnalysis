@@ -62,8 +62,8 @@
       "filesAnalyzed": false,
       "checksums": [],
       "homepage": "http://hamcrest.org/JavaHamcrest/",
-      "licenseConcluded": "BSD 3-Clause",
-      "licenseDeclared": "BSD 3-Clause",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
       "copyrightText": "NOASSERTION",
       "externalRefs": [
         {
@@ -73,6 +73,28 @@
         }
       ]
     },
+     {
+      "SPDXID": "SPDXRef-Package-hamcrestc0re1",
+      "name": "org.hamcrest.hamcrest-core",
+      "versionInfo": "1.1",
+      "packageFileName": "hamcrest-core-1.1.jar",
+      "supplier": "Organization: Hamcrest",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://hamcrest.org/JavaHamcrest/",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.hamcrest/hamcrest-core@1.1"
+        }
+      ]
+    },
+
        {
       "SPDXID": "SPDXRef-Package-hamcrestlib",
       "name": "org.hamcrest.hamcrest-library",
@@ -83,8 +105,8 @@
       "filesAnalyzed": false,
       "checksums": [],
       "homepage": "http://hamcrest.org/JavaHamcrest/",
-      "licenseConcluded": "BSD 3-Clause",
-      "licenseDeclared": "BSD 3-Clause",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
       "copyrightText": "NOASSERTION",
       "externalRefs": [
         {
@@ -207,7 +229,13 @@
       "spdxElementId": "SPDXRef-Package-mockitoc0re",
       "relatedSpdxElement": "SPDXRef-Package-objenesis",
       "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-mockitoc0re",
+      "relatedSpdxElement": "SPDXRef-Package-hamcrestc0re1",
+      "relationshipType": "DEPENDS_ON"
     }
+    
     
     
     
