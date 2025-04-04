@@ -163,7 +163,7 @@ class DeepAnalysis:
 
                 
                   if pac not in missing_packs and pac not in present_packs and add:
-                         print("Adding " + pac + " to missing packs")
+                         #print("Adding " + pac + " to missing packs")
                          await self.add_to_missing_packs(pac, missing_packs)
                  #add to checked_pacs
                   await self.add_to_checked_packs(pac,checked_packages)  
@@ -227,7 +227,7 @@ class DeepAnalysis:
                  
                   #if newpac not in present_packs 
                      if newpac not in missing_packs and newpac not in present_packs:
-                            print("Adding to missing packs " + newpac)   
+                            #print("Adding to missing packs " + newpac)   
                             await self.add_to_missing_packs(newpac, missing_packs)
                    # If newpac not in checked
                      if newpac not in checked_packages and newpac not in need_to_check:
@@ -355,13 +355,16 @@ class DeepAnalysis:
              if package['name'] != self.SBOMContents['name']:
                if 'externalRefs' in package:
                 pac=package['externalRefs']
-                pac=pac[0]['referenceLocator']
+                pac=pac[-1]['referenceLocator']
                 pacsplit=pac.split("/")
                 pacGroup=""
                 pacArtificat=""
-                if len(pacsplit)==1:
-                  pacsplit=pac.split(":")
+                if len(pacsplit)>=3:
+                  pacGroup=pacsplit[1]
+                  pacArtificat=pacsplit[2]
+
                 else:
+                  pacsplit=pac.split(":")
                   pacGroup=pacsplit[3]
                   pacArtificat=pacsplit[4]
                   pacArtificat+="@"+pacsplit[5]
@@ -371,7 +374,6 @@ class DeepAnalysis:
                     pacGroup= "org." +pacGroup
                     continue
                 pac=pacGroup+ "/" +pacArtificat
-                pacArtificatSplit=pacArtificat.split("@")
                 present_packs.append(pac)
                 
               

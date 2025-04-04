@@ -16,10 +16,16 @@ from deepdiff import DeepDiff
 import copy
 import random
 from SBOM import SBOM
+import re 
 
 
-
-
+def normalize_name(name):
+    # Strip group prefixes like org.mockito or com.example 
+       if len(name.split('.')) >1:
+          return name.split('.')[-1]
+          
+       return name.split(':')[-1]
+       
 class CompareSBOMs:
     """
 
@@ -32,6 +38,10 @@ class CompareSBOMs:
         self.removed_pack={}
 
 
+ 
+
+
+
 
     def findTruthSBOMs(self):
         """
@@ -41,6 +51,10 @@ class CompareSBOMs:
         self.SBOMjsonTruth= self.TruthSBOM.getJson()
         if 'sbom' in  self.SBOMjsonTruth:
           self.SBOMjsonTruth=self.SBOMjsonTruth['sbom']
+        for item in self.SBOMjsonTruth.get('packages', []):
+            if 'name' in item:
+              item['name'] = normalize_name(item['name'])
+           
 
 
 
@@ -51,7 +65,8 @@ class CompareSBOMs:
         self.SBOMjsonTruth=truth
         if 'sbom' in  self.SBOMjsonTruth:
           self.SBOMjsonTruth=self.SBOMjsonTruth['sbom']
-
+        for item in self.SBOMjsonTruth['packages']:
+           item['name'] = normalize_name(item['name'])
 
 
 
@@ -62,7 +77,12 @@ class CompareSBOMs:
         self.SBOMjsonNonTruth=nontruth
         if 'sbom' in  self.SBOMjsonNonTruth:
           self.SBOMjsonNonTruth=self.SBOMjsonNonTruth['sbom']
-
+        #print("Dependencies present in generated SBOM")
+        for item in self.SBOMjsonNonTruth['packages']:
+           item['name'] = normalize_name(item['name'])
+          # print(item['name'])
+           
+           
     def RandomizeNonTruth(self):
         """
                 Makes random changes to  self.SBOMjsonTruth and saves it to self.SBOMjsonNonTruth
@@ -139,8 +159,16 @@ class CompareSBOMs:
            Uses the nonTruthSBOmjson and the TruthSBOMjson and compares the two 
         """
         output=""
-        difference = DeepDiff(self.SBOMjsonTruth,self.SBOMjsonNonTruth, ignore_order=True)   
+   
+  
+
         
+        
+        
+        
+        difference = DeepDiff(self.SBOMjsonTruth,self.SBOMjsonNonTruth, ignore_order=True)   
+        print("\nDifferences found by DeepDiff\n")
+
         self.removed_packages = []
         self.add_packages = []
         changed_items=[]
@@ -150,15 +178,16 @@ class CompareSBOMs:
                 for key, package in difference['iterable_item_removed'].items():
                    # Check if 'name' key exists in the package
                     if 'name' in package:
-                      self.removed_packages.append(package['name'])
+                      self.removed_packages.append(package['name'] + "@" + package['versionInfo'])
                 for item in self.removed_packages:
+                
                     output= output + str(differences) +". "+ item + " present in truth but not nonTruth\n"
                     differences=differences+1
              if 'iterable_item_added' in difference:
                 for key, package in difference['iterable_item_added'].items():
                    # Check if 'name' key exists in the package
                     if 'name' in package:
-                      self.add_packages.append(package['name'])
+                      self.add_packages.append(package['name'] + "@" + package['versionInfo'])
                 for item in self.add_packages:
                     output= output + str(differences) + ". " + item + " not present in truth but present in nonTruth\n"
                     differences=differences +1
@@ -202,12 +231,29 @@ class CompareSBOMs:
                 print( str(differences-1)  + " difference(s) found:\n")
              #print(difference)
                 print(output)
-               # print(difference)
         else:
            if printDiffs:
               print("No differences found.")
 
-      
+
+    
+        packs_in_Truth=[]
+        packs_in_NonTruth=[]
+        print("\n\nDependencies in Ground Truth missing from Generated SBOM:\n")
+        for item in self.SBOMjsonTruth.get('packages', []): 
+          if 'name' in item:
+              addname=normalize_name(item['name'])
+              if 'versionInfo' in item:
+                addname+= "@"+ item[ 'versionInfo']
+              packs_in_Truth.append(addname)
+        for item in self.SBOMjsonNonTruth.get('packages', []): 
+          if 'name' in item:
+              addname=normalize_name(item['name'])
+              if 'versionInfo' in item:
+                addname+= "@"+ item[ 'versionInfo']
+              packs_in_NonTruth.append(addname)
+        missing_from_nontruth = [item for item in packs_in_Truth if item not in packs_in_NonTruth]
+        print(missing_from_nontruth)
 
       
 
