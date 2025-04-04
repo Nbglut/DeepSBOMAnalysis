@@ -607,7 +607,7 @@
   {
       "SPDXID": "SPDXRef-Package-houbbHeaven129",
       "name": "com.github.houbb.heaven",
-      "versionInfo": "0.2.0",
+      "versionInfo": "0.1.29",
       "packageFileName": "heaven-0.1.29.jar",
       "supplier": "Person: houbb (houbinbin.echo@gmail.com)",
       "downloadLocation": "https://repo1.maven.org/maven2/com/github/houbb/heaven/0.1.29/heaven-0.1.29.jar",
