@@ -140,6 +140,7 @@ class CompareSBOMs:
         """
         output=""
         difference = DeepDiff(self.SBOMjsonTruth,self.SBOMjsonNonTruth, ignore_order=True)   
+        
         self.removed_packages = []
         self.add_packages = []
         changed_items=[]
@@ -151,7 +152,7 @@ class CompareSBOMs:
                     if 'name' in package:
                       self.removed_packages.append(package['name'])
                 for item in self.removed_packages:
-                    output= output + str(differences) +". "+ item + " present in SBOM 1 but not SBOM 2\n"
+                    output= output + str(differences) +". "+ item + " present in truth but not nonTruth\n"
                     differences=differences+1
              if 'iterable_item_added' in difference:
                 for key, package in difference['iterable_item_added'].items():
@@ -167,8 +168,11 @@ class CompareSBOMs:
              if 'values_changed' in difference and not onlypack:
                 for key, package in difference['values_changed'].items():
                    # Check if 'package' is part of key
-                    if 'packages' in key:                  
-                      package_index = int(key.split(']')[2][1:])  # Extract index of the package
+                    if 'packages' in key:   
+                      index=2
+                      if key.split(']')[2]=='':
+                         index=1
+                      package_index = int(key.split(']')[index][1:])  # Extract index of the package
                       package_name = self.SBOMjsonTruth['packages'][package_index ]['name']  
                       output= output + str(differences)  +  ". The information about package/dependency " + package_name + " is not equal\n"
                       differences=differences+1
@@ -198,6 +202,7 @@ class CompareSBOMs:
                 print( str(differences-1)  + " difference(s) found:\n")
              #print(difference)
                 print(output)
+               # print(difference)
         else:
            if printDiffs:
               print("No differences found.")

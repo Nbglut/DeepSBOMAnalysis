@@ -59,4 +59,4 @@ if __name__ == "__main__":
     compare= CompareSBOMs(repo)
     compare.findTruthSBOMs()
     compare.setNonTruth(test_SBOM.getFileContents())
-    compare.compareSBOMs()
+    compare.CompareSBOMs()

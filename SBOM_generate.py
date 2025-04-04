@@ -56,6 +56,8 @@ class SBOM_generate:
         with open(output_file, "w") as f:
             subprocess.run(command, stdout=f, check=True)
         print(f"Syft SBOM saved: {output_file}")
+        self.files.append(output_file)
+
     except FileNotFoundError:
         print("Error: Syft is not installed or not found in PATH.")
     except subprocess.CalledProcessError as e:
@@ -67,6 +69,8 @@ class SBOM_generate:
     try:
         subprocess.run(command, check=True)
         print(f"Trivy SBOM saved: {output_file}")
+        self.files.append(output_file)
+
     except FileNotFoundError:
         print("Error: Trivy is not installed or not found in PATH.")
     except subprocess.CalledProcessError as e:
@@ -85,7 +89,7 @@ class SBOM_generate:
     
     print("Generating Microsoft SBOM...")
     try:
-        subprocess.run(f"sbom-tool generate -b {repo_name} -bc {repo_name} -pn {repo_name} -pv 1.0.0 -ps 'GitHub' -nsb 'https://github.com/{owner}/{repo}'", shell=True, check=True)
+        subprocess.run(f"sbom-tool generate -b {repo_name} -bc {repo_name} -pn {repo_name} -pv 1.0.0 -ps 'GitHub' -nsb 'https://github.com/{owner}/{repo} -m .", shell=True, check=True)
         print("Microsoft SBOM generation complete.")
     except subprocess.CalledProcessError as e:
         print(f"Error generating Microsoft SBOM: {e}")

@@ -161,11 +161,7 @@ class DeepAnalysis:
                   else: 
                    tasks.append( get_XML_from_link(linkPart1 + "/" +pacArtificat +  ".pom"))
 
-                  pacNoVersion=pac.split("@")[-1]
-                  add=True
-                  for item in present_packs:
-                    if pacNoVersion in item:
-                        add=False
+                
                   if pac not in missing_packs and pac not in present_packs and add:
                          print("Adding " + pac + " to missing packs")
                          await self.add_to_missing_packs(pac, missing_packs)
@@ -225,7 +221,6 @@ class DeepAnalysis:
                           
                 #newpac=   groupID/artificatID@<version>
                      newpac= groupID + "/" +artificatID
-                     newpacNoVersion=newpac
                      if version != "":
                          newpac+="@" + version
                          
@@ -358,11 +353,18 @@ class DeepAnalysis:
        else:
           for package in pks:
              if package['name'] != self.SBOMContents['name']:
+               if 'externalRefs' in package:
                 pac=package['externalRefs']
                 pac=pac[0]['referenceLocator']
                 pacsplit=pac.split("/")
-                pacGroup=pacsplit[1]
-                pacArtificat=pacsplit[2]
+                pacGroup=""
+                pacArtificat=""
+                if len(pacsplit)==1:
+                  pacsplit=pac.split(":")
+                else:
+                  pacGroup=pacsplit[3]
+                  pacArtificat=pacsplit[4]
+                  pacArtificat+="@"+pacsplit[5]
                 
                 if "swid" in pacsplit[0]:
                     pacArtificat=pacsplit[3]
@@ -380,7 +382,9 @@ class DeepAnalysis:
           await self.PythonAnalyzeTransient( set(present_packs), checked_pks, missing_packs)
        else:
           await self.MavenAnalyzeTransient( set(present_packs), checked_pks, missing_packs,set(present_packs))
-       percent= missed_items/(len(checked_pks) +missed_items) 
+       percent=0
+       if len(checked_pks) + missed_items >0:
+        percent= missed_items/(len(checked_pks) +missed_items) 
        print("There have been " + str(missed_items) + " packages whose pom cannot be found\n")
        print("There have been " + str(len(checked_pks)) + " checked dependencies/transitive dependencies.\nMissing packages found with " + str(percent*100) + "% of packages being unable to resolve a .pom." )
        self.missing_packs=missing_packs
