@@ -26,6 +26,7 @@ from CompareSBOMs import CompareSBOMs
 import asyncio
 import aiohttp
 import xml.etree.ElementTree as ET
+import chardet
 
 
 lock = asyncio.Lock()
@@ -82,8 +83,12 @@ async def get_XML_from_link(link):
 
         async with aiohttp.ClientSession() as session:
             async with session.get(link) as response:  # Non-blocking
-               content= await response.text()
                try:
+               #detect encoding
+                  raw= await response.read()
+                  detect=chardet.detect(raw)
+                  encoding=detect.get('encoding','utf-8')
+                  content=raw.decode(encoding,errors='replace')
                   pkg_xml= ET.fromstring(content)
                   namespace = {'': 'http://maven.apache.org/POM/4.0.0'}
                   prop_list=getProperties(pkg_xml,namespace)
