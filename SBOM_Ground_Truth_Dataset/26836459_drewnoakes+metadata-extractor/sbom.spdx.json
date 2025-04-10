@@ -1,0 +1,402 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.2",
+  "name": "metadata-extractor 0c3452bf1c4556724930281ffd97f65b66bfd697",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://spdx.org/spdxdocs/sbom-tool-2.2.9-7de1d717-77bc-4ce5-b74f-d8a69234b736/metadata-extractor/0c3452bf1c4556724930281ffd97f65b66bfd697/ofod0aBIMkC8hXt2HO5Q0g",
+  "creationInfo": {
+    "creators": ["Tool: Microsoft.SBOMTool-2.2.9", "Tool: SbomDatasetGnerator"],
+    "created": "2024-12-04T23:31:38Z"
+  },
+  "files": [],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-xmpcore6111",
+      "name": "com.adobe.xmp.xmpcore",
+      "versionInfo": "6.1.11",
+      "packageFileName": "xmpcore-6.1.11.jar",
+      "supplier": "Person: Priyanka Gupta (prigupta@adobe.com)",
+      "downloadLocation": "https://repo1.maven.org/maven2/com/adobe/xmp/xmpcore/6.1.11/xmpcore-6.1.11.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://www.adobe.com/devnet/xmp/library/eula-xmp-library-java.html",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.adobe.xmp/xmpcore@6.1.11"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-junit4131",
+      "name": "junit.junit",
+      "versionInfo": "4.13.1",
+      "packageFileName": "junit-4.13.1.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/junit/junit/4.13.1/junit-4.13.1.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://junit.org",
+      "licenseConcluded": "EPL-1.0",
+      "licenseDeclared": "EPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/junit/junit@4.13.1"
+        }
+      ]
+    },
+      {
+      "SPDXID": "SPDXRef-Package-junit482",
+      "name": "junit.junit",
+      "versionInfo": "4.8.2",
+      "packageFileName": "junit-4.8.2.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/junit/junit/4.8.2/junit-4.8.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://junit.org",
+      "licenseConcluded": "EPL-1.0",
+      "licenseDeclared": "EPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/junit/junit@4.8.2"
+        }
+      ]
+    },
+        {
+      "SPDXID": "SPDXRef-Package-junit381",
+      "name": "junit.junit",
+      "versionInfo": "3.8.1",
+      "packageFileName": "junit-3.8.1.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/junit/junit/3.8.1/junit-3.8.1.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://junit.org",
+      "licenseConcluded": "EPL-1.0",
+      "licenseDeclared": "EPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/junit/junit@3.8.1"
+        }
+      ]
+    },
+    
+      {
+      "SPDXID": "SPDXRef-Package-junitaddons14",
+      "name": "junit-addons.junit-addons",
+      "versionInfo": "1.4",
+      "packageFileName": "junit-addons-1.4.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/junit-addons/junit-addons/1.4/junit-addons-3.8.1.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://junit.org",
+      "licenseConcluded": "EPL-1.0",
+      "licenseDeclared": "EPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/junit-addons/junit-addons@1.4"
+        }
+      ]
+      
+    },
+    
+      
+      {
+      "SPDXID": "SPDXRef-Package-xercesimpl2110",
+      "name": "xerces.xercesImpl",
+      "versionInfo": "2.11.0",
+      "packageFileName": "xercesImpl-2.11.0.jar",
+      "supplier": "Organization: Xerces",
+      "downloadLocation": "https://repo1.maven.org/maven2/xerces/xercesImpl/2.11.0/pl-2.11.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://xerces.apache.org/xerces2-j/",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/xerces/xercesImpl@2.11.0"
+        }
+      ]
+    },
+    
+         {
+      "SPDXID": "SPDXRef-Package-xercesimpl262",
+      "name": "xerces.xercesImpl",
+      "versionInfo": "2.6.2",
+      "packageFileName": "xercesImpl-2.6.2.jar",
+      "supplier": "Organization: Xerces",
+      "downloadLocation": "https://repo1.maven.org/maven2/xerces/xercesImpl/2.6.2/xercesImpl-2.6.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://xerces.apache.org/xerces2-j/",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/xerces/xercesImpl@2.6.2"
+        }
+      ]
+    },
+    
+             {
+      "SPDXID": "SPDXRef-Package-xercesxmlParseApIs262",
+      "name": "xerces.xmlParserAPIs",
+      "versionInfo": "2.6.2",
+      "packageFileName": "xmlParserAPIs-2.6.2.jar",
+      "supplier": "Organization: Xerces",
+      "downloadLocation": "https://repo1.maven.org/maven2/xerces/xmlParserAPIs/2.6.2/xmlParserAPIs-2.6.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://xerces.apache.org/xerces2-j/",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/xerces/xmlParserAPIs@2.6.2"
+        }
+      ]
+    },
+    
+       
+             {
+      "SPDXID": "SPDXRef-Package-xmlapisxmlapis1401",
+      "name": "xml-apis.xml-apis",
+      "versionInfo": "1.4.01",
+      "packageFileName": "xml-apis-1.4.01.jar",
+      "supplier": "Organization: Apache Software Foundation",
+      "downloadLocation": "https://repo1.maven.org/maven2/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://xml.apache.org/commons/components/external/",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/xml-apis/xml-apis@1.4.01"
+        }
+      ]
+    },
+            {
+      "SPDXID": "SPDXRef-Package-xmlresolver12",
+      "name": "xml-resolver.xml-resolver",
+      "versionInfo": "1.2",
+      "packageFileName": "xml-resolver-1.2.jar",
+      "supplier": "Organization: Apache Software Foundation",
+      "downloadLocation": "https://repo1.maven.org/maven2/xml-resolver/xml-resolver/1.2/xml-resolver-1.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://xml.apache.org/commons/components/resolver/",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/xml-resolver/xml-resolver@1.2"
+        }
+      ]
+    },
+    
+    
+  
+    
+    
+    {
+      "SPDXID": "SPDXRef-Package-metadataextractor",
+      "name": "com.drewnoakes.metadata-extractor",
+      "versionInfo": "2.19.0",
+      "packageFileName": "metadata-extractor-2.19.0.jar",
+      "supplier": "Person: Drew Noakes",
+      "downloadLocation": "https://repo1.maven.org/maven2/com/drewnoakes/metadata-extractor/2.19.0/metadata-extractor-2.19.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://drewnoakes.com/code/exif/",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.drewnoakes/metadata-extractor@2.19.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-hamcrestcore13",
+      "name": "org.hamcrest.hamcrest-core",
+      "versionInfo": "1.3",
+      "packageFileName": "hamcrest-core-1.3.jar",
+      "supplier": "Organization: Hamcrest",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/hamcrest/JavaHamcrest",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "Copyright (c) 2000-2006, www.hamcrest.org\r\nAll rights reserved.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.hamcrest/hamcrest-core@1.3"
+        }
+      ]
+    },
+     {
+      "SPDXID": "SPDXRef-Package-hamcrestlibrary13",
+      "name": "org.hamcrest.hamcrest-library",
+      "versionInfo": "1.3",
+      "packageFileName": "hamcrest-library-1.3.jar",
+      "supplier": "Organization: Hamcrest",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/hamcrest/hamcrest-library/1.3/hamcrest-core-1.3.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/hamcrest/JavaHamcrest",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "Copyright (c) 2000-2006, www.hamcrest.org\r\nAll rights reserved.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.hamcrest/hamcrest-library@1.3"
+        }
+      ]
+    },
+
+    {
+      "SPDXID": "SPDXRef-RootPackage",
+      "name": "metadata-extractor",
+      "versionInfo": "0c3452bf1c4556724930281ffd97f65b66bfd697",
+      "packageFileName": "./",
+      "supplier": "Organization: drewnoakes",
+      "downloadLocation": "git\u002Bhttps://github.com/drewnoakes/metadata-extractor.git",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/drewnoakes/metadata-extractor",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "Copyright 2002-2023 Drew Noakes and contributors",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/drewnoakes/spdx.org/metadata-extractor@0c3452bf1c4556724930281ffd97f65b66bfd697?tag_id=19186173-3851-4a0c-a1d2-7c5ab00da971"
+        }
+      ]
+    }
+  ],
+  "snippets": [],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-metadataextractor",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-junit4131",
+      "relationshipType": "DEPENDS_ON"
+    },
+      {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-xmpcore6111",
+      "relationshipType": "DEPENDS_ON"
+    },
+        {
+      "spdxElementId": "SPDXRef-Package-xmpcore6111",
+      "relatedSpdxElement": "SPDXRef-Package-xercesimpl2110",
+      "relationshipType": "DEPENDS_ON"
+    },
+      {
+      "spdxElementId": "SPDXRef-Package-xmpcore6111",
+      "relatedSpdxElement": "SPDXRef-Package-junit482",
+      "relationshipType": "DEPENDS_ON"
+    },
+       {
+      "spdxElementId": "SPDXRef-Package-xmpcore6111",
+      "relatedSpdxElement": "SPDXRef-Package-junitaddons14",
+      "relationshipType": "DEPENDS_ON"
+    },
+        {
+      "spdxElementId": "SPDXRef-Package-junitaddons14",
+      "relatedSpdxElement": "SPDXRef-Package-junit381",
+      "relationshipType": "DEPENDS_ON"
+    },
+        {
+      "spdxElementId": "SPDXRef-Package-junitaddons14",
+      "relatedSpdxElement": "SPDXRef-Package-xercesimpl262",
+      "relationshipType": "DEPENDS_ON"
+    },
+       {
+      "spdxElementId": "SPDXRef-Package-junitaddons14",
+      "relatedSpdxElement": "SPDXRef-Package-xercesxmlParseApIs262",
+      "relationshipType": "DEPENDS_ON"
+    },
+    
+       {
+      "spdxElementId": "SPDXRef-Package-xercesimpl2110",
+      "relatedSpdxElement": "SPDXRef-Package-xmlresolver12",
+      "relationshipType": "DEPENDS_ON"
+    },
+       {
+      "spdxElementId": "SPDXRef-Package-xercesimpl2110",
+      "relatedSpdxElement": "SPDXRef-Package-xmlapisxmlapis1401",
+      "relationshipType": "DEPENDS_ON"
+    },
+    
+       {
+      "spdxElementId": "SPDXRef-Package-junit4131",
+      "relatedSpdxElement": "SPDXRef-Package-hamcrestcore13",
+      "relationshipType": "DEPENDS_ON"
+    },
+      {
+      "spdxElementId": "SPDXRef-Package-junit4131",
+      "relatedSpdxElement": "SPDXRef-Package-hamcrestlibrary13",
+      "relationshipType": "DEPENDS_ON"
+    },
+        {
+      "spdxElementId": "SPDXRef-Package-hamcrestlibrary13",
+      "relatedSpdxElement": "SPDXRef-Package-hamcrestcore13",
+      "relationshipType": "DEPENDS_ON"
+    }
+      
+      
+      
+  
+  ],
+  "documentDescribes": ["SPDXRef-RootPackage"]
+}
