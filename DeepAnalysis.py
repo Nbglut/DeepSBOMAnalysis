@@ -111,7 +111,7 @@ class DeepAnalysis:
         self.SBOMContents= SBOM1
         self.missing_packs={}
         self.checked_packs={}
-    
+        self.licenses={}
    
     def getMissingPacks(self):
         """
