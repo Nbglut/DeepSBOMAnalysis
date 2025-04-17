@@ -195,11 +195,16 @@ async def main():
                 fileContents = json.load(file)
           if 'sbom' in fileContents:
                 fileContents=fileContents['sbom']
-          analyzer=DeepAnalysis(fileContents)
+          analyzer=DeepAnalysis(fileContents, owner, repo)
           await analyzer.Analyze()
           missing_packs=analyzer.getMissingPacks()         
-          print("\nDeep Analysis Results:\n\nThe SBOM was missing " + str(len(missing_packs)) + " transitive dependencies of dependencies already present in it.\n")
-          newfileContents=restoreSBOM(fileContents, missing_packs)
+          print("\nDeep Analysis Results:\n\nThe SBOM was missing " + str(len(missing_packs)) + " transitive dependencies.\n")
+
+          missingdirect = analyzer.getMissingDirectPacks()
+          print("\nThe SBOM was missing " + str(len(missingdirect)) + " direct dependencies.\n")
+
+          allmissing_packs=missing_packs+missingdirect
+          newfileContents=restoreSBOM(fileContents, allmissing_packs)
      
           filename=filename.split("json")[0]
           with open(filename+'_restored.json', 'w') as file:

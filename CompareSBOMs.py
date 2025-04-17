@@ -178,7 +178,10 @@ class CompareSBOMs:
                 for key, package in difference['iterable_item_removed'].items():
                    # Check if 'name' key exists in the package
                     if 'name' in package:
-                      self.removed_packages.append(package['name'] + "@" + package['versionInfo'])
+                      pack_name=package['name']
+                      if 'versionInfo' in package:
+                         pack_name=package['name']+ "@" + package['versionInfo']
+                      self.removed_packages.append(pack_name)
                 for item in self.removed_packages:
                 
                     output= output + str(differences) +". "+ item + " present in truth but not nonTruth\n"
@@ -187,7 +190,11 @@ class CompareSBOMs:
                 for key, package in difference['iterable_item_added'].items():
                    # Check if 'name' key exists in the package
                     if 'name' in package:
-                      self.add_packages.append(package['name'] + "@" + package['versionInfo'])
+                      pack_name=package['name']
+                      if 'versionInfo' in package:
+                         pack_name=package['name']+ "@" + package['versionInfo']
+
+                      self.add_packages.append(pack_name)
                 for item in self.add_packages:
                     output= output + str(differences) + ". " + item + " not present in truth but present in nonTruth\n"
                     differences=differences +1

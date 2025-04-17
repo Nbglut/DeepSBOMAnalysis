@@ -110,7 +110,7 @@ class SBOM_generate:
     return self.files
       
 # Function to generate SBOM based on selection
-  def generate_sbom(self):
+  def generate_sbom(self, owner,repo):
     GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
     if not GITHUB_TOKEN:
         print("Error: GitHub token not found. Please set the GITHUB_TOKEN environment variable.")
@@ -127,10 +127,7 @@ class SBOM_generate:
     choices = {"1": "github", "2": "syft", "3": "trivy", "4": "microsoft"}
     selected_generators = set(choices.values()) if "0" in selection else {choices[c] for c in selection.split(",") if c in choices}
     
-    owner, repo = None, None
     if "github" in selected_generators:
-        owner = input("Enter GitHub repo owner: ")
-        repo = input("Enter GitHub repo name: ")
         sbom_data = self.get_github_sbom(owner, repo, GITHUB_TOKEN)
         if sbom_data:
             self.save_json(sbom_data, f"{repo}_sbom_spdx_github.json")
@@ -158,13 +155,13 @@ class SBOM_generate:
                 self.generate_trivy_sbom(target, trivy_output_file, is_image)
 
     if "microsoft" in selected_generators:
-        if not owner or not repo:
-            owner = input("Enter GitHub repo owner: ")
-            repo = input("Enter GitHub repo name: ")
-        self.generate_microsoft_sbom(owner, repo)
+         self.generate_microsoft_sbom(owner, repo)
         
         
         
 if __name__ == "__main__":
+     owner = input("Enter GitHub repo owner: ")
+     repo = input("Enter GitHub repo name: ")
+
      gen=SBOM_generate()
-     gen.generate_sbom()
+     gen.generate_sbom(owner,repo)
