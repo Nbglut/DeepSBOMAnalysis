@@ -42,6 +42,7 @@ def getProperties(xml,space):
   if properties is not None:
     for prop in properties:
        properties_dict[prop.tag.split('}')[-1]] = prop.text  
+ 
   parent=xml
   if xml.find('parent', space) is not None:
       parent=xml.find('parent', space)
@@ -164,7 +165,9 @@ class DeepAnalysis:
        with open(item, 'r', encoding='utf-8') as f:
           content = f.read()
           if "gradle" in item:
-            dependencies = re.findall(r'^\s*(?:compile|implementation|api|testCompile|runtimeOnly|compileOnly)\s+[\'"]([^\'"]+)[\'"]', content,re.MULTILINE)
+            dependencies = re.findall(r'^\s*(?:classpath|implementation|api|compile|compileOnly|runtimeOnly|testImplementation|testCompile)\s+[\'"]([^\'"]+)[\'"]', content,re.MULTILINE)
+            
+            
             for dep in dependencies:
               #in form "group:artificat:version"
               splitdep=dep.split(":")
@@ -184,14 +187,20 @@ class DeepAnalysis:
           if ".xml" in item:
             pkg_xml= ET.fromstring(content)
             namespace = {'': 'http://maven.apache.org/POM/4.0.0'}
+            prop_dict=getProperties(pkg_xml,namespace)
+            if pkg_xml.find('dependencyManagement',namespace) is not None:
+                pkg_xml=pkg_xml.find('dependencyManagement',namespace)
+            
             dependencies= pkg_xml.find('dependencies',namespace)
             if dependencies is None:
                   dependencies=pkg_xml.find('dependencies')
                   if dependencies is not None:
                        namespace={'':''}
-                  #if dependecies exist, get dependencies
-            if dependencies is not None:
+                  prop_dict=getProperties(pkg_xml,namespace)
 
+                  #if dependecies exist, get dependencies
+
+            if dependencies is not None:
                 for dependency in dependencies.findall('dependency',namespace):
                     if dependency is not None:   
                      groupID=dependency.find('groupId',namespace).text
@@ -199,10 +208,18 @@ class DeepAnalysis:
                      version=""
                      if dependency.find('version',namespace) is not None:
                          version=dependency.find('version',namespace).text
+                         
+                     for key, value in prop_dict.items():
+                             if value is None:
+                                value = version      
+                             version = version.replace(f"${{{key}}}", value)
+                             artificatID = artificatID.replace(f"${{{key}}}", value)
+                             groupID = groupID.replace(f"${{{key}}}", value)
+
                      dependency=groupID+"/"+artificatID
                      if version !="":
                         dependency+="@"+ version
-                    directdeps.append(dependency)                     
+                     directdeps.append(dependency)                     
 
 
                        
@@ -271,6 +288,9 @@ class DeepAnalysis:
                   namespace = {'': 'http://maven.apache.org/POM/4.0.0'}
                   dependencies= pkg_xml.find('dependencies',namespace)
                   properties= pkg_xml.find('properties',namespace)
+                       
+                  if pkg_xml.find('dependencyManagement',namespace) is not None:
+                      pkg_xml=pkg_xml.find('dependencyManagement',namespace)
                   version=''
                   if dependencies is None:
                     dependencies=pkg_xml.find('dependencies')
@@ -296,10 +316,10 @@ class DeepAnalysis:
                      if properties_dict is not None:
                        #print(version)
                        for key, value in properties_dict.items():
-                            # print("Key: " + key)
                              if value is None:
                                 value = version
-
+                                
+                                
                              version = version.replace(f"${{{key}}}", value)
                              artificatID = artificatID.replace(f"${{{key}}}", value)
                              groupID = groupID.replace(f"${{{key}}}", value)
