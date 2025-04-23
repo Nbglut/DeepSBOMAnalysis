@@ -110,23 +110,24 @@ class SBOM_generate:
     return self.files
       
 # Function to generate SBOM based on selection
-  def generate_sbom(self, owner,repo):
+  def generate_sbom(self, owner,repo, generator=""):
     GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
     if not GITHUB_TOKEN:
         print("Error: GitHub token not found. Please set the GITHUB_TOKEN environment variable.")
         exit(1)
-
-    print("Select SBOM generators (comma-separated):")
-    print("  0. All")
-    print("  1. GitHub")
-    print("  2. Syft")
-    print("  3. Trivy")
-    print("  4. Microsoft SBOM Tool")
-    
-    selection = input("Enter your choice: ").strip()
-    choices = {"1": "github", "2": "syft", "3": "trivy", "4": "microsoft"}
-    selected_generators = set(choices.values()) if "0" in selection else {choices[c] for c in selection.split(",") if c in choices}
-    
+    if generator =="":
+       print("Select SBOM generators (comma-separated):")
+       print("  0. All")
+       print("  1. GitHub")
+       print("  2. Syft")
+       print("  3. Trivy")
+       print("  4. Microsoft SBOM Tool")
+       selection = input("Enter your choice: ").strip()
+       choices = {"1": "github", "2": "syft", "3": "trivy", "4": "microsoft"}
+       selected_generators = set(choices.values()) if "0" in selection else {choices[c] for c in selection.split(",") if c in choices}
+    else:
+       selected_generators=set()
+       selected_generators.add(generator)
     if "github" in selected_generators:
         sbom_data = self.get_github_sbom(owner, repo, GITHUB_TOKEN)
         if sbom_data:
