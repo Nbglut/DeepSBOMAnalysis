@@ -260,6 +260,7 @@ class CompareSBOMs:
                 addname+= "@"+ item[ 'versionInfo']
               packs_in_NonTruth.append(addname)
         missing_from_nontruth = [item for item in packs_in_Truth if item not in packs_in_NonTruth]
+        print("There are " + str(len(missing_from_nontruth)) + " missing.")
         print(missing_from_nontruth)
 
       

@@ -133,12 +133,12 @@ def recursivelyGenerate(SBOM, generator, filename):
                 present_packs.append(pac)    
        recursiveGenTransient(SBOM, generator, missing_packs, present_packsrec, present_packs, set())
        print(missing_packs)
-       newfileContents=restoreSBOM(fileContents, missing_packs)
+       newfile=restoreSBOM(SBOM, missing_packs)
        filename=filename.split("json")[0]
        with open(filename+'_restored.json', 'w') as file:
-             json.dump(newfileContents, file, indent=4)
+             json.dump(newfile, file, indent=4)
              print("Restored file saved in " + filename+'_restored.json')
-
+       return newfile
 
 
 if __name__ == "__main__":
