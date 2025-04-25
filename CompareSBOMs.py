@@ -261,7 +261,10 @@ class CompareSBOMs:
               packs_in_NonTruth.append(addname)
         missing_from_nontruth = [item for item in packs_in_Truth if item not in packs_in_NonTruth]
         print("There are " + str(len(missing_from_nontruth)) + " missing.")
+        falsepos = [item for item in packs_in_NonTruth if item not in packs_in_Truth]
+
         print(missing_from_nontruth)
+        print("\nThere are " + str(len(falsepos)) + " present that are not in the truth.")
 
       
 
