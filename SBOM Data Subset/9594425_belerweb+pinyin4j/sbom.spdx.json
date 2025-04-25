@@ -1,0 +1,122 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.2",
+  "name": "pinyin4j f1f13dcc8147c30922197e073691e5b0e9f6ce1e",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://spdx.org/spdxdocs/sbom-tool-2.2.9-69d87e55-1596-4b90-b26e-2c6547b3fcf8/pinyin4j/f1f13dcc8147c30922197e073691e5b0e9f6ce1e/ITHqrW21dUqNIAUXnRtrkw",
+  "creationInfo": {
+    "creators": ["Tool: Microsoft.SBOMTool-2.2.9", "Tool: SbomDatasetGnerator"],
+    "created": "2024-12-04T23:31:38Z"
+  },
+  "files": [],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-FB8BF57D8EC8B164BC4B1571C7324A64809A5AB3A82040492710FEC977855FF7",
+      "name": "junit.junit",
+      "versionInfo": "4.11",
+      "packageFileName": "junit-4.11.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/junit/junit/4.11/junit-4.11.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://junit.org",
+      "licenseConcluded": "CPL-1.0",
+      "licenseDeclared": "CPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/junit/junit@4.11"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-C4B71B84E040240C8D909A275C612D9062279F55E209EA3E2D9F1750D268DF0F",
+      "name": "org.hamcrest.hamcrest-core",
+      "versionInfo": "1.3",
+      "packageFileName": "hamcrest-core-1.3.jar",
+      "supplier": "Organization: Hamcrest",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/hamcrest/JavaHamcrest",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "Copyright (c) 2000-2006, www.hamcrest.org\r\nAll rights reserved.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.hamcrest/hamcrest-core@1.3"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-1E6195D6F5E25D15F3CBFC9ACAEE4E899043F0E0F25CDF57CE506A3D77CA50D4",
+      "name": "com.belerweb.pinyin4j",
+      "versionInfo": "2.5.1",
+      "packageFileName": "pinyin4j-2.5.1.jar",
+      "supplier": "Person: belerweb",
+      "downloadLocation": "https://repo1.maven.org/maven2/com/belerweb/pinyin4j/2.5.1/pinyin4j-2.5.1.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/belerweb/pinyin4j",
+      "licenseConcluded": "BSD-2-Clause",
+      "licenseDeclared": "BSD-2-Clause",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.belerweb/pinyin4j@2.5.1"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-RootPackage",
+      "name": "pinyin4j",
+      "versionInfo": "f1f13dcc8147c30922197e073691e5b0e9f6ce1e",
+      "packageFileName": "./",
+      "supplier": "Organization: belerweb",
+      "downloadLocation": "git\u002Bhttps://github.com/belerweb/pinyin4j.git",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/belerweb/pinyin4j",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/belerweb/spdx.org/pinyin4j@f1f13dcc8147c30922197e073691e5b0e9f6ce1e?tag_id=875cf170-6f92-4582-984a-49d516ecd9d0"
+        }
+      ]
+    }
+  ],
+  "snippets": [],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "relationshipType": "DESCRIBES"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-C4B71B84E040240C8D909A275C612D9062279F55E209EA3E2D9F1750D268DF0F",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-1E6195D6F5E25D15F3CBFC9ACAEE4E899043F0E0F25CDF57CE506A3D77CA50D4",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-FB8BF57D8EC8B164BC4B1571C7324A64809A5AB3A82040492710FEC977855FF7",
+      "relationshipType": "DEPENDS_ON"
+    }
+  ],
+  "documentDescribes": ["SPDXRef-RootPackage"]
+}

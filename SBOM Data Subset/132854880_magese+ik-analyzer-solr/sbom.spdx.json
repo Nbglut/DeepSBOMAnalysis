@@ -1,0 +1,200 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.2",
+  "name": "ik-analyzer-solr f0059e2c78d82bbd12630388378073de4ffcc7db",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://spdx.org/spdxdocs/sbom-tool-2.2.9-1f35495b-7bc1-4353-85a2-72054675a8b3/ik-analyzer-solr/f0059e2c78d82bbd12630388378073de4ffcc7db/bi_EUJ6gUkW_wtU_qk-uhg",
+  "creationInfo": {
+    "creators": ["Tool: Microsoft.SBOMTool-2.2.9", "Tool: SbomDatasetGnerator"],
+    "created": "2024-12-04T23:31:38Z"
+  },
+  "files": [],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-FA31C63B293E554BB1576C122738793EB715E4D6478E62800A56431541DCFBFC",
+      "name": "org.apache.lucene.lucene-sandbox",
+      "versionInfo": "8.5.0",
+      "packageFileName": "lucene-sandbox-8.5.0.jar",
+      "supplier": "Organization: The Apache Software Foundation",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/apache/lucene/lucene-sandbox/8.5.0/lucene-sandbox-8.5.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://lucene.apache.org",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.apache.lucene/lucene-sandbox@8.5.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-E64BF90F67CA79C49A76F47E53EB948757496635E55C80873B78E4A92BEB9C92",
+      "name": "org.apache.lucene.lucene-analyzers-common",
+      "versionInfo": "8.5.0",
+      "packageFileName": "lucene-analyzers-common-8.5.0.jar",
+      "supplier": "Organization: The Apache Software Foundation",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/8.5.0/lucene-analyzers-common-8.5.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://lucene.apache.org",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.apache.lucene/lucene-analyzers-common@8.5.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-3488708664B749B98E3D80F25D59C6D2D92F051F33130892EF99FFB702CAD6FA",
+      "name": "org.apache.lucene.lucene-core",
+      "versionInfo": "8.5.0",
+      "packageFileName": "lucene-core-8.5.0.jar",
+      "supplier": "Organization: The Apache Software Foundation",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/apache/lucene/lucene-core/8.5.0/lucene-core-8.5.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://lucene.apache.org",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.apache.lucene/lucene-core@8.5.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-7654E3F3C198780A631EA5E8E15D56DEC45063236F40CCF1350D3F5A42B970B8",
+      "name": "org.apache.lucene.lucene-queryparser",
+      "versionInfo": "8.5.0",
+      "packageFileName": "lucene-queryparser-8.5.0.jar",
+      "supplier": "Organization: The Apache Software Foundation",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/apache/lucene/lucene-queryparser/8.5.0/lucene-queryparser-8.5.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://lucene.apache.org",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.apache.lucene/lucene-queryparser@8.5.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-963D9ADEBA669B86697924491DADE08A3370AAE2A7F68CD2A83AF0D4AC658542",
+      "name": "com.github.magese.ik-analyzer",
+      "versionInfo": "8.5.0",
+      "packageFileName": "ik-analyzer-8.5.0.jar",
+      "supplier": "Person: magese (magese@live.cn)",
+      "downloadLocation": "https://repo1.maven.org/maven2/com/github/magese/ik-analyzer/8.5.0/ik-analyzer-8.5.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://code.google.com/p/ik-analyzer/",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "Copyright 2018 Magese magese@live.cn",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.github.magese/ik-analyzer@8.5.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-358EE469E18A18DE25C25FEB5E4830D0BCBDF000395768C52FD619D29E4D6D61",
+      "name": "org.apache.lucene.lucene-queries",
+      "versionInfo": "8.5.0",
+      "packageFileName": "lucene-queries-8.5.0.jar",
+      "supplier": "Organization: The Apache Software Foundation",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/apache/lucene/lucene-queries/8.5.0/lucene-queries-8.5.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://lucene.apache.org",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.apache.lucene/lucene-queries@8.5.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-RootPackage",
+      "name": "ik-analyzer-solr",
+      "versionInfo": "f0059e2c78d82bbd12630388378073de4ffcc7db",
+      "packageFileName": "./",
+      "supplier": "Organization: magese",
+      "downloadLocation": "git\u002Bhttps://github.com/magese/ik-analyzer-solr.git",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/magese/ik-analyzer-solr",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/magese/spdx.org/ik-analyzer-solr@f0059e2c78d82bbd12630388378073de4ffcc7db?tag_id=518fa9e8-fba2-4760-9f30-ba7172f9fe27"
+        }
+      ]
+    }
+  ],
+  "snippets": [],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "relationshipType": "DESCRIBES"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-FA31C63B293E554BB1576C122738793EB715E4D6478E62800A56431541DCFBFC",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-963D9ADEBA669B86697924491DADE08A3370AAE2A7F68CD2A83AF0D4AC658542",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-3488708664B749B98E3D80F25D59C6D2D92F051F33130892EF99FFB702CAD6FA",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-358EE469E18A18DE25C25FEB5E4830D0BCBDF000395768C52FD619D29E4D6D61",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-7654E3F3C198780A631EA5E8E15D56DEC45063236F40CCF1350D3F5A42B970B8",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-E64BF90F67CA79C49A76F47E53EB948757496635E55C80873B78E4A92BEB9C92",
+      "relationshipType": "DEPENDS_ON"
+    }
+  ],
+  "documentDescribes": ["SPDXRef-RootPackage"]
+}
