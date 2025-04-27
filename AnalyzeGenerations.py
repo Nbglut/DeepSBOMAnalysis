@@ -64,7 +64,7 @@ async def main():
                compares.compareSBOMs()
 
           if "recursiveGen" in selected_analysis:
-               print("\n\nRecursiviely Generating the SBOM: \n")
+               print("\n\nRecursively Generating the SBOM: \n")
                newfile=recursivelyGenerate(fileContents, type.lower(), files)
                #Compare with newtruth
                compares2=CompareSBOMs("")
