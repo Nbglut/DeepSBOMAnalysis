@@ -39,8 +39,8 @@ def recursiveGenTransient(SBOM, generator, missing_packs, present_packsrec, pres
                    continue
                checked_packs.add(dep)
                print("Attempting to generate SBOM of " + dep)
-               if "actions/" in dep:
-                  print("Likely a GitHub Runner action, skipping")
+               if "actions/" in dep or "-plugin" in dep or "-request" in dep:
+                  print("Likely a GitHub Runner action, or plugin skipping")
                   continue
                gen=SBOM_generate()
                owner=dep.split("/")[0].split(".")[-1]
@@ -71,6 +71,8 @@ def recursiveGenTransient(SBOM, generator, missing_packs, present_packsrec, pres
                             pacArtificat=pacsplit[2]
                           else:
                             pacsplit=pac.split(":")
+                            if len(pacsplit) <5:
+                                continue
                             pacGroup=pacsplit[3]
                             pacArtificat=pacsplit[4]
                             pacArtificat+="@"+pacsplit[5]
