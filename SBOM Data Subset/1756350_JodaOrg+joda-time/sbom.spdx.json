@@ -1,0 +1,122 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.2",
+  "name": "joda-time 2ce9b4cdc207130a186dafbb8456cd0b0cfd9e4c",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://spdx.org/spdxdocs/sbom-tool-2.2.9-3d0269ed-984b-4371-9943-34a203091ea4/joda-time/2ce9b4cdc207130a186dafbb8456cd0b0cfd9e4c/DwcnoR9-9U2RHr8A_bkTrg",
+  "creationInfo": {
+    "creators": ["Tool: Microsoft.SBOMTool-2.2.9", "Tool: SbomDatasetGnerator"],
+    "created": "2024-12-04T23:31:38Z"
+  },
+  "files": [],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-3BCBC60AD84FF73F4CDE4E31DD973C96B90F27FC4B227FF596203A5DA2BC726C",
+      "name": "joda-time.joda-time",
+      "versionInfo": "2.13.0",
+      "packageFileName": "joda-time-2.13.0.jar",
+      "supplier": "Organization: Joda.org",
+      "downloadLocation": "https://repo1.maven.org/maven2/joda-time/joda-time/2.13.0/joda-time-2.13.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://www.joda.org/joda-time/",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/joda-time/joda-time@2.13.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-9980469D40C933DB43F72A5190EE3A8038C44E7B3819B442F84BE3B1852FA246",
+      "name": "org.joda.joda-convert",
+      "versionInfo": "1.9.2",
+      "packageFileName": "joda-convert-1.9.2.jar",
+      "supplier": "Organization: Joda.org",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/joda/joda-convert/1.9.2/joda-convert-1.9.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://www.joda.org/joda-convert/",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.joda/joda-convert@1.9.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-439D61D8F9F761C1DC2217D5D029EF21207006E9EF84F4D6218D16AE2D10C1BE",
+      "name": "junit.junit",
+      "versionInfo": "3.8.2",
+      "packageFileName": "junit-3.8.2.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/junit/junit/3.8.2/junit-3.8.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://junit.org",
+      "licenseConcluded": "CPL-1.0",
+      "licenseDeclared": "CPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/junit/junit@3.8.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-RootPackage",
+      "name": "joda-time",
+      "versionInfo": "2ce9b4cdc207130a186dafbb8456cd0b0cfd9e4c",
+      "packageFileName": "./",
+      "supplier": "Organization: JodaOrg",
+      "downloadLocation": "git\u002Bhttps://github.com/JodaOrg/joda-time.git",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/JodaOrg/joda-time",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/JodaOrg/spdx.org/joda-time@2ce9b4cdc207130a186dafbb8456cd0b0cfd9e4c?tag_id=45092bb2-c98e-46f6-a4e7-d8c8245d9875"
+        }
+      ]
+    }
+  ],
+  "snippets": [],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "relationshipType": "DESCRIBES"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-439D61D8F9F761C1DC2217D5D029EF21207006E9EF84F4D6218D16AE2D10C1BE",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-9980469D40C933DB43F72A5190EE3A8038C44E7B3819B442F84BE3B1852FA246",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-3BCBC60AD84FF73F4CDE4E31DD973C96B90F27FC4B227FF596203A5DA2BC726C",
+      "relationshipType": "DEPENDS_ON"
+    }
+  ],
+  "documentDescribes": ["SPDXRef-RootPackage"]
+}

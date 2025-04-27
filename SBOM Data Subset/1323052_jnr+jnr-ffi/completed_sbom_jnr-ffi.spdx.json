@@ -1,0 +1,465 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.2",
+  "name": "jnr-ffi 59d3f61555699456dddd064531140653faf1e2bf",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://spdx.org/spdxdocs/sbom-tool-2.2.9-b0e4fd4c-85b9-49f5-9cea-5cd83386b87f/jnr-ffi/59d3f61555699456dddd064531140653faf1e2bf/8nmvBRikgkGK7rc3Olscpw",
+  "creationInfo": {
+    "creators": [
+      "Tool: Microsoft.SBOMTool-2.2.9",
+      "Tool: SbomDatasetGnerator"
+    ],
+    "created": "2024-12-04T23:31:38Z"
+  },
+  "files": [],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-551CF7F02B0765693540FF3EFE4DB1D68BFEF3C45D6BDB659F22391EAED1243B",
+      "name": "org.junit.jupiter.junit-jupiter-engine",
+      "versionInfo": "5.7.2",
+      "packageFileName": "junit-jupiter-engine-5.7.2.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.7.2/junit-jupiter-engine-5.7.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://junit.org/junit5/",
+      "licenseConcluded": "EPL-2.0",
+      "licenseDeclared": "EPL-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.junit.jupiter/junit-jupiter-engine@5.7.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-24A2884CA77CC2D6A65B7E9646047A3F288522178766FA3D06BFF5BD562947BF",
+      "name": "org.ow2.asm.asm-commons",
+      "versionInfo": "9.2",
+      "packageFileName": "asm-commons-9.2.jar",
+      "supplier": "Organization: OW2",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/ow2/asm/asm-commons/9.2/asm-commons-9.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://asm.ow2.io/",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "Copyright (c) 2000-2011 INRIA, France Telecom\nAll rights reserved.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.ow2.asm/asm-commons@9.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-A30F5D6604F6FC8E340A0FE479C508084039567EAF3156368F45284D89E38E08",
+      "name": "com.github.jnr.jnr-x86asm",
+      "versionInfo": "1.0.2",
+      "packageFileName": "jnr-x86asm-1.0.2.jar",
+      "supplier": "Person: Wayne Meissner (wmeissner@gmail.com)",
+      "downloadLocation": "https://repo1.maven.org/maven2/com/github/jnr/jnr-x86asm/1.0.2/jnr-x86asm-1.0.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://github.com/jnr/jnr-x86asm",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright (C) 2010 Wayne Meissner\r\nCopyright (c) 2008-2009, Petr Kobalicek <kobalicek.petr@gmail.com>",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.github.jnr/jnr-x86asm@1.0.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-836539C13F30D90BC38204BA948AF06BD550EB572F1697C3E295B3F83E9F5E1F",
+      "name": "org.junit.platform.junit-platform-commons",
+      "versionInfo": "1.7.2",
+      "packageFileName": "junit-platform-commons-1.7.2.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/junit/platform/junit-platform-commons/1.7.2/junit-platform-commons-1.7.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://junit.org/junit5/",
+      "licenseConcluded": "EPL-2.0",
+      "licenseDeclared": "EPL-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.junit.platform/junit-platform-commons@1.7.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-2B8DC97169D40646AAD86B8F0402EF471C3DE1F226CF79A6B148F36AF31C667F",
+      "name": "org.opentest4j.opentest4j",
+      "versionInfo": "1.2.0",
+      "packageFileName": "opentest4j-1.2.0.jar",
+      "supplier": "Organization: Open Test Alliance for the JVM",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/ota4j-team/opentest4j",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.opentest4j/opentest4j@1.2.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-48797E0982FB3E57B4C3A27878A8DFBA3CD240EBC24C71A59518B1587EBFF052",
+      "name": "org.junit.jupiter.junit-jupiter-api",
+      "versionInfo": "5.7.2",
+      "packageFileName": "junit-jupiter-api-5.7.2.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.2/junit-jupiter-api-5.7.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://junit.org/junit5/",
+      "licenseConcluded": "EPL-2.0",
+      "licenseDeclared": "EPL-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.junit.jupiter/junit-jupiter-api@5.7.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-480C480E90C12E0B8D9C9E4E1F4C64F41D372A392E51125E34AAE9025111364F",
+      "name": "org.ow2.asm.asm-analysis",
+      "versionInfo": "9.2",
+      "packageFileName": "asm-analysis-9.2.jar",
+      "supplier": "Organization: OW2",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/ow2/asm/asm-analysis/9.2/asm-analysis-9.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://asm.ow2.io/",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "Copyright (c) 2000-2011 INRIA, France Telecom\nAll rights reserved.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.ow2.asm/asm-analysis@9.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-524FF08F7D1FB89B60096F0A543E6ACD6DB8AD1B5C3F87A1DFF0D377A59EC186",
+      "name": "org.apiguardian.apiguardian-api",
+      "versionInfo": "1.1.0",
+      "packageFileName": "apiguardian-api-1.1.0.jar",
+      "supplier": "Person: @API Guardian Team (team@apiguardian.org)",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/apiguardian-team/apiguardian",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.apiguardian/apiguardian-api@1.1.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-3B68B699440DB9B316F254E18395E31B385DA33445711EB23C98F3A95EA69730",
+      "name": "org.ow2.asm.asm",
+      "versionInfo": "9.2",
+      "packageFileName": "asm-9.2.jar",
+      "supplier": "Organization: OW2",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/ow2/asm/asm/9.2/asm-9.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://asm.ow2.io/",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "Copyright (c) 2000-2011 INRIA, France Telecom\nAll rights reserved.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.ow2.asm/asm@9.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-CEAA8B3C1F4933366FB31E8E547493B8C5932C5689916B9BDBB2B4B55B324EEF",
+      "name": "com.github.jnr.jnr-ffi",
+      "versionInfo": "2.2.16-SNAPSHOT",
+      "packageFileName": "jnr-ffi-2.2.16-SNAPSHOT.jar",
+      "supplier": "Organization: The Java Native Runtime Project",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://github.com/jnr/jnr-ffi",
+      "licenseConcluded": "Apache-2.0 OR LGPL-3.0-or-later",
+      "licenseDeclared": "Apache-2.0 OR LGPL-3.0-or-later",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.github.jnr/jnr-ffi@2.2.16-SNAPSHOT"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-F322495A9F08CA510A06C50C65EE3925CDB1594D5D64DCBB576F28427AD1FA01",
+      "name": "com.github.jnr.jffi",
+      "versionInfo": "1.3.13",
+      "packageFileName": "jffi-1.3.13.jar",
+      "supplier": "Person: Wayne Meissner (wmeissner@gmail.com)",
+      "downloadLocation": "https://repo1.maven.org/maven2/com/github/jnr/jffi/1.3.13/jffi-1.3.13.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://github.com/jnr/jffi",
+      "licenseConcluded": "Apache-2.0 OR LGPL-3.0-only",
+      "licenseDeclared": "Apache-2.0 OR LGPL-3.0-only",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.github.jnr/jffi@1.3.13"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-F4D7B66FD627826C0137028E3F54C092474EFEA3BE6C93A9AF9DBE8D4FC83B9F",
+      "name": "com.github.jnr.jnr-a64asm",
+      "versionInfo": "1.0.0",
+      "packageFileName": "jnr-a64asm-1.0.0.jar",
+      "supplier": "Person: ossdev (ossdev@puresoftware.com)",
+      "downloadLocation": "https://repo1.maven.org/maven2/com/github/jnr/jnr-a64asm/1.0.0/jnr-a64asm-1.0.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://nexus.sonatype.org/oss-repository-hosting.html",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.github.jnr/jnr-a64asm@1.0.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-B7417F2DBE0129F1BFCBADA5C42528F39A1672C27C95CB0B27BD8AC90FBF249E",
+      "name": "org.ow2.asm.asm-util",
+      "versionInfo": "9.2",
+      "packageFileName": "asm-util-9.2.jar",
+      "supplier": "Organization: OW2",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/ow2/asm/asm-util/9.2/asm-util-9.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://asm.ow2.io/",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "Copyright (c) 2000-2011 INRIA, France Telecom\nAll rights reserved.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.ow2.asm/asm-util@9.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-600861D69D8DD2B9E7A0BB96EF0972AA1E1CDEF32122DBEF489C10AC5BD23DCE",
+      "name": "org.junit.platform.junit-platform-engine",
+      "versionInfo": "1.7.2",
+      "packageFileName": "junit-platform-engine-1.7.2.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/junit/platform/junit-platform-engine/1.7.2/junit-platform-engine-1.7.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://junit.org/junit5/",
+      "licenseConcluded": "EPL-2.0",
+      "licenseDeclared": "EPL-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.junit.platform/junit-platform-engine@1.7.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-5EDC3FFC8FE2EFB42521AD8746A0F36480293BEAD5F1B6723672198A4AD9218B",
+      "name": "org.ow2.asm.asm-tree",
+      "versionInfo": "9.2",
+      "packageFileName": "asm-tree-9.2.jar",
+      "supplier": "Organization: OW2",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/ow2/asm/asm-tree/9.2/asm-tree-9.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://asm.ow2.io/",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "Copyright (c) 2000-2011 INRIA, France Telecom\nAll rights reserved.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.ow2.asm/asm-tree@9.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-RootPackage",
+      "name": "jnr-ffi",
+      "versionInfo": "59d3f61555699456dddd064531140653faf1e2bf",
+      "packageFileName": "./",
+      "supplier": "Organization: jnr",
+      "downloadLocation": "git+https://github.com/jnr/jnr-ffi.git",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/jnr/jnr-ffi",
+      "licenseConcluded": "Apache-2.0 OR LGPL-3.0-or-later",
+      "licenseDeclared": "Apache-2.0 OR LGPL-3.0-or-later",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/jnr/spdx.org/jnr-ffi@59d3f61555699456dddd064531140653faf1e2bf?tag_id=a6ce7e27-a6f1-46f5-b12b-f788b49cdb48"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-ORG-JUNIT-JUPITER-JUNIT-JUPITER-PARAMS-5.7.2",
+      "name": "org.junit.jupiter.junit-jupiter-params",
+      "versionInfo": "5.7.2",
+      "packageFileName": "junit-jupiter-params-5.7.2.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-params/5.7.2/junit-jupiter-params-5.7.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://junit.org/junit5/",
+      "licenseConcluded": "EPL-2.0",
+      "licenseDeclared": "EPL-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.junit.jupiter/junit-jupiter-params@5.7.2"
+        }
+      ]
+    }
+  ],
+  "snippets": [],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-836539C13F30D90BC38204BA948AF06BD550EB572F1697C3E295B3F83E9F5E1F",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "relationshipType": "DESCRIBES"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-551CF7F02B0765693540FF3EFE4DB1D68BFEF3C45D6BDB659F22391EAED1243B",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-524FF08F7D1FB89B60096F0A543E6ACD6DB8AD1B5C3F87A1DFF0D377A59EC186",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-A30F5D6604F6FC8E340A0FE479C508084039567EAF3156368F45284D89E38E08",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-48797E0982FB3E57B4C3A27878A8DFBA3CD240EBC24C71A59518B1587EBFF052",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-24A2884CA77CC2D6A65B7E9646047A3F288522178766FA3D06BFF5BD562947BF",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-5EDC3FFC8FE2EFB42521AD8746A0F36480293BEAD5F1B6723672198A4AD9218B",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-600861D69D8DD2B9E7A0BB96EF0972AA1E1CDEF32122DBEF489C10AC5BD23DCE",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-B7417F2DBE0129F1BFCBADA5C42528F39A1672C27C95CB0B27BD8AC90FBF249E",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-F4D7B66FD627826C0137028E3F54C092474EFEA3BE6C93A9AF9DBE8D4FC83B9F",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-F322495A9F08CA510A06C50C65EE3925CDB1594D5D64DCBB576F28427AD1FA01",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-CEAA8B3C1F4933366FB31E8E547493B8C5932C5689916B9BDBB2B4B55B324EEF",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-3B68B699440DB9B316F254E18395E31B385DA33445711EB23C98F3A95EA69730",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-480C480E90C12E0B8D9C9E4E1F4C64F41D372A392E51125E34AAE9025111364F",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-2B8DC97169D40646AAD86B8F0402EF471C3DE1F226CF79A6B148F36AF31C667F",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-ORG-JUNIT-JUPITER-JUNIT-JUPITER-PARAMS-5.7.2",
+      "relationshipType": "DEPENDS_ON"
+    }
+  ],
+  "documentDescribes": [
+    "SPDXRef-RootPackage"
+  ]
+}

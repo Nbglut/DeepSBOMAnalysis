@@ -1,0 +1,122 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.2",
+  "name": "ansj_seg 50787ca2c7031d2a18c5393a97d1a54432790785",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://spdx.org/spdxdocs/sbom-tool-2.2.9-365f5ba6-1807-4fe0-b4bd-34d7053d4357/ansj_seg/50787ca2c7031d2a18c5393a97d1a54432790785/C3KsnhjX1Ue-HuovXVD4XA",
+  "creationInfo": {
+    "creators": ["Tool: Microsoft.SBOMTool-2.2.9", "Tool: SbomDatasetGnerator"],
+    "created": "2024-12-04T23:31:38Z"
+  },
+  "files": [],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-EE738043C90973BCFC4D378995A6F62E1C6D79D5A08AC86B2BF2AFC75EBED1D9",
+      "name": "junit.junit",
+      "versionInfo": "4.8.1",
+      "packageFileName": "junit-4.8.1.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/junit/junit/4.8.1/junit-4.8.1.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://junit.org",
+      "licenseConcluded": "CPL-1.0",
+      "licenseDeclared": "CPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/junit/junit@4.8.1"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-35F2E25520C8B2746A95B5AD6066A94680966FF4AD6259D6F067826DB063C68C",
+      "name": "org.nlpcn.nlp-lang",
+      "versionInfo": "1.7.9",
+      "packageFileName": "nlp-lang-1.7.9.jar",
+      "supplier": "Person: ansj (ansj-sun@163.com)",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/nlpcn/nlp-lang/1.7.9/nlp-lang-1.7.9.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/NLPchina/nlp-lang",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "Copyright 2011-2017 nlp-lang",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.nlpcn/nlp-lang@1.7.9"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-F34EE03FD95DC85A4D4334B81B784E3FC2B3C79B65766749D9333DB4BE01B757",
+      "name": "org.ansj.ansj_seg",
+      "versionInfo": "5.1.6",
+      "packageFileName": "ansj_seg-5.1.6.jar",
+      "supplier": "Person: ansj (ansj-sun@163.com)",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/ansj/ansj_seg/5.1.6/ansj_seg-5.1.6.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/NLPchina/ansj_seg",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "Copyright 2011-2018 ansj_seg",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.ansj/ansj_seg@5.1.6"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-RootPackage",
+      "name": "ansj_seg",
+      "versionInfo": "50787ca2c7031d2a18c5393a97d1a54432790785",
+      "packageFileName": "./",
+      "supplier": "Organization: NLPchina",
+      "downloadLocation": "git\u002Bhttps://github.com/NLPchina/ansj_seg.git",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/NLPchina/ansj_seg",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "Copyright 2011-2018 ansj_seg",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/NLPchina/spdx.org/ansj_seg@50787ca2c7031d2a18c5393a97d1a54432790785?tag_id=875e9ed0-8805-40b9-800a-3e34653319bf"
+        }
+      ]
+    }
+  ],
+  "snippets": [],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-35F2E25520C8B2746A95B5AD6066A94680966FF4AD6259D6F067826DB063C68C",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-F34EE03FD95DC85A4D4334B81B784E3FC2B3C79B65766749D9333DB4BE01B757",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-EE738043C90973BCFC4D378995A6F62E1C6D79D5A08AC86B2BF2AFC75EBED1D9",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "relationshipType": "DESCRIBES"
+    }
+  ],
+  "documentDescribes": ["SPDXRef-RootPackage"]
+}

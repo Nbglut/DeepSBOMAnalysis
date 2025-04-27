@@ -1,0 +1,673 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.2",
+  "name": "picocli a856a14636fc22a24db6ab502b71c0439b384716",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://spdx.org/spdxdocs/sbom-tool-2.2.9-dd313107-1028-473e-b582-0c4446aa52b0/picocli/a856a14636fc22a24db6ab502b71c0439b384716/140XZjMMY0mhpvfYDPCUog",
+  "creationInfo": {
+    "creators": [
+      "Tool: Microsoft.SBOMTool-2.2.9",
+      "Tool: SbomDatasetGnerator"
+    ],
+    "created": "2024-12-04T23:31:38Z"
+  },
+  "files": [],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-3381A14B81873EE6E9EB0F78877E864090D3989461C73262F3ADF1F71BC126AD",
+      "name": "info.picocli.picocli",
+      "versionInfo": "4.0.0-alpha-3",
+      "packageFileName": "picocli-4.0.0-alpha-3.jar",
+      "supplier": "Person: Remko Popma (rpopma@apache.org)",
+      "downloadLocation": "https://repo1.maven.org/maven2/info/picocli/picocli/4.0.0-alpha-3/picocli-4.0.0-alpha-3.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://picocli.info",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/info.picocli/picocli@4.0.0-alpha-3"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-RootPackage",
+      "name": "picocli",
+      "versionInfo": "a856a14636fc22a24db6ab502b71c0439b384716",
+      "packageFileName": "./",
+      "supplier": "Organization: remkop",
+      "downloadLocation": "git+https://github.com/remkop/picocli.git",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/remkop/picocli",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/remkop/spdx.org/picocli@a856a14636fc22a24db6ab502b71c0439b384716?tag_id=80bb7009-885b-425a-92a9-3c6cc7cd32cc"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-com-github-stefanbirkner-system-lambda-1.2.1",
+      "name": "com.github.stefanbirkner:system-lambda",
+      "versionInfo": "1.2.1",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.github.stefanbirkner/system-lambda@1.2.1"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-com-github-stefanbirkner-system-rules-1.19.0",
+      "name": "com.github.stefanbirkner:system-rules",
+      "versionInfo": "1.19.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.github.stefanbirkner/system-rules@1.19.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-com-google-testing-compile-compile-testing-0.21.0",
+      "name": "com.google.testing.compile:compile-testing",
+      "versionInfo": "0.21.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.google.testing.compile/compile-testing@0.21.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-jakarta-el-jakarta.el-api-3.0.3",
+      "name": "jakarta.el:jakarta.el-api",
+      "versionInfo": "3.0.3",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/jakarta.el/jakarta.el-api@3.0.3"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-jakarta-validation-jakarta.validation-api-3.0.2",
+      "name": "jakarta.validation:jakarta.validation-api",
+      "versionInfo": "3.0.2",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/jakarta.validation/jakarta.validation-api@3.0.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-jline-jline-2.14.6",
+      "name": "jline:jline",
+      "versionInfo": "2.14.6",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/jline/jline@2.14.6"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-junit-junit-4.13.2",
+      "name": "junit:junit",
+      "versionInfo": "4.13.2",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/junit/junit@4.13.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-apache-ivy-ivy-2.5.2",
+      "name": "org.apache.ivy:ivy",
+      "versionInfo": "2.5.2",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.apache.ivy/ivy@2.5.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-apache-logging-log4j-log4j-api-2.23.1",
+      "name": "org.apache.logging.log4j:log4j-api",
+      "versionInfo": "2.23.1",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.apache.logging.log4j/log4j-api@2.23.1"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-apache-logging-log4j-log4j-core-2.23.1",
+      "name": "org.apache.logging.log4j:log4j-core",
+      "versionInfo": "2.23.1",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.apache.logging.log4j/log4j-core@2.23.1"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-codehaus-groovy-groovy-all-2.4.21",
+      "name": "org.codehaus.groovy:groovy-all",
+      "versionInfo": "2.4.21",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.codehaus.groovy/groovy-all@2.4.21"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-fusesource-jansi-jansi-2.4.1",
+      "name": "org.fusesource.jansi:jansi",
+      "versionInfo": "2.4.1",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.fusesource.jansi/jansi@2.4.1"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-glassfish-jakarta.el-4.0.2",
+      "name": "org.glassfish:jakarta.el",
+      "versionInfo": "4.0.2",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.glassfish/jakarta.el@4.0.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-hamcrest-hamcrest-core-2.2",
+      "name": "org.hamcrest:hamcrest-core",
+      "versionInfo": "2.2",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.hamcrest/hamcrest-core@2.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-hibernate-validator-hibernate-validator-8.0.1.Final",
+      "name": "org.hibernate.validator:hibernate-validator",
+      "versionInfo": "8.0.1.Final",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.hibernate.validator/hibernate-validator@8.0.1.Final"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-hibernate-validator-hibernate-validator-annotation-processor-8.0.1.Final",
+      "name": "org.hibernate.validator:hibernate-validator-annotation-processor",
+      "versionInfo": "8.0.1.Final",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.hibernate.validator/hibernate-validator-annotation-processor@8.0.1.Final"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-jetbrains-kotlin-kotlin-script-runtime-1.9.23",
+      "name": "org.jetbrains.kotlin:kotlin-script-runtime",
+      "versionInfo": "1.9.23",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.jetbrains.kotlin/kotlin-script-runtime@1.9.23"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-jline-jline-3.26.1",
+      "name": "org.jline:jline",
+      "versionInfo": "3.26.1",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.jline/jline@3.26.1"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-junit-jupiter-junit-jupiter-api-5.10.2",
+      "name": "org.junit.jupiter:junit-jupiter-api",
+      "versionInfo": "5.10.2",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.junit.jupiter/junit-jupiter-api@5.10.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-junit-jupiter-junit-jupiter-engine-5.10.2",
+      "name": "org.junit.jupiter:junit-jupiter-engine",
+      "versionInfo": "5.10.2",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.junit.jupiter/junit-jupiter-engine@5.10.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-scala-lang-scala-library-2.13.14",
+      "name": "org.scala-lang:scala-library",
+      "versionInfo": "2.13.14",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.scala-lang/scala-library@2.13.14"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-springframework-boot-spring-boot-configuration-processor-3.1.2",
+      "name": "org.springframework.boot:spring-boot-configuration-processor",
+      "versionInfo": "3.1.2",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.springframework.boot/spring-boot-configuration-processor@3.1.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-springframework-boot-spring-boot-starter-3.1.2",
+      "name": "org.springframework.boot:spring-boot-starter",
+      "versionInfo": "3.1.2",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.springframework.boot/spring-boot-starter@3.1.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-org-springframework-boot-spring-boot-starter-test-3.1.2",
+      "name": "org.springframework.boot:spring-boot-starter-test",
+      "versionInfo": "3.1.2",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.springframework.boot/spring-boot-starter-test@3.1.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-pl-pragmatists-JUnitParams-1.1.1",
+      "name": "pl.pragmatists:JUnitParams",
+      "versionInfo": "1.1.1",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/pl.pragmatists/JUnitParams@1.1.1"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-openjdk-1.5",
+      "name": "openjdk",
+      "versionInfo": "1.5",
+      "downloadLocation": "https://jdk.java.net/archive/",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "licenseConcluded": "GPL-2.0-with-classpath-exception",
+      "licenseDeclared": "GPL-2.0-with-classpath-exception",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:generic/openjdk@1.5"
+        }
+      ]
+    }
+  ],
+  "snippets": [],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-3381A14B81873EE6E9EB0F78877E864090D3989461C73262F3ADF1F71BC126AD",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "relationshipType": "DESCRIBES"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-com-github-stefanbirkner-system-lambda-1.2.1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-com-github-stefanbirkner-system-rules-1.19.0",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-com-google-testing-compile-compile-testing-0.21.0",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-jakarta-el-jakarta.el-api-3.0.3",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-jakarta-validation-jakarta.validation-api-3.0.2",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-jline-jline-2.14.6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-junit-junit-4.13.2",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-apache-ivy-ivy-2.5.2",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-apache-logging-log4j-log4j-api-2.23.1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-apache-logging-log4j-log4j-core-2.23.1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-codehaus-groovy-groovy-all-2.4.21",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-fusesource-jansi-jansi-2.4.1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-glassfish-jakarta.el-4.0.2",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-hamcrest-hamcrest-core-2.2",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-hibernate-validator-hibernate-validator-8.0.1.Final",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-hibernate-validator-hibernate-validator-annotation-processor-8.0.1.Final",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-jetbrains-kotlin-kotlin-script-runtime-1.9.23",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-jline-jline-3.26.1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-junit-jupiter-junit-jupiter-api-5.10.2",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-junit-jupiter-junit-jupiter-engine-5.10.2",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-scala-lang-scala-library-2.13.14",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-springframework-boot-spring-boot-configuration-processor-3.1.2",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-springframework-boot-spring-boot-starter-3.1.2",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-org-springframework-boot-spring-boot-starter-test-3.1.2",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-pl-pragmatists-JUnitParams-1.1.1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-openjdk-1.5",
+      "relationshipType": "DEPENDS_ON"
+    }
+  ],
+  "documentDescribes": [
+    "SPDXRef-RootPackage"
+  ]
+}
