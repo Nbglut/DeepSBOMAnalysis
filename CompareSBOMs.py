@@ -272,7 +272,7 @@ class CompareSBOMs:
         recall=truepositive/(truepositive+falseneg)
         
         accuracy=(truepositive)/(truepositive+falsepos+falseneg)  
-        print("\n\nPrecision: " + str(precision) +"\nRecall: " + str(recall) + "\n Accuracy: " + str(accuracy))      
+        print("\n\nPrecision: " + str(precision) +"\nRecall: " + str(recall) + "\nAccuracy: " + str(accuracy))      
         
         #Print precision, recall, accuracy, etc/
         
