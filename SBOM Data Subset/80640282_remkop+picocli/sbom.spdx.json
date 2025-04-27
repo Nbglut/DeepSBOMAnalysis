@@ -1,0 +1,70 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.2",
+  "name": "picocli a856a14636fc22a24db6ab502b71c0439b384716",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://spdx.org/spdxdocs/sbom-tool-2.2.9-dd313107-1028-473e-b582-0c4446aa52b0/picocli/a856a14636fc22a24db6ab502b71c0439b384716/140XZjMMY0mhpvfYDPCUog",
+  "creationInfo": {
+    "creators": ["Tool: Microsoft.SBOMTool-2.2.9", "Tool: SbomDatasetGnerator"],
+    "created": "2024-12-04T23:31:38Z"
+  },
+  "files": [],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-3381A14B81873EE6E9EB0F78877E864090D3989461C73262F3ADF1F71BC126AD",
+      "name": "info.picocli.picocli",
+      "versionInfo": "4.0.0-alpha-3",
+      "packageFileName": "picocli-4.0.0-alpha-3.jar",
+      "supplier": "Person: Remko Popma (rpopma@apache.org)",
+      "downloadLocation": "https://repo1.maven.org/maven2/info/picocli/picocli/4.0.0-alpha-3/picocli-4.0.0-alpha-3.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://picocli.info",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/info.picocli/picocli@4.0.0-alpha-3"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-RootPackage",
+      "name": "picocli",
+      "versionInfo": "a856a14636fc22a24db6ab502b71c0439b384716",
+      "packageFileName": "./",
+      "supplier": "Organization: remkop",
+      "downloadLocation": "git\u002Bhttps://github.com/remkop/picocli.git",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/remkop/picocli",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/remkop/spdx.org/picocli@a856a14636fc22a24db6ab502b71c0439b384716?tag_id=80bb7009-885b-425a-92a9-3c6cc7cd32cc"
+        }
+      ]
+    }
+  ],
+  "snippets": [],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-3381A14B81873EE6E9EB0F78877E864090D3989461C73262F3ADF1F71BC126AD",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "relationshipType": "DESCRIBES"
+    }
+  ],
+  "documentDescribes": ["SPDXRef-RootPackage"]
+}

@@ -1,0 +1,616 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.2",
+  "name": "jsoup b6bd4b455c54fa44c68df961b9d5c21a2bb0ae73",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://spdx.org/spdxdocs/sbom-tool-2.2.9-7171e753-8c42-4fee-b533-bbbbe1c23e5d/jsoup/b6bd4b455c54fa44c68df961b9d5c21a2bb0ae73/8wN1CcedAEuDxZsoVROPUA",
+  "creationInfo": {
+    "creators": ["Tool: Microsoft.SBOMTool-2.2.9", "Tool: SbomDatasetGnerator"],
+    "created": "2024-12-04T23:31:38Z"
+  },
+  "files": [],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-24F6C8C44B65568C22ECBB977321E3626780A1070B754D439F1ABED49131FFFC",
+      "name": "javax.servlet.javax.servlet-api",
+      "versionInfo": "3.1.0",
+      "packageFileName": "javax.servlet-api-3.1.0.jar",
+      "supplier": "Organization: GlassFish Community",
+      "downloadLocation": "https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://servlet-spec.java.net",
+      "licenseConcluded": "CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0",
+      "licenseDeclared": "CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0",
+      "copyrightText": "Copyright (c) 1997-2013 Oracle and/or its affiliates. All rights reserved.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/javax.servlet/javax.servlet-api@3.1.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-04BFED6DEF7D34F2DAA4ED57D1EB48E8BEBA7E3C9485D27D8AA0511D9015E29F",
+      "name": "org.eclipse.jetty.jetty-security",
+      "versionInfo": "9.4.56.v20240826",
+      "packageFileName": "jetty-security-9.4.56.v20240826.jar",
+      "supplier": "Organization: Webtide",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-security/9.4.56.v20240826/jetty-security-9.4.56.v20240826.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://jetty.org/",
+      "licenseConcluded": "Apache-2.0 OR EPL-1.0",
+      "licenseDeclared": "Apache-2.0 OR EPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.eclipse.jetty/jetty-security@9.4.56.v20240826"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-E9CE9AB22541D05995F879BF46299F5EB09F082FA4C24E046BA462DE18EE746A",
+      "name": "org.junit.jupiter.junit-jupiter-params",
+      "versionInfo": "5.11.0",
+      "packageFileName": "junit-jupiter-params-5.11.0.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-params/5.11.0/junit-jupiter-params-5.11.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://junit.org/junit5/",
+      "licenseConcluded": "EPL-2.0",
+      "licenseDeclared": "EPL-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.junit.jupiter/junit-jupiter-params@5.11.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-A1D15B48B2F928CC4C49FE63420A421E7D2F8B9E86F3560BD68183B755EAD1EF",
+      "name": "com.google.code.gson.gson",
+      "versionInfo": "2.11.0",
+      "packageFileName": "gson-2.11.0.jar",
+      "supplier": "Organization: Google",
+      "downloadLocation": "https://repo1.maven.org/maven2/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/google/gson",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "Copyright 2008 Google Inc.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.google.code.gson/gson@2.11.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-9A8FCCF871BA0EA230B9EB4AF822E39BF68CF19D6FC60EDD5DD0E9A3F3B39DA8",
+      "name": "org.junit.jupiter.junit-jupiter-api",
+      "versionInfo": "5.11.0",
+      "packageFileName": "junit-jupiter-api-5.11.0.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-api/5.11.0/junit-jupiter-api-5.11.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://junit.org/junit5/",
+      "licenseConcluded": "EPL-2.0",
+      "licenseDeclared": "EPL-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.junit.jupiter/junit-jupiter-api@5.11.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-7E8B8A26805C1C3B06DC693B7845CC1715149C0AB648DEA52079D39F4F41889E",
+      "name": "com.google.errorprone.error_prone_annotations",
+      "versionInfo": "2.27.0",
+      "packageFileName": "error_prone_annotations-2.27.0.jar",
+      "supplier": "Organization: Google LLC",
+      "downloadLocation": "https://repo1.maven.org/maven2/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://errorprone.info",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/com.google.errorprone/error_prone_annotations@2.27.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-DA4F80847EC3CEE737E82EEC1BF724F9626518817BA79B8B1C636F83604447DC",
+      "name": "org.opentest4j.opentest4j",
+      "versionInfo": "1.3.0",
+      "packageFileName": "opentest4j-1.3.0.jar",
+      "supplier": "Organization: Open Test Alliance for the JVM",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/ota4j-team/opentest4j",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "Copyright 2015-2023 the original author or authors.",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.opentest4j/opentest4j@1.3.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-4A6F5EECDCCA39768BBD7EA81DD35CEEFA99DC8507BEDDAE2511C7798CDE7586",
+      "name": "org.eclipse.jetty.jetty-http",
+      "versionInfo": "9.4.56.v20240826",
+      "packageFileName": "jetty-http-9.4.56.v20240826.jar",
+      "supplier": "Organization: Webtide",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-http/9.4.56.v20240826/jetty-http-9.4.56.v20240826.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://jetty.org/",
+      "licenseConcluded": "Apache-2.0 OR EPL-1.0",
+      "licenseDeclared": "Apache-2.0 OR EPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.eclipse.jetty/jetty-http@9.4.56.v20240826"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-6F879E1FCB0C9BDEB284ABD6A6F4613549A0D6CE9DFD62B14096B02FF0C33C55",
+      "name": "org.junit.platform.junit-platform-commons",
+      "versionInfo": "1.11.0",
+      "packageFileName": "junit-platform-commons-1.11.0.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/junit/platform/junit-platform-commons/1.11.0/junit-platform-commons-1.11.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://junit.org/junit5/",
+      "licenseConcluded": "EPL-2.0",
+      "licenseDeclared": "EPL-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.junit.platform/junit-platform-commons@1.11.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-B654A4D868EEA14A879988335994275DEFA31413BA6EC4DF0F9CF79B7464B628",
+      "name": "org.junit.platform.junit-platform-engine",
+      "versionInfo": "1.11.0",
+      "packageFileName": "junit-platform-engine-1.11.0.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/junit/platform/junit-platform-engine/1.11.0/junit-platform-engine-1.11.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://junit.org/junit5/",
+      "licenseConcluded": "EPL-2.0",
+      "licenseDeclared": "EPL-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.junit.platform/junit-platform-engine@1.11.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-E174287A37045F9E3341CB2503C3A342DA862A7BF687C722CA77415945DBE920",
+      "name": "org.junit.jupiter.junit-jupiter-engine",
+      "versionInfo": "5.11.0",
+      "packageFileName": "junit-jupiter-engine-5.11.0.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.11.0/junit-jupiter-engine-5.11.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://junit.org/junit5/",
+      "licenseConcluded": "EPL-2.0",
+      "licenseDeclared": "EPL-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.junit.jupiter/junit-jupiter-engine@5.11.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-B3796DECF4943F9135601245A7A278F8FFD444DAAA5E8BFD3E019422B5159C56",
+      "name": "org.eclipse.jetty.jetty-util-ajax",
+      "versionInfo": "9.4.56.v20240826",
+      "packageFileName": "jetty-util-ajax-9.4.56.v20240826.jar",
+      "supplier": "Organization: Webtide",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-util-ajax/9.4.56.v20240826/jetty-util-ajax-9.4.56.v20240826.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://jetty.org/",
+      "licenseConcluded": "Apache-2.0 OR EPL-1.0",
+      "licenseDeclared": "Apache-2.0 OR EPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.eclipse.jetty/jetty-util-ajax@9.4.56.v20240826"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-052A1812B7CC9C487AE257DC0E13BF42142B0224C62B2A9D717C46A5FCD664D3",
+      "name": "org.eclipse.jetty.jetty-proxy",
+      "versionInfo": "9.4.56.v20240826",
+      "packageFileName": "jetty-proxy-9.4.56.v20240826.jar",
+      "supplier": "Organization: Webtide",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-proxy/9.4.56.v20240826/jetty-proxy-9.4.56.v20240826.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://jetty.org/",
+      "licenseConcluded": "Apache-2.0 OR EPL-1.0",
+      "licenseDeclared": "Apache-2.0 OR EPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.eclipse.jetty/jetty-proxy@9.4.56.v20240826"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-1B490B1F69099897CB8797F79D4EBCF8712D99EC20227FF6D5B4ADE86B53E691",
+      "name": "org.eclipse.jetty.jetty-servlet",
+      "versionInfo": "9.4.56.v20240826",
+      "packageFileName": "jetty-servlet-9.4.56.v20240826.jar",
+      "supplier": "Organization: Webtide",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-servlet/9.4.56.v20240826/jetty-servlet-9.4.56.v20240826.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://jetty.org/",
+      "licenseConcluded": "Apache-2.0 OR EPL-1.0",
+      "licenseDeclared": "Apache-2.0 OR EPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.eclipse.jetty/jetty-servlet@9.4.56.v20240826"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-C397F046FB3580801E7808DC5653D386A486A5D9075DEEE6BEEC867DA93AED2E",
+      "name": "org.apiguardian.apiguardian-api",
+      "versionInfo": "1.1.2",
+      "packageFileName": "apiguardian-api-1.1.2.jar",
+      "supplier": "Person: @API Guardian Team (team@apiguardian.org)",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/apiguardian-team/apiguardian",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.apiguardian/apiguardian-api@1.1.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-3601508C035F62C12427480CFB0A43F75B6157D76FCBA1EE47F84A3EEB60070D",
+      "name": "org.jspecify.jspecify",
+      "versionInfo": "1.0.0",
+      "packageFileName": "jspecify-1.0.0.jar",
+      "supplier": "Person: Kevin Bourrillion (kevinb9n@gmail.com)",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "http://jspecify.org/",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.jspecify/jspecify@1.0.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-5F45490E172742F4D508BF2DA83F0DFEA5976C7E05027F4CACC4E5964A042840",
+      "name": "org.jsoup.jsoup",
+      "versionInfo": "1.18.2-SNAPSHOT",
+      "packageFileName": "jsoup-1.18.2-SNAPSHOT.jar",
+      "supplier": "Organization: Jonathan Hedley",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://jsoup.org/",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright (c) 2009-2024 Jonathan Hedley \u003Chttps://jsoup.org/\u003E",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.jsoup/jsoup@1.18.2-SNAPSHOT"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-91A75B7E834F3C109B89B5B681AEC3F204EDE33C94950303305E33AECEB9B608",
+      "name": "org.eclipse.jetty.jetty-client",
+      "versionInfo": "9.4.56.v20240826",
+      "packageFileName": "jetty-client-9.4.56.v20240826.jar",
+      "supplier": "Organization: Webtide",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-client/9.4.56.v20240826/jetty-client-9.4.56.v20240826.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://jetty.org/",
+      "licenseConcluded": "Apache-2.0 OR EPL-1.0",
+      "licenseDeclared": "Apache-2.0 OR EPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.eclipse.jetty/jetty-client@9.4.56.v20240826"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-1CEF61E2C4D36599305364D0231D5C6C16D5F779BC67EA18FF4EFC1B427CEF8D",
+      "name": "org.eclipse.jetty.jetty-util",
+      "versionInfo": "9.4.56.v20240826",
+      "packageFileName": "jetty-util-9.4.56.v20240826.jar",
+      "supplier": "Organization: Webtide",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-util/9.4.56.v20240826/jetty-util-9.4.56.v20240826.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://jetty.org/",
+      "licenseConcluded": "Apache-2.0 OR EPL-1.0",
+      "licenseDeclared": "Apache-2.0 OR EPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.eclipse.jetty/jetty-util@9.4.56.v20240826"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-F13AF08C1A7D669F86CC044B66A1517F05265FB3EDE2F2F63902C8DA8E7A7F1C",
+      "name": "org.eclipse.jetty.jetty-server",
+      "versionInfo": "9.4.56.v20240826",
+      "packageFileName": "jetty-server-9.4.56.v20240826.jar",
+      "supplier": "Organization: Webtide",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-server/9.4.56.v20240826/jetty-server-9.4.56.v20240826.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://jetty.org/",
+      "licenseConcluded": "Apache-2.0 OR EPL-1.0",
+      "licenseDeclared": "Apache-2.0 OR EPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.eclipse.jetty/jetty-server@9.4.56.v20240826"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-4E49396E12044286E5F92F9C9A3B5F13A7AC3F7AAEA84436AA1322CC43E16C98",
+      "name": "org.eclipse.jetty.jetty-io",
+      "versionInfo": "9.4.56.v20240826",
+      "packageFileName": "jetty-io-9.4.56.v20240826.jar",
+      "supplier": "Organization: Webtide",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-io/9.4.56.v20240826/jetty-io-9.4.56.v20240826.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://jetty.org/",
+      "licenseConcluded": "Apache-2.0 OR EPL-1.0",
+      "licenseDeclared": "Apache-2.0 OR EPL-1.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.eclipse.jetty/jetty-io@9.4.56.v20240826"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-56BC833527F3EAD4FA5A30F5D302C0D061B229F39DB2AF183E08A1D053533193",
+      "name": "org.junit.jupiter.junit-jupiter",
+      "versionInfo": "5.11.0",
+      "packageFileName": "junit-jupiter-5.11.0.jar",
+      "supplier": "Organization: JUnit",
+      "downloadLocation": "https://repo1.maven.org/maven2/org/junit/jupiter/junit-jupiter/5.11.0/junit-jupiter-5.11.0.jar",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://junit.org/junit5/",
+      "licenseConcluded": "EPL-2.0",
+      "licenseDeclared": "EPL-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:maven/org.junit.jupiter/junit-jupiter@5.11.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-RootPackage",
+      "name": "jsoup",
+      "versionInfo": "b6bd4b455c54fa44c68df961b9d5c21a2bb0ae73",
+      "packageFileName": "./",
+      "supplier": "Organization: jhy",
+      "downloadLocation": "git\u002Bhttps://github.com/jhy/jsoup.git",
+      "filesAnalyzed": false,
+      "checksums": [],
+      "homepage": "https://github.com/jhy/jsoup",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright (c) 2009-2024 Jonathan Hedley \u003Chttps://jsoup.org/\u003E",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/jhy/spdx.org/jsoup@b6bd4b455c54fa44c68df961b9d5c21a2bb0ae73?tag_id=5ee90845-468d-4b2a-aa51-fcb94459609a"
+        }
+      ]
+    }
+  ],
+  "snippets": [],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-9A8FCCF871BA0EA230B9EB4AF822E39BF68CF19D6FC60EDD5DD0E9A3F3B39DA8",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "relationshipType": "DESCRIBES"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-A1D15B48B2F928CC4C49FE63420A421E7D2F8B9E86F3560BD68183B755EAD1EF",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-E9CE9AB22541D05995F879BF46299F5EB09F082FA4C24E046BA462DE18EE746A",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-56BC833527F3EAD4FA5A30F5D302C0D061B229F39DB2AF183E08A1D053533193",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-4E49396E12044286E5F92F9C9A3B5F13A7AC3F7AAEA84436AA1322CC43E16C98",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-F13AF08C1A7D669F86CC044B66A1517F05265FB3EDE2F2F63902C8DA8E7A7F1C",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-1CEF61E2C4D36599305364D0231D5C6C16D5F779BC67EA18FF4EFC1B427CEF8D",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-91A75B7E834F3C109B89B5B681AEC3F204EDE33C94950303305E33AECEB9B608",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-1B490B1F69099897CB8797F79D4EBCF8712D99EC20227FF6D5B4ADE86B53E691",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-052A1812B7CC9C487AE257DC0E13BF42142B0224C62B2A9D717C46A5FCD664D3",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-B3796DECF4943F9135601245A7A278F8FFD444DAAA5E8BFD3E019422B5159C56",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-5F45490E172742F4D508BF2DA83F0DFEA5976C7E05027F4CACC4E5964A042840",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-3601508C035F62C12427480CFB0A43F75B6157D76FCBA1EE47F84A3EEB60070D",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-C397F046FB3580801E7808DC5653D386A486A5D9075DEEE6BEEC867DA93AED2E",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-4A6F5EECDCCA39768BBD7EA81DD35CEEFA99DC8507BEDDAE2511C7798CDE7586",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-DA4F80847EC3CEE737E82EEC1BF724F9626518817BA79B8B1C636F83604447DC",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-7E8B8A26805C1C3B06DC693B7845CC1715149C0AB648DEA52079D39F4F41889E",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-E174287A37045F9E3341CB2503C3A342DA862A7BF687C722CA77415945DBE920",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-B654A4D868EEA14A879988335994275DEFA31413BA6EC4DF0F9CF79B7464B628",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-6F879E1FCB0C9BDEB284ABD6A6F4613549A0D6CE9DFD62B14096B02FF0C33C55",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-04BFED6DEF7D34F2DAA4ED57D1EB48E8BEBA7E3C9485D27D8AA0511D9015E29F",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-RootPackage",
+      "relatedSpdxElement": "SPDXRef-Package-24F6C8C44B65568C22ECBB977321E3626780A1070B754D439F1ABED49131FFFC",
+      "relationshipType": "DEPENDS_ON"
+    }
+  ],
+  "documentDescribes": ["SPDXRef-RootPackage"]
+}
