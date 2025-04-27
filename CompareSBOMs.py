@@ -167,7 +167,7 @@ class CompareSBOMs:
         
         
         difference = DeepDiff(self.SBOMjsonTruth,self.SBOMjsonNonTruth, ignore_order=True)   
-        print("\nDifferences found by DeepDiff\n")
+        '''print("\nDifferences found by DeepDiff\n")
 
         self.removed_packages = []
         self.add_packages = []
@@ -243,7 +243,7 @@ class CompareSBOMs:
               print("No differences found.")
 
 
-    
+        '''
         packs_in_Truth=[]
         packs_in_NonTruth=[]
         print("\n\nDependencies in Ground Truth missing from Generated SBOM:\n")
@@ -261,10 +261,22 @@ class CompareSBOMs:
               packs_in_NonTruth.append(addname)
         missing_from_nontruth = [item for item in packs_in_Truth if item not in packs_in_NonTruth]
         print("There are " + str(len(missing_from_nontruth)) + " missing.")
-        falsepos = [item for item in packs_in_NonTruth if item not in packs_in_Truth]
-
         print(missing_from_nontruth)
-        print("\nThere are " + str(len(falsepos)) + " present that are not in the truth.")
+        missing_from_truth= [item for item in packs_in_NonTruth if item not in packs_in_Truth]
+        falsepos=len(missing_from_truth)
+        falseneg=len(missing_from_nontruth)
+        print("\nThere are " + str(falsepos) + " present that are not in the truth.")
+        
+        truepositive=len(packs_in_Truth)-len(missing_from_nontruth)
+        precision=truepositive/(falsepos+truepositive)
+        recall=truepositive/(truepositive+falseneg)
+        
+        accuracy=(truepositive)/(truepositive+falsepos+falseneg)  
+        print("\n\nPrecision: " + str(precision) +"\nRecall: " + str(recall) + "\n Accuracy: " + str(accuracy))      
+        
+        #Print precision, recall, accuracy, etc/
+        
+        
 
       
 

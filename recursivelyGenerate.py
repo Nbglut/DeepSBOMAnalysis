@@ -39,6 +39,9 @@ def recursiveGenTransient(SBOM, generator, missing_packs, present_packsrec, pres
                    continue
                checked_packs.add(dep)
                print("Attempting to generate SBOM of " + dep)
+               if "actions/" in dep:
+                  print("Likely a GitHub Runner action, skipping")
+                  continue
                gen=SBOM_generate()
                owner=dep.split("/")[0].split(".")[-1]
                repo=dep.split("/")[-1]
