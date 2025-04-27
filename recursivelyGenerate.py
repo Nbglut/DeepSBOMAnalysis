@@ -39,7 +39,7 @@ def recursiveGenTransient(SBOM, generator, missing_packs, present_packsrec, pres
                    continue
                checked_packs.add(dep)
                print("Attempting to generate SBOM of " + dep)
-               if "actions/" in dep or "-plugin" in dep or "-request" in dep:
+               if "actions/" in dep or "-plugin" in dep or "%40" in dep:
                   print("Likely a GitHub Runner action, or plugin skipping")
                   continue
                gen=SBOM_generate()
