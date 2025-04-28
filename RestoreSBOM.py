@@ -202,12 +202,14 @@ async def main():
           analyzer=DeepAnalysis(fileContents, owner, repo)
           await analyzer.Analyze()
           missing_packs=analyzer.getMissingPacks()         
-          print("\nDeep Analysis Results:\n\nThe SBOM was missing " + str(len(missing_packs)) + " transitive dependencies.\n")
+          print("\nDeep Analysis Results:\n\n")
 
           missingdirect = analyzer.getMissingDirectPacks()
           print("\nThe SBOM was missing " + str(len(missingdirect)) + " direct dependencies.\n")
 
+        
           newfileContents=restoreSBOM(fileContents, missingdirect)
+          print("\nThe SBOM was missing " + str(len(missing_packs)) + " transitive dependencies.\n")
           newfileContents=restoreSBOM(newfileContents, missing_packs)
 
           filename=filename.split("json")[0]
