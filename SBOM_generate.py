@@ -89,7 +89,7 @@ class SBOM_generate:
     
     print("Generating Microsoft SBOM...")
     try:
-        subprocess.run(f"sbom-tool generate -b {repo_name} -bc {repo_name} -pn {repo_name} -pv 1.0.0 -ps 'GitHub' -nsb 'https://github.com/{owner}/{repo} -m .", shell=True, check=True)
+        subprocess.run(f"sbom-tool generate -b {repo_name} -bc {repo_name} -pn {repo_name} -pv 1.0.0 -ps 'GitHub' -nsb 'https://github.com/{owner}/{repo}/' -m .", shell=True, check=True)
         print("Microsoft SBOM generation complete.")
     except subprocess.CalledProcessError as e:
         print(f"Error generating Microsoft SBOM: {e}")

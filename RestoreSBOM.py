@@ -98,7 +98,7 @@ def findParentLicense(parent,namespace):
                  #if lcicenses does not exist, go to parent if it exists, and then repeat
                  if licenses:
                        licensesec=licenses.find('license',namespace)
-                       if licensesec:
+                       if licensesec and licensesec.find('name',namespace):
                           license=licensesec.find('name',namespace).text
                  
                  elif parent:
@@ -152,7 +152,7 @@ def restoreSBOM(fileContents, missing_packs):
                      #if lcicenses does not exist, go to parent if it exists, and then repeat
                     if licenses:
                        licensesec=licenses.find('license',namespace)
-                       if licensesec:
+                       if licensesec and licensesec.find('name',namespace):
                           license=licensesec.find('name',namespace).text
               license=FormatLicense(license)
               #Add entry to SBOM
@@ -195,6 +195,10 @@ async def main():
                 fileContents = json.load(file)
           if 'sbom' in fileContents:
                 fileContents=fileContents['sbom']
+          owner=input("Owner of Github: ")
+          repo=input("Repo name: ")
+
+
           analyzer=DeepAnalysis(fileContents, owner, repo)
           await analyzer.Analyze()
           missing_packs=analyzer.getMissingPacks()         
@@ -203,14 +207,24 @@ async def main():
           missingdirect = analyzer.getMissingDirectPacks()
           print("\nThe SBOM was missing " + str(len(missingdirect)) + " direct dependencies.\n")
 
-          allmissing_packs=missing_packs+missingdirect
-          newfileContents=restoreSBOM(fileContents, allmissing_packs)
-     
+          newfileContents=restoreSBOM(fileContents, missingdirect)
+          newfileContents=restoreSBOM(newfileContents, missing_packs)
+
           filename=filename.split("json")[0]
           with open(filename+'_restored.json', 'w') as file:
              json.dump(newfileContents, file, indent=4)
              print("Restored file saved in " + filename+'_restored.json')
+          comparetoGround = input("Compare to ground truth? (T/F): ")
+          if comparetoGround=="T":
+           groundtruthfile = input("Directory to Ground Truth: ")
+           ground_truth=""
+           with open(groundtruthfile, 'r') as file:
+                ground_truth = json.load(file)
 
+           compares2=CompareSBOMs("")
+           compares2.setTruth(ground_truth)
+           compares2.setNonTruth(newfileContents)
+           compares2.compareSBOMs()
       
        
        
